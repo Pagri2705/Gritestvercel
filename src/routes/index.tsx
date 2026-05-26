@@ -18,12 +18,6 @@ import { FinalCta } from "@/components/landing/FinalCta";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Premium B2B Landingpage Template" },
-      { name: "description", content: "Moderne, hochwertige Onepage Landingpage Template — Platzhalterinhalt." },
-    ],
-  }),
   component: Index,
 });
 
