@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Smartphone, Monitor } from "lucide-react";
 import { SiteNav } from "@/components/landing/SiteNav";
 import { Hero } from "@/components/landing/Hero";
 import { StatsSection } from "@/components/landing/StatsSection";
@@ -22,8 +24,45 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [mobile, setMobile] = useState(false);
+
   return (
-    <main className="min-h-screen text-ink relative" style={{ backgroundColor: "rgba(255, 248, 235, 0.3)" }}>
+    <div style={{ background: mobile ? "#e5e7eb" : undefined, minHeight: "100dvh" }}>
+      {/* Toggle button */}
+      <button
+        onClick={() => setMobile((v) => !v)}
+        style={{
+          position: "fixed",
+          bottom: 24,
+          right: 24,
+          zIndex: 9999,
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          background: "#0F2942",
+          color: "white",
+          border: "none",
+          borderRadius: 999,
+          padding: "10px 18px",
+          fontSize: 13,
+          fontWeight: 600,
+          cursor: "pointer",
+          boxShadow: "0 4px 16px rgba(0,0,0,0.25)",
+        }}
+      >
+        {mobile ? <Monitor size={16} /> : <Smartphone size={16} />}
+        {mobile ? "Desktop" : "Mobile"}
+      </button>
+
+    <main
+      className="min-h-screen text-ink relative"
+      style={{
+        backgroundColor: "rgba(255, 248, 235, 0.3)",
+        maxWidth: mobile ? 390 : undefined,
+        margin: mobile ? "0 auto" : undefined,
+        boxShadow: mobile ? "0 0 0 1px #d1d5db, 0 8px 40px rgba(0,0,0,0.18)" : undefined,
+      }}
+    >
 
       <div className="fixed inset-0 z-0 pointer-events-none" style={{ backgroundColor: "#fdf8f2" }} />
 
@@ -37,8 +76,8 @@ function Index() {
         <Problem />
         <SocialProof />
         <AnimatedDemo />
-        <div className="flex items-center justify-center bg-white py-10">
-          <div style={{ width: 560, height: 420, position: "relative", overflow: "hidden", border: "2px dashed #94a3b8", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div className="flex items-center justify-center bg-white py-10 px-6">
+          <div style={{ width: "100%", maxWidth: 560, height: 420, position: "relative", overflow: "hidden", border: "2px dashed #94a3b8", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, #8aa8a4 0%, #c4aa80 45%, #d4a055 100%)" }} />
             <span style={{ position: "relative", zIndex: 1, color: "white", fontSize: 14, fontFamily: "monospace" }}>560 × 420px</span>
           </div>
@@ -56,5 +95,6 @@ function Index() {
         <SiteFooter />
       </div>
     </main>
+    </div>
   );
 }

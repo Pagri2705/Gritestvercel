@@ -8,7 +8,6 @@ const items = [
   { icon: ShieldAlert, text: "Der Umgang mit neuen Tools Unsicherheit erzeugt." },
 ];
 
-// Reveal order: top-left(0) → top-right(1) → bottom-left(2) → bottom-right(3)
 const revealOrder = [0, 1, 2, 3];
 
 export function Problem() {
@@ -58,10 +57,9 @@ export function Problem() {
           {/* Right: water container with animated cards */}
           <div
             ref={containerRef}
-            className="relative overflow-hidden rounded-2xl shrink-0"
+            className="relative overflow-hidden rounded-2xl w-full"
             style={{
-              width: 550,
-              height: 420,
+              maxWidth: 550,
               backgroundImage: "url('/bg-stats.jpg')",
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -69,11 +67,11 @@ export function Problem() {
           >
             <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.50)" }} />
 
-            <div className="absolute inset-0 grid grid-cols-2 gap-4 p-8">
+            <div className="relative grid grid-cols-2 gap-3 p-4 md:gap-4 md:p-8">
               {items.map(({ icon: Icon, text }, i) => (
                 <div
                   key={i}
-                  className="flex flex-col items-center text-center gap-3 rounded-xl p-5"
+                  className="flex flex-col items-center text-center gap-2 md:gap-3 rounded-xl p-3 md:p-5"
                   style={{
                     opacity: revealed[i] ? 1 : 0,
                     transform: revealed[i] ? "translateY(0)" : "translateY(14px)",
@@ -82,12 +80,12 @@ export function Problem() {
                   }}
                 >
                   <div
-                    className="grid h-9 w-9 shrink-0 place-items-center rounded-lg"
+                    className="grid h-8 w-8 md:h-9 md:w-9 shrink-0 place-items-center rounded-lg"
                     style={{ backgroundColor: "rgba(239,68,68,0.12)" }}
                   >
                     <Icon className="h-4 w-4" style={{ color: "#e53e3e" }} />
                   </div>
-                  <p className="text-[0.88rem] font-medium leading-relaxed text-ink">{text}</p>
+                  <p className="text-[0.78rem] md:text-[0.88rem] font-medium leading-relaxed text-ink">{text}</p>
                 </div>
               ))}
             </div>

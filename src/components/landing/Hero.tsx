@@ -31,6 +31,7 @@ function WordSpans({ words, startMs, stagger }: { words: string[]; startMs: numb
 }
 
 export function Hero() {
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
   return (
     <section className="relative flex h-[100dvh] flex-col items-center justify-center overflow-hidden px-6 text-center pt-16">
 
@@ -39,23 +40,24 @@ export function Hero() {
         <img
           src="/hero3.png"
           alt=""
-          className="h-full w-full object-cover object-[center_54%]"
+          className="h-full w-full object-cover"
+          style={{ objectPosition: isMobile ? "30% 54%" : "center 54%" }}
         />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(15,41,66,0.88) 0%, rgba(15,41,66,0.58) 60%, rgba(15,41,66,0.65) 100%)" }} />
       </div>
 
       {/* Headline + Subheadline */}
       <div className="relative z-10 w-full -mt-[46vh] text-center">
-        <h1 className="text-[3.5rem] font-bold leading-[1.1] tracking-[-0.02em] text-white sm:text-[4.1rem] md:text-[5.25rem] whitespace-nowrap" style={{ transform: "translateY(16px)" }}>
+        <h1 className="text-[2.4rem] font-bold leading-[1.1] tracking-[-0.02em] text-white sm:text-[4.1rem] md:text-[5.25rem]" style={{ transform: "translateY(16px)" }}>
           <WordSpans words={H1_WORDS} startMs={H_START} stagger={H_STAGGER} />
         </h1>
-        <p className="mt-14 mx-auto text-[1.375rem] font-medium leading-[1.65] text-white/90" style={{ transform: "translateY(16px)" }}>
+        <p className="mt-6 md:mt-14 mx-auto text-[1rem] md:text-[1.375rem] font-medium leading-[1.65] text-white/90" style={{ transform: "translateY(16px)" }}>
           <WordSpans words={SUB_LINE1} startMs={SUB_START} stagger={SUB_STAGGER} />
           <br />
           <WordSpans words={SUB_LINE2} startMs={SUB_LINE2_START} stagger={SUB_STAGGER} />
         </p>
         <p
-          className="hero-fade mt-8 mx-auto text-[1rem] font-normal leading-relaxed text-white/60"
+          className="hero-fade mt-4 md:mt-8 mx-auto text-[0.85rem] md:text-[1rem] font-normal leading-relaxed text-white/60"
           style={{ animationDelay: `${BTN_START - 300}ms` }}
         >
           Egal ob KI-Einsteiger oder erfahrener Anwender.<br />Wir holen jeden dort ab, wo er steht.
@@ -68,10 +70,10 @@ export function Hero() {
 
       {/* CTA */}
       <div
-        className="hero-fade absolute bottom-[13rem] left-0 right-0 z-20 flex items-center justify-center"
+        className="hero-fade absolute bottom-[10rem] md:bottom-[13rem] left-0 right-0 z-20 flex items-center justify-center"
         style={{ animationDelay: `${BTN_START}ms` }}
       >
-        <button className="cta-wave inline-flex h-14 items-center border border-brand bg-brand px-10 text-lg font-semibold text-white transition-colors hover:bg-brand/90">
+        <button className="cta-wave inline-flex h-10 md:h-14 items-center border border-brand bg-brand px-6 md:px-10 text-sm md:text-lg font-semibold text-white transition-colors hover:bg-brand/90">
           Kostenloses Strategiegespräch
         </button>
       </div>

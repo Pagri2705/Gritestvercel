@@ -38,7 +38,7 @@ export function StatsSection() {
     <section className="bg-white pt-8 pb-0 md:pt-12">
 
       <div className="px-6 mb-12">
-        <h2 className="text-[3rem] font-semibold leading-[1.12] tracking-[-0.03em] text-ink text-center">
+        <h2 className="text-[2rem] font-semibold leading-[1.12] tracking-[-0.03em] text-ink text-center md:text-[3rem]">
           Der Beweis
           <br />
           liegt in den Zahlen.
@@ -52,17 +52,17 @@ export function StatsSection() {
         {stats.map(({ value, label }, i) => (
           <div
             key={label}
-            className="flex flex-col items-center text-center px-8 pt-10 pb-8 cursor-default"
+            className="flex flex-col items-center text-center px-2 sm:px-8 pt-6 pb-6 md:pt-10 md:pb-8 cursor-default"
             onMouseEnter={() => setHovered(i)}
           >
             <span
-              className="text-[2.6rem] font-light leading-none tracking-[-0.03em] md:text-[3.31rem]"
+              className="text-[1.5rem] font-light leading-none tracking-[-0.03em] sm:text-[2.6rem] md:text-[3.31rem]"
               style={{ color: "rgba(15,41,66,1)" }}
             >
               {value}
             </span>
             <span
-              className="mt-3 text-[0.745rem] leading-snug font-medium max-w-[160px]"
+              className="mt-2 text-[0.6rem] sm:text-[0.745rem] leading-snug font-medium max-w-[100px] sm:max-w-[160px]"
               style={{ color: "rgba(15,41,66,0.55)" }}
             >
               {label}

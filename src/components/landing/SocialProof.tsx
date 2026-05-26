@@ -24,34 +24,27 @@ const stats = [
   },
 ];
 
-const positions = [
-  { top: 32,  left: 32,   bottom: "auto", right: "auto" },
-  { top: "50%", left: "50%", transform: "translate(-50%, -50%)", bottom: "auto", right: "auto" },
-  { top: "auto", left: "auto", bottom: 32, right: 32 },
-];
-
 export function SocialProof() {
   return (
-    <section className="bg-white py-16 md:py-20 pb-32 md:pb-40" style={{ borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
+    <section className="bg-white py-16 md:py-20 pb-16 md:pb-40" style={{ borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
       <div className="mx-auto max-w-7xl px-6">
 
         <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-brand mb-5 text-center">
           Marktkontext
         </p>
 
-        <h2 className="text-[2rem] font-semibold tracking-[-0.03em] text-ink mb-14 md:text-[3rem] leading-[1.1] whitespace-nowrap text-center">
+        <h2 className="text-[1.6rem] font-semibold tracking-[-0.03em] text-ink mb-10 md:text-[3rem] md:mb-14 leading-[1.1] text-center">
           KI wird getestet statt{" "}
           <span className="text-brand">produktiv genutzt.</span>
         </h2>
 
-        <div className="flex items-center justify-center gap-5">
-          {stats.map(({ number, anchor, body, source, href }, i) => (
+        {/* Mobile: stacked, Desktop: row */}
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-center md:gap-5">
+          {stats.map(({ number, anchor, body, source, href }) => (
             <div
               key={number}
-              className="flex flex-col rounded-xl p-6"
+              className="flex flex-col rounded-xl p-6 w-full md:w-[268px] md:flex-shrink-0"
               style={{
-                width: 268,
-                flexShrink: 0,
                 background: "white",
                 boxShadow: "0 4px 20px rgba(0,0,0,0.15), 0 0 0 2px rgba(59,100,180,0.10)",
               }}
