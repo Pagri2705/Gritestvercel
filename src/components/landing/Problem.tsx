@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { BookOpen, Lightbulb, LayoutGrid, ShieldAlert } from "lucide-react";
 
 const items = [
-  { icon: BookOpen,    text: "Mitarbeiter nicht wissen, wie sie KI verständlich einsetzen sollen." },
-  { icon: Lightbulb,   text: "Unklar bleibt, welche Aufgaben KI konkret übernehmen kann." },
-  { icon: LayoutGrid,  text: "Der tägliche Einsatz ohne klare Struktur und Prozess bleibt." },
-  { icon: ShieldAlert, text: "Der Umgang mit neuen Tools Unsicherheit erzeugt." },
+  { icon: BookOpen,    text: "Mitarbeiter wissen nicht, wie sie KI verständlich einsetzen sollen." },
+  { icon: Lightbulb,   text: "Es bleibt unklar, welche Aufgaben KI konkret übernehmen kann." },
+  { icon: LayoutGrid,  text: "Für den täglichen Einsatz fehlt eine klare Struktur und ein Prozess." },
+  { icon: ShieldAlert, text: "Neue Tools erzeugen Unsicherheit im Team." },
 ];
 
 const revealOrder = [0, 1, 2, 3];
