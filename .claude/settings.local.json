@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun run *)",
+      "PowerShell(Get-Command node, npm, npx -ErrorAction SilentlyContinue | Select-Object Name, Source; Get-ChildItem \"$env:USERPROFILE\\\\.bun\\\\bin\" -ErrorAction SilentlyContinue)"
+    ]
+  }
+}

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farbpaletten Explorer — KI Akademie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0A0A0A;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      padding: 52px 48px 40px;
+      border-bottom: 1px solid #1a1a1a;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+    .page-header p {
+      font-size: 13px;
+      color: #555;
+      margin-top: 6px;
+    }
+    .page-header-right {
+      font-size: 12px;
+      color: #444;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 2px;
+      padding: 2px;
+      background: #1a1a1a;
+    }
+
+    .palette-card {
+      background: #0A0A0A;
+      cursor: pointer;
+      position: relative;
+      transition: box-shadow 0.2s ease;
+    }
+    .palette-card:hover {
+      z-index: 2;
+      box-shadow: 0 0 0 2px #fff;
+    }
+
+    /* ── Preview section ─────────────────────────── */
+    .preview {
+      padding: 36px 32px 28px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .preview-top { flex: 1; }
+
+    .preview-tag {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+
+    .preview h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.4px;
+      margin-bottom: 10px;
+    }
+
+    .preview-sub {
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin-bottom: 22px;
+      max-width: 290px;
+      font-weight: 400;
+    }
+
+    .preview-buttons {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-p {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 500;
+      border: none;
+      cursor: default;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+      letter-spacing: 0;
+    }
+
+    .btn-s {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 500;
+      background: transparent;
+      cursor: default;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+
+    .preview-mini-card {
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .mini-card-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+    .mini-card-text {
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+
+    /* ── Info bar ────────────────────────────────── */
+    .palette-info {
+      background: #111;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .swatches {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .swatch {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+
+    .palette-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .palette-num {
+      font-size: 11px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .palette-name-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #777;
+    }
+
+    /* ── Modal overlay ───────────────────────────── */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .modal-bg.open { display: flex; }
+
+    .modal-content {
+      max-width: 700px;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .modal-preview {
+      padding: 64px 56px;
+    }
+
+    .modal-preview h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .modal-preview .modal-sub {
+      font-size: 16px;
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 420px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .modal-btn-p {
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      cursor: default;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .modal-btn-s {
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      background: transparent;
+      cursor: default;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .modal-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .modal-card {
+      border-radius: 14px;
+      padding: 20px 22px;
+    }
+
+    .modal-card-label {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .modal-card-text {
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .modal-info {
+      padding: 16px 24px;
+      background: rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.2);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: inherit;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-header">
+    <div>
+      <h1>Farbpaletten Explorer</h1>
+      <p>20 professionelle Paletten für KI Akademie — klicken zum Vergrößern</p>
+    </div>
+    <div class="page-header-right">Klicken = Vollansicht</div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="modal-bg" id="modal">
+    <div class="modal-content" id="modal-content">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+  </div>
+
+  <script>
+    const palettes = [
+      {
+        name: "Indigo Slate",
+        bg: "#F8F9FC", surface: "#FFFFFF", border: "#E2E8F0",
+        ink: "#0F172A", muted: "#64748B", accent: "#4F46E5", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Warm Cream (aktuell)",
+        bg: "#FAF9F5", surface: "#EFE9DE", border: "#E6DFD8",
+        ink: "#141413", muted: "#6C6A64", accent: "#CC785C", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Deep Navy",
+        bg: "#0F1629", surface: "#1A2540", border: "#2A3A5C",
+        ink: "#F1F5F9", muted: "#94A3B8", accent: "#60A5FA", accentFg: "#0F1629",
+        dark: true
+      },
+      {
+        name: "Forest",
+        bg: "#F4F7F3", surface: "#FFFFFF", border: "#C8DEC5",
+        ink: "#1A2E1A", muted: "#4A7360", accent: "#2D6A4F", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Warm Stone",
+        bg: "#F7F4EF", surface: "#FFFFFF", border: "#E5DDD0",
+        ink: "#2C1F10", muted: "#8A7060", accent: "#A0742A", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Pure Minimal",
+        bg: "#FFFFFF", surface: "#F9FAFB", border: "#E5E7EB",
+        ink: "#111827", muted: "#6B7280", accent: "#111827", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Steel Professional",
+        bg: "#F0F4F8", surface: "#FFFFFF", border: "#CBD5E1",
+        ink: "#0F2942", muted: "#4E6E8E", accent: "#1D4ED8", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Sage Green",
+        bg: "#F4F7F4", surface: "#FFFFFF", border: "#C8DEC8",
+        ink: "#1C2E1C", muted: "#5A7A5A", accent: "#2E7D32", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Midnight",
+        bg: "#0D1117", surface: "#161B22", border: "#30363D",
+        ink: "#E6EDF3", muted: "#8B949E", accent: "#388BFD", accentFg: "#0D1117",
+        dark: true
+      },
+      {
+        name: "Soft Violet",
+        bg: "#FAF8FF", surface: "#FFFFFF", border: "#E9D5FF",
+        ink: "#1E1040", muted: "#7C6FA5", accent: "#7C3AED", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Cool Teal",
+        bg: "#F0FAFA", surface: "#FFFFFF", border: "#B2DFDB",
+        ink: "#0D3030", muted: "#4A8080", accent: "#0D9488", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Warm Dark",
+        bg: "#1C1917", surface: "#292524", border: "#44403C",
+        ink: "#FAF9F7", muted: "#A8A29E", accent: "#FB923C", accentFg: "#1C1917",
+        dark: true
+      },
+      {
+        name: "Sky Blue",
+        bg: "#EFF6FF", surface: "#FFFFFF", border: "#BFDBFE",
+        ink: "#1E3A5F", muted: "#4A6FA5", accent: "#2563EB", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Rose Berry",
+        bg: "#FFF5F7", surface: "#FFFFFF", border: "#FCE7EB",
+        ink: "#2D0A14", muted: "#9C5A6A", accent: "#BE123C", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Warm Khaki",
+        bg: "#F7F5EE", surface: "#FFFFFF", border: "#E8E0CC",
+        ink: "#2A2010", muted: "#7A7060", accent: "#7A6030", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Charcoal",
+        bg: "#F5F5F5", surface: "#FFFFFF", border: "#E0E0E0",
+        ink: "#1A1A1A", muted: "#666666", accent: "#1A1A1A", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Electric",
+        bg: "#FAFAFE", surface: "#FFFFFF", border: "#E0E7FF",
+        ink: "#1E1B4B", muted: "#5B5899", accent: "#6366F1", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Warm Graphite",
+        bg: "#F9F8F5", surface: "#FFFFFF", border: "#E5E0D8",
+        ink: "#222018", muted: "#747068", accent: "#4B4840", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Ocean",
+        bg: "#F0F9FF", surface: "#FFFFFF", border: "#BAE6FD",
+        ink: "#0C2E4A", muted: "#3A6E8E", accent: "#0369A1", accentFg: "#FFFFFF",
+        dark: false
+      },
+      {
+        name: "Warm Amber",
+        bg: "#FFFBF0", surface: "#FFFFFF", border: "#FDE68A",
+        ink: "#2C1A00", muted: "#7A5C20", accent: "#D97706", accentFg: "#FFFFFF",
+        dark: false
+      },
+    ];
+
+    function hex(color, alpha) {
+      if (!alpha) return color;
+      const a = Math.round(alpha * 255).toString(16).padStart(2, '0');
+      return color + a;
+    }
+
+    function buildPreview(p, large = false) {
+      const tagBg = hex(p.accent, 0.12);
+      const secBorderColor = p.dark ? 'rgba(255,255,255,0.1)' : p.border;
+      const btnSecBorder = p.dark ? 'rgba(255,255,255,0.2)' : p.border;
+
+      if (large) {
+        return `
+          <div class="modal-preview" style="background:${p.bg};">
+            <div class="preview-tag" style="background:${tagBg}; color:${p.accent};">KI Akademie</div>
+            <h3 style="color:${p.ink};">KI für jeden<br/>Mitarbeiter</h3>
+            <p class="modal-sub" style="color:${p.muted};">Verständliche und praxisnahe Einführung in moderne KI Tools für Unternehmen ohne eigene KI Abteilung.</p>
+            <div class="modal-buttons">
+              <button class="modal-btn-p" style="background:${p.accent}; color:${p.accentFg};">Kostenloses Strategiegespräch</button>
+              <button class="modal-btn-s" style="border:1px solid ${btnSecBorder}; color:${p.ink};">Ablauf ansehen</button>
+            </div>
+            <div class="modal-cards">
+              <div class="modal-card" style="background:${p.surface}; border:1px solid ${secBorderColor};">
+                <div class="modal-card-label" style="color:${p.accent};">Lernen & Umsetzung</div>
+                <p class="modal-card-text" style="color:${p.ink};">Teams lernen KI schneller mit echten Aufgaben statt theoretischen Beispielen.</p>
+              </div>
+              <div class="modal-card" style="background:${p.surface}; border:1px solid ${secBorderColor};">
+                <div class="modal-card-label" style="color:${p.accent};">Mittelstand</div>
+                <p class="modal-card-text" style="color:${p.ink};">KMU setzen neue KI-Prozesse oft schneller um als große Konzerne.</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-info" style="background:${p.surface};">
+            <div class="swatches">
+              ${[p.bg, p.surface, p.border, p.ink, p.muted, p.accent].map(c => `<div class="swatch" style="background:${c};" title="${c}"></div>`).join('')}
+            </div>
+            <span style="font-size:12px; color:${p.muted}; font-family:Inter;">${p.accent} · ${p.bg}</span>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="preview" style="background:${p.bg};">
+          <div class="preview-top">
+            <div class="preview-tag" style="background:${tagBg}; color:${p.accent};">KI Akademie</div>
+            <h3 style="color:${p.ink};">KI für jeden Mitarbeiter</h3>
+            <p class="preview-sub" style="color:${p.muted};">Praxisnahe Einführung in moderne KI Tools für Unternehmen.</p>
+            <div class="preview-buttons">
+              <button class="btn-p" style="background:${p.accent}; color:${p.accentFg};">Jetzt anfragen</button>
+              <button class="btn-s" style="border:1px solid ${btnSecBorder}; color:${p.ink};">Ablauf ansehen</button>
+            </div>
+          </div>
+          <div class="preview-mini-card" style="background:${p.surface}; border:1px solid ${secBorderColor};">
+            <div class="mini-card-label" style="color:${p.accent};">Lernen & Umsetzung</div>
+            <p class="mini-card-text" style="color:${p.ink};">Teams lernen KI schneller mit echten Aufgaben statt Theorie.</p>
+          </div>
+        </div>
+        <div class="palette-info">
+          <div class="swatches">
+            ${[p.bg, p.surface, p.border, p.ink, p.accent].map(c => `<div class="swatch" style="background:${c};" title="${c}"></div>`).join('')}
+          </div>
+          <div class="palette-meta">
+            <span class="palette-num">${''}</span>
+            <span class="palette-name-label">${p.name}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    const grid = document.getElementById('grid');
+
+    palettes.forEach((p, i) => {
+      const card = document.createElement('div');
+      card.className = 'palette-card';
+      card.innerHTML = buildPreview(p);
+
+      // Number badge
+      const num = document.createElement('div');
+      num.style.cssText = `position:absolute; top:12px; left:12px; width:22px; height:22px; border-radius:50%; background:rgba(0,0,0,0.18); display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600; color:${p.dark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.35)'}; font-family:Inter;`;
+      num.textContent = i + 1;
+      card.appendChild(num);
+
+      card.addEventListener('click', () => openModal(p));
+      grid.appendChild(card);
+    });
+
+    function openModal(p) {
+      const modal = document.getElementById('modal');
+      const content = document.getElementById('modal-content');
+      content.innerHTML = `
+        <button class="modal-close" onclick="closeModal()" style="color:${p.ink}; background:rgba(0,0,0,0.1);">✕</button>
+        ${buildPreview(p, true)}
+      `;
+      modal.classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+    }
+
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+  <!-- Typography comparison -->
+  <div style="background:#0A0A0A; padding:60px 48px 40px; border-top:1px solid #1a1a1a;">
+    <div style="font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:600; letter-spacing:-0.5px; color:#fff; margin-bottom:8px;">Typografie-Vorschau</div>
+    <p style="font-family:Inter,sans-serif; font-size:13px; color:#555; margin-bottom:48px;">Steel Professional — Vorher vs. Nachher</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3px; background:#1a1a1a;">
+
+      <!-- VORHER -->
+      <div style="background:#F0F4F8; padding:52px 48px;">
+        <div style="font-family:Inter,sans-serif; font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#1D4ED8; margin-bottom:24px;">VORHER</div>
+
+        <!-- H2 vorher: text-4xl md:text-5xl = 36-48px -->
+        <h2 style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:600; letter-spacing:-0.02em; line-height:1.08; color:#0F2942; margin:0 0 12px;">
+          KI Workshops für Ihr Team
+        </h2>
+        <!-- Lead vorher: text-lg = 18px -->
+        <p style="font-family:Inter,sans-serif; font-size:18px; font-weight:400; line-height:1.65; color:#4E6E8E; margin:0 0 40px; max-width:480px;">
+          Praxisnahe Einführung in moderne KI Tools — für Teams ohne technisches Vorwissen.
+        </p>
+
+        <!-- Cards vorher -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div style="background:#fff; border:1px solid #CBD5E1; border-radius:16px; padding:28px;">
+            <div style="font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#1D4ED8; margin-bottom:12px;">Modul 01</div>
+            <!-- Card-Titel vorher: text-xl font-bold = 20px 700 -->
+            <div style="font-family:Inter,sans-serif; font-size:20px; font-weight:700; color:#0F2942; margin-bottom:10px; line-height:1.3;">KI Grundlagen verstehen</div>
+            <!-- Card-Body vorher: text-sm = 14px -->
+            <p style="font-family:Inter,sans-serif; font-size:14px; line-height:1.65; color:#4E6E8E; margin:0;">Wie funktioniert KI und was kann sie heute wirklich leisten?</p>
+          </div>
+          <div style="background:#fff; border:1px solid #CBD5E1; border-radius:16px; padding:28px;">
+            <div style="font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#1D4ED8; margin-bottom:12px;">Modul 02</div>
+            <div style="font-family:Inter,sans-serif; font-size:20px; font-weight:700; color:#0F2942; margin-bottom:10px; line-height:1.3;">Tools im Alltag einsetzen</div>
+            <p style="font-family:Inter,sans-serif; font-size:14px; line-height:1.65; color:#4E6E8E; margin:0;">Von ChatGPT bis Copilot — welche Tools wirklich helfen.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- NACHHER -->
+      <div style="background:#F0F4F8; padding:52px 48px; position:relative;">
+        <div style="font-family:Inter,sans-serif; font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#1D4ED8; margin-bottom:24px;">NACHHER</div>
+
+        <!-- H2 nachher: text-3xl md:text-[2.5rem] = 30-40px -->
+        <h2 style="font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:600; letter-spacing:-0.02em; line-height:1.08; color:#0F2942; margin:0 0 12px;">
+          KI Workshops für Ihr Team
+        </h2>
+        <!-- Lead nachher: text-base = 16px -->
+        <p style="font-family:Inter,sans-serif; font-size:15px; font-weight:400; line-height:1.65; color:#4E6E8E; margin:0 0 40px; max-width:480px;">
+          Praxisnahe Einführung in moderne KI Tools — für Teams ohne technisches Vorwissen.
+        </p>
+
+        <!-- Cards nachher -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div style="background:#fff; border:1px solid #CBD5E1; border-radius:16px; padding:28px;">
+            <div style="font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#1D4ED8; margin-bottom:12px;">Modul 01</div>
+            <!-- Card-Titel nachher: 17px font-semibold -->
+            <div style="font-family:Inter,sans-serif; font-size:17px; font-weight:600; color:#0F2942; margin-bottom:10px; line-height:1.35;">KI Grundlagen verstehen</div>
+            <!-- Card-Body nachher: 15px -->
+            <p style="font-family:Inter,sans-serif; font-size:15px; line-height:1.65; color:#4E6E8E; margin:0;">Wie funktioniert KI und was kann sie heute wirklich leisten?</p>
+          </div>
+          <div style="background:#fff; border:1px solid #CBD5E1; border-radius:16px; padding:28px;">
+            <div style="font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#1D4ED8; margin-bottom:12px;">Modul 02</div>
+            <div style="font-family:Inter,sans-serif; font-size:17px; font-weight:600; color:#0F2942; margin-bottom:10px; line-height:1.35;">Tools im Alltag einsetzen</div>
+            <p style="font-family:Inter,sans-serif; font-size:15px; line-height:1.65; color:#4E6E8E; margin:0;">Von ChatGPT bis Copilot — welche Tools wirklich helfen.</p>
+          </div>
+        </div>
+
+        <!-- Nachher badge -->
+        <div style="position:absolute; top:20px; right:20px; background:#1D4ED8; color:#fff; font-family:Inter,sans-serif; font-size:11px; font-weight:600; padding:4px 12px; border-radius:100px;">Empfohlen</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

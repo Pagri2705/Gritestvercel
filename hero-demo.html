@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trav — Begin Your Next Big Adventure</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    /* Applied per-word by JS */
+    .word-wrap {
+      display: inline-block;
+      opacity: 0;
+      animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Static elements that animate once on load */
+    .anim-pin {
+      opacity: 0;
+      animation: fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: 50ms;
+    }
+
+    .anim-button {
+      opacity: 0;
+      animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* CTA glow on hover */
+    .cta-btn {
+      transition: box-shadow 0.3s ease, transform 0.25s ease;
+    }
+    .cta-btn:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 0 18px rgba(255, 255, 255, 0.45),
+        0 0 45px rgba(255, 255, 255, 0.15),
+        0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Mobile menu fade */
+    #mobile-menu {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* Hamburger lines */
+    .ham-line {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-black text-white overflow-x-hidden">
+
+  <!-- ── Background Video ────────────────────────────────────────── -->
+  <div class="fixed inset-0 -z-10">
+    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+      <source
+        src="https://cdn.sceneai.art/Hero%20Section%20Video/0519be39-d8d1-48a5-84ee-f8a1ec038cd6.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <div class="absolute inset-0 bg-black/30"></div>
+  </div>
+
+  <!-- ── Header ──────────────────────────────────────────────────── -->
+  <header class="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-6 py-6 md:px-16 md:py-10">
+
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </div>
+      <span class="font-medium tracking-wide" style="font-size:16px;">Trav</span>
+    </div>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center space-x-10">
+      <a href="#" class="font-medium text-white/95 hover:text-white transition-colors" style="font-size:14px;">Home</a>
+      <a href="#" class="font-medium text-white/95 hover:text-white transition-colors" style="font-size:14px;">Our Story</a>
+      <a href="#" class="font-medium text-white/95 hover:text-white transition-colors" style="font-size:14px;">FAQ</a>
+      <a href="#" class="font-medium text-white/95 hover:text-white transition-colors" style="font-size:14px;">Policies</a>
+    </nav>
+
+    <!-- Hamburger (mobile only) -->
+    <button id="hamburger" class="md:hidden p-2 flex flex-col gap-[5px]" aria-label="Open navigation">
+      <span id="ham-1" class="ham-line w-6 bg-white block" style="height:1.5px;"></span>
+      <span id="ham-2" class="ham-line w-6 bg-white block" style="height:1.5px;"></span>
+      <span id="ham-3" class="ham-line w-6 bg-white block" style="height:1.5px;"></span>
+    </button>
+  </header>
+
+  <!-- ── Mobile Menu Overlay ─────────────────────────────────────── -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 z-20 flex flex-col items-center justify-center gap-10 bg-black/80 backdrop-blur-xl"
+    style="opacity:0; visibility:hidden;"
+    aria-hidden="true"
+  >
+    <button id="close-menu" class="absolute top-6 right-6 p-2" aria-label="Close navigation">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <a href="#" class="font-medium text-white/95 hover:text-white transition-colors" style="font-size:22px;">Home</a>
+    <a href="#" class="font-medium text-white/95 hover:text-white transition-colors" style="font-size:22px;">Our Story</a>
+    <a href="#" class="font-medium text-white/95 hover:text-white transition-colors" style="font-size:22px;">FAQ</a>
+    <a href="#" class="font-medium text-white/95 hover:text-white transition-colors" style="font-size:22px;">Policies</a>
+  </div>
+
+  <!-- ── Hero Content ────────────────────────────────────────────── -->
+  <main class="flex h-[100dvh] items-center justify-center px-6">
+    <div class="max-w-4xl w-full flex flex-col items-center text-center">
+
+      <!-- Map Pin Icon -->
+      <div
+        class="anim-pin mb-7"
+        style="filter: drop-shadow(0 0 14px rgba(255,255,255,0.35)) drop-shadow(0 4px 10px rgba(0,0,0,0.35));"
+      >
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+      </div>
+
+      <!-- Main Heading -->
+      <h1
+        id="main-heading"
+        class="font-semibold text-white mb-5"
+        style="font-size:clamp(38px,6vw,60px); letter-spacing:-0.02em; line-height:1.1;"
+      >Begin Your Next<br class="hidden md:block"/>Big Adventure</h1>
+
+      <!-- Subheading -->
+      <p
+        id="subheading"
+        class="font-medium text-white/95 mb-10"
+        style="font-size:clamp(15px,1.6vw,17px); line-height:1.6; max-width:480px;"
+      >Discover hidden gems, plan unforgettable trips, and<br class="hidden md:block"/>explore the world — all in one seamless app.</p>
+
+      <!-- CTA Button -->
+      <button
+        class="anim-button cta-btn bg-white text-black font-medium rounded-full"
+        style="font-size:15px; padding: 14px 32px;"
+      >
+        Download Now
+      </button>
+
+    </div>
+  </main>
+
+  <script>
+    // ── Mobile menu ────────────────────────────────────────────────
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobile-menu');
+    const closeBtn    = document.getElementById('close-menu');
+    const ham1        = document.getElementById('ham-1');
+    const ham2        = document.getElementById('ham-2');
+    const ham3        = document.getElementById('ham-3');
+
+    function openMenu() {
+      mobileMenu.style.opacity    = '1';
+      mobileMenu.style.visibility = 'visible';
+      mobileMenu.setAttribute('aria-hidden', 'false');
+      ham1.style.transform = 'translateY(6.5px) rotate(45deg)';
+      ham2.style.opacity   = '0';
+      ham3.style.transform = 'translateY(-6.5px) rotate(-45deg)';
+    }
+
+    function closeMenu() {
+      mobileMenu.style.opacity    = '0';
+      mobileMenu.style.visibility = 'hidden';
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      ham1.style.transform = '';
+      ham2.style.opacity   = '';
+      ham3.style.transform = '';
+    }
+
+    hamburger.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Close on outside click
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) closeMenu();
+    });
+
+    // ── Word-by-word stagger animation ─────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const HEADING_START_MS    = 300;   // when first heading word starts
+      const HEADING_WORD_GAP_MS = 80;    // delay between heading words
+      const SUB_PAUSE_MS        = 150;   // gap between last heading word → first sub word
+      const SUB_WORD_GAP_MS     = 55;    // delay between subheading words
+      const BTN_PAUSE_MS        = 160;   // gap after last sub word → button
+
+      /**
+       * Replaces an element's text content with per-word animated spans.
+       * <br> elements are preserved intact.
+       * Returns the accumulated delay after the last word is queued.
+       */
+      function staggerWords(el, startDelay, wordGap) {
+        const originalNodes = Array.from(el.childNodes);
+        el.innerHTML = '';
+
+        let delay = startDelay;
+
+        originalNodes.forEach(node => {
+          if (node.nodeType === Node.TEXT_NODE) {
+            // Split by whitespace, keeping whitespace tokens so spacing is preserved
+            const tokens = node.textContent.split(/(\s+)/);
+
+            tokens.forEach(token => {
+              if (/^\s+$/.test(token)) {
+                // Whitespace — keep as a plain text node
+                el.appendChild(document.createTextNode(token));
+              } else if (token.length > 0) {
+                const span = document.createElement('span');
+                span.className        = 'word-wrap';
+                span.textContent      = token;
+                span.style.animationDelay = delay + 'ms';
+                el.appendChild(span);
+                delay += wordGap;
+              }
+            });
+          } else if (node.nodeName === 'BR') {
+            // Preserve line-break elements exactly
+            el.appendChild(node.cloneNode(true));
+          }
+        });
+
+        return delay; // time after last word is queued
+      }
+
+      const headingEl    = document.getElementById('main-heading');
+      const subheadingEl = document.getElementById('subheading');
+      const buttonEl     = document.querySelector('.anim-button');
+
+      // Heading: starts at 300ms, 80ms per word
+      const headingEnd = staggerWords(headingEl, HEADING_START_MS, HEADING_WORD_GAP_MS);
+
+      // Subheading: starts right after heading finishes + small pause
+      const subEnd = staggerWords(subheadingEl, headingEnd + SUB_PAUSE_MS, SUB_WORD_GAP_MS);
+
+      // Button: fades in after subheading
+      buttonEl.style.animationDelay = (subEnd + BTN_PAUSE_MS) + 'ms';
+    });
+  </script>
+</body>
+</html>

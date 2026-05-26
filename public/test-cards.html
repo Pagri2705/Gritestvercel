@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>30 Karten-Varianten</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Inter","DM Sans",system-ui,sans-serif; background:#111; padding:48px 24px; color:#fff; }
+h1 { font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#555; margin-bottom:56px; }
+.v { margin-bottom:72px; }
+.vl { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#444; margin-bottom:16px; }
+.g { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:980px; }
+a { text-decoration:none; }
+.arr::after { content:" ↗"; }
+
+/* 1 — Stripe soft shadow white */
+.c1 { background:#fff; border-radius:14px; padding:28px; display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.06); color:#0F2942; }
+.c1 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#1D4ED8; line-height:1; margin-bottom:10px; }
+.c1 .a { font-size:.88rem; font-weight:700; margin-bottom:8px; }
+.c1 .b { font-size:.81rem; line-height:1.75; color:#4E6E8E; flex:1; margin-bottom:16px; }
+.c1 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#1D4ED8; display:flex; align-items:center; gap:3px; }
+
+/* 2 — Dark navy */
+.c2 { background:#0F2942; border-radius:14px; padding:28px; display:flex; flex-direction:column; box-shadow:0 4px 24px rgba(0,0,0,.4); }
+.c2 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#93c5fd; line-height:1; margin-bottom:10px; }
+.c2 .a { font-size:.88rem; font-weight:700; color:#f0f4f8; margin-bottom:8px; }
+.c2 .b { font-size:.81rem; line-height:1.75; color:rgba(240,244,248,.5); flex:1; margin-bottom:16px; }
+.c2 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#93c5fd; display:flex; align-items:center; gap:3px; }
+
+/* 3 — Glassmorphism auf dunklem BG */
+.bg3 { background:linear-gradient(135deg,#1a1a3e,#2d1b69,#0f2942); border-radius:16px; padding:16px; }
+.c3 { background:rgba(255,255,255,.08); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.15); border-radius:12px; padding:28px; display:flex; flex-direction:column; }
+.c3 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#fff; line-height:1; margin-bottom:10px; }
+.c3 .a { font-size:.88rem; font-weight:700; color:#fff; margin-bottom:8px; }
+.c3 .b { font-size:.81rem; line-height:1.75; color:rgba(255,255,255,.6); flex:1; margin-bottom:16px; }
+.c3 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#a78bfa; display:flex; align-items:center; gap:3px; }
+
+/* 4 — Emerald solid */
+.c4 { background:#065f46; border-radius:14px; padding:28px; display:flex; flex-direction:column; }
+.c4 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#6ee7b7; line-height:1; margin-bottom:10px; }
+.c4 .a { font-size:.88rem; font-weight:700; color:#ecfdf5; margin-bottom:8px; }
+.c4 .b { font-size:.81rem; line-height:1.75; color:rgba(236,253,245,.6); flex:1; margin-bottom:16px; }
+.c4 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#6ee7b7; display:flex; align-items:center; gap:3px; }
+
+/* 5 — Warm terracotta editorial */
+.c5 { background:#c2714f; border-radius:14px; padding:28px; display:flex; flex-direction:column; }
+.c5 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#fff8f0; line-height:1; margin-bottom:10px; font-family:Georgia,serif; }
+.c5 .a { font-size:.88rem; font-weight:700; color:#fff8f0; margin-bottom:8px; }
+.c5 .b { font-size:.81rem; line-height:1.75; color:rgba(255,248,240,.65); flex:1; margin-bottom:16px; }
+.c5 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,248,240,.8); display:flex; align-items:center; gap:3px; }
+
+/* 6 — Aurora gradient */
+.c6 { background:linear-gradient(135deg,#7c3aed,#a855f7,#ec4899); border-radius:14px; padding:28px; display:flex; flex-direction:column; }
+.c6 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#fff; line-height:1; margin-bottom:10px; }
+.c6 .a { font-size:.88rem; font-weight:700; color:#fff; margin-bottom:8px; }
+.c6 .b { font-size:.81rem; line-height:1.75; color:rgba(255,255,255,.7); flex:1; margin-bottom:16px; }
+.c6 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.85); display:flex; align-items:center; gap:3px; }
+
+/* 7 — Neon terminal */
+.c7 { background:#000; border:1.5px solid #00ff88; border-radius:8px; padding:28px; display:flex; flex-direction:column; box-shadow:0 0 16px rgba(0,255,136,.2),inset 0 0 16px rgba(0,255,136,.04); }
+.c7 .n { font-size:2.6rem; font-weight:700; letter-spacing:-.02em; color:#00ff88; line-height:1; margin-bottom:10px; font-family:monospace; text-shadow:0 0 12px #00ff88; }
+.c7 .a { font-size:.88rem; font-weight:400; color:#00ff88; margin-bottom:8px; font-family:monospace; }
+.c7 .b { font-size:.78rem; line-height:1.75; color:rgba(0,255,136,.55); flex:1; margin-bottom:16px; font-family:monospace; }
+.c7 .s { font-size:.62rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#00ff88; display:flex; align-items:center; gap:3px; font-family:monospace; }
+
+/* 8 — Gold luxury dark */
+.c8 { background:#1a1a2e; border:1.5px solid #d4af37; border-radius:14px; padding:28px; display:flex; flex-direction:column; box-shadow:0 0 24px rgba(212,175,55,.1); }
+.c8 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#d4af37; line-height:1; margin-bottom:10px; text-shadow:0 0 20px rgba(212,175,55,.3); }
+.c8 .a { font-size:.88rem; font-weight:600; color:#f5e6c4; margin-bottom:8px; }
+.c8 .b { font-size:.81rem; line-height:1.75; color:rgba(245,230,196,.5); flex:1; margin-bottom:16px; }
+.c8 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#d4af37; display:flex; align-items:center; gap:3px; }
+
+/* 9 — Neumorphism */
+.bg9 { background:#e4e9f0; border-radius:16px; padding:16px; }
+.c9 { background:#e4e9f0; border-radius:14px; padding:28px; display:flex; flex-direction:column; box-shadow:6px 6px 12px #b8bfc8,-6px -6px 12px #ffffff; }
+.c9 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#3a5080; line-height:1; margin-bottom:10px; }
+.c9 .a { font-size:.88rem; font-weight:700; color:#2a3a50; margin-bottom:8px; }
+.c9 .b { font-size:.81rem; line-height:1.75; color:#5a7090; flex:1; margin-bottom:16px; }
+.c9 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#3a5080; display:flex; align-items:center; gap:3px; }
+
+/* 10 — Brutalist */
+.c10 { background:#f5f014; border-radius:0; padding:28px; display:flex; flex-direction:column; border:3px solid #000; }
+.c10 .n { font-size:2.6rem; font-weight:900; letter-spacing:-.04em; color:#000; line-height:1; margin-bottom:10px; }
+.c10 .a { font-size:.88rem; font-weight:800; color:#000; margin-bottom:8px; text-transform:uppercase; }
+.c10 .b { font-size:.81rem; line-height:1.75; color:#222; flex:1; margin-bottom:16px; }
+.c10 .s { font-size:.62rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#000; display:flex; align-items:center; gap:3px; }
+
+/* 11 — Frosted on light */
+.bg11 { background:linear-gradient(135deg,#dbeafe,#fce7f3,#ede9fe); border-radius:16px; padding:16px; }
+.c11 { background:rgba(255,255,255,.55); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,.8); border-radius:12px; padding:28px; display:flex; flex-direction:column; box-shadow:0 2px 16px rgba(0,0,0,.06); }
+.c11 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#1D4ED8; line-height:1; margin-bottom:10px; }
+.c11 .a { font-size:.88rem; font-weight:700; color:#0F2942; margin-bottom:8px; }
+.c11 .b { font-size:.81rem; line-height:1.75; color:#4E6E8E; flex:1; margin-bottom:16px; }
+.c11 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#1D4ED8; display:flex; align-items:center; gap:3px; }
+
+/* 12 — Newspaper cream serif */
+.c12 { background:#f5f1e8; border:1px solid #c8b89a; border-radius:4px; padding:28px; display:flex; flex-direction:column; }
+.c12 .n { font-size:3rem; font-weight:900; letter-spacing:-.04em; color:#1a1a1a; line-height:1; margin-bottom:10px; font-family:Georgia,serif; }
+.c12 .a { font-size:.85rem; font-weight:700; color:#1a1a1a; margin-bottom:8px; font-family:Georgia,serif; font-style:italic; }
+.c12 .b { font-size:.8rem; line-height:1.8; color:#3d3228; flex:1; margin-bottom:16px; font-family:Georgia,serif; }
+.c12 .s { font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#8b6a40; display:flex; align-items:center; gap:3px; }
+
+/* 13 — Left border bold */
+.c13 { background:#fff; border-radius:0 14px 14px 0; padding:28px; display:flex; flex-direction:column; border-left:5px solid #1D4ED8; box-shadow:0 2px 16px rgba(0,0,0,.07); color:#0F2942; }
+.c13 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#1D4ED8; line-height:1; margin-bottom:10px; }
+.c13 .a { font-size:.88rem; font-weight:700; margin-bottom:8px; }
+.c13 .b { font-size:.81rem; line-height:1.75; color:#4E6E8E; flex:1; margin-bottom:16px; }
+.c13 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#1D4ED8; display:flex; align-items:center; gap:3px; }
+
+/* 14 — Ocean deep gradient */
+.c14 { background:linear-gradient(160deg,#0369a1,#0ea5e9,#06b6d4); border-radius:14px; padding:28px; display:flex; flex-direction:column; }
+.c14 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#fff; line-height:1; margin-bottom:10px; }
+.c14 .a { font-size:.88rem; font-weight:700; color:#fff; margin-bottom:8px; }
+.c14 .b { font-size:.81rem; line-height:1.75; color:rgba(255,255,255,.7); flex:1; margin-bottom:16px; }
+.c14 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.85); display:flex; align-items:center; gap:3px; }
+
+/* 15 — Ink dark number + divider */
+.c15 { background:#fff; border-radius:14px; padding:28px; display:flex; flex-direction:column; border:1px solid rgba(0,0,0,.08); color:#0F2942; }
+.c15 .n { font-size:3.25rem; font-weight:900; letter-spacing:-.05em; color:#0F2942; line-height:1; margin-bottom:16px; padding-bottom:16px; border-bottom:2px solid #0F2942; }
+.c15 .a { font-size:.88rem; font-weight:700; margin-bottom:8px; }
+.c15 .b { font-size:.81rem; line-height:1.75; color:#4E6E8E; flex:1; margin-bottom:16px; }
+.c15 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#1D4ED8; display:flex; align-items:center; gap:3px; }
+
+/* 16 — Plum violet dark */
+.c16 { background:#2e1065; border-radius:14px; padding:28px; display:flex; flex-direction:column; border:1px solid #7c3aed; }
+.c16 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#ddd6fe; line-height:1; margin-bottom:10px; }
+.c16 .a { font-size:.88rem; font-weight:700; color:#ede9fe; margin-bottom:8px; }
+.c16 .b { font-size:.81rem; line-height:1.75; color:rgba(237,233,254,.5); flex:1; margin-bottom:16px; }
+.c16 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#a78bfa; display:flex; align-items:center; gap:3px; }
+
+/* 17 — Warmes Creme Beige */
+.c17 { background:#fdf6e3; border:1px solid #e8d5b7; border-radius:14px; padding:28px; display:flex; flex-direction:column; }
+.c17 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#92400e; line-height:1; margin-bottom:10px; }
+.c17 .a { font-size:.88rem; font-weight:700; color:#451a03; margin-bottom:8px; }
+.c17 .b { font-size:.81rem; line-height:1.75; color:#78350f; flex:1; margin-bottom:16px; }
+.c17 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#92400e; display:flex; align-items:center; gap:3px; }
+
+/* 18 — Split diagonal zwei Farben */
+.c18 { border-radius:14px; padding:28px; display:flex; flex-direction:column; overflow:hidden; position:relative; background:linear-gradient(135deg,#1D4ED8 50%,#0F2942 50%); }
+.c18 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#fff; line-height:1; margin-bottom:10px; }
+.c18 .a { font-size:.88rem; font-weight:700; color:#fff; margin-bottom:8px; }
+.c18 .b { font-size:.81rem; line-height:1.75; color:rgba(255,255,255,.65); flex:1; margin-bottom:16px; }
+.c18 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.7); display:flex; align-items:center; gap:3px; }
+
+/* 19 — Clay 3D offset shadow */
+.bg19 { background:#f0ebe3; border-radius:16px; padding:16px; }
+.c19 { background:#f7f2ec; border-radius:14px; padding:28px; display:flex; flex-direction:column; box-shadow:5px 5px 0 #c4b9ac; }
+.c19 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#7c5c3e; line-height:1; margin-bottom:10px; }
+.c19 .a { font-size:.88rem; font-weight:700; color:#3d2b1a; margin-bottom:8px; }
+.c19 .b { font-size:.81rem; line-height:1.75; color:#6b4e37; flex:1; margin-bottom:16px; }
+.c19 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#7c5c3e; display:flex; align-items:center; gap:3px; }
+
+/* 20 — Monochrom grau */
+.c20 { background:#f9fafb; border:1px solid #e5e7eb; border-radius:14px; padding:28px; display:flex; flex-direction:column; }
+.c20 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#111827; line-height:1; margin-bottom:10px; }
+.c20 .a { font-size:.88rem; font-weight:700; color:#111827; margin-bottom:8px; }
+.c20 .b { font-size:.81rem; line-height:1.75; color:#6b7280; flex:1; margin-bottom:16px; }
+.c20 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#374151; display:flex; align-items:center; gap:3px; }
+
+/* 21 — Source-Tag oben + Zahl schwarz */
+.c21 { background:#fff; border-radius:14px; padding:28px; display:flex; flex-direction:column; border:1px solid rgba(0,0,0,.08); box-shadow:0 2px 12px rgba(0,0,0,.05); color:#0F2942; }
+.c21 .tag { display:inline-block; font-size:.6rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#1D4ED8; background:rgba(29,78,216,.07); padding:3px 8px; border-radius:4px; margin-bottom:14px; }
+.c21 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#0F2942; line-height:1; margin-bottom:10px; }
+.c21 .a { font-size:.88rem; font-weight:700; margin-bottom:8px; }
+.c21 .b { font-size:.81rem; line-height:1.75; color:#4E6E8E; flex:1; }
+
+/* 22 — Einzelner äußerer Rahmen Vercel-Style */
+.wrap22 { background:#fff; border:1px solid rgba(0,0,0,.09); border-radius:14px; overflow:hidden; max-width:980px; box-shadow:0 1px 3px rgba(0,0,0,.04); display:grid; grid-template-columns:repeat(3,1fr); }
+.c22 { padding:32px 28px; display:flex; flex-direction:column; border-right:1px solid rgba(0,0,0,.08); }
+.c22:last-child { border-right:none; }
+.c22 .n { font-size:2.75rem; font-weight:900; letter-spacing:-.04em; color:#1D4ED8; line-height:1; margin-bottom:10px; }
+.c22 .a { font-size:.88rem; font-weight:700; color:#0F2942; margin-bottom:8px; }
+.c22 .b { font-size:.81rem; line-height:1.75; color:#4E6E8E; flex:1; margin-bottom:16px; }
+.c22 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#1D4ED8; display:flex; align-items:center; gap:3px; }
+
+/* 23 — Mesh gradient warm */
+.c23 { background:radial-gradient(ellipse at 20% 30%,#fbbf24 0%,transparent 60%),radial-gradient(ellipse at 80% 70%,#f87171 0%,transparent 60%),#fff7ed; border-radius:14px; padding:28px; display:flex; flex-direction:column; }
+.c23 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#7c2d12; line-height:1; margin-bottom:10px; }
+.c23 .a { font-size:.88rem; font-weight:700; color:#431407; margin-bottom:8px; }
+.c23 .b { font-size:.81rem; line-height:1.75; color:#9a3412; flex:1; margin-bottom:16px; }
+.c23 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#9a3412; display:flex; align-items:center; gap:3px; }
+
+/* 24 — Midnight blue sehr dunkel */
+.c24 { background:#020617; border:1px solid rgba(148,163,184,.15); border-radius:14px; padding:28px; display:flex; flex-direction:column; }
+.c24 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#38bdf8; line-height:1; margin-bottom:10px; }
+.c24 .a { font-size:.88rem; font-weight:700; color:#e2e8f0; margin-bottom:8px; }
+.c24 .b { font-size:.81rem; line-height:1.75; color:rgba(226,232,240,.4); flex:1; margin-bottom:16px; }
+.c24 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#38bdf8; display:flex; align-items:center; gap:3px; }
+
+/* 25 — Rose soft */
+.c25 { background:linear-gradient(135deg,#fff1f2,#ffe4e6); border:1px solid #fecdd3; border-radius:14px; padding:28px; display:flex; flex-direction:column; }
+.c25 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#be123c; line-height:1; margin-bottom:10px; }
+.c25 .a { font-size:.88rem; font-weight:700; color:#881337; margin-bottom:8px; }
+.c25 .b { font-size:.81rem; line-height:1.75; color:#9f1239; flex:1; margin-bottom:16px; }
+.c25 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#be123c; display:flex; align-items:center; gap:3px; }
+
+/* 26 — Großes Wasserzeichen */
+.c26 { background:#fff; border-radius:14px; padding:28px; display:flex; flex-direction:column; overflow:hidden; position:relative; border:1px solid rgba(0,0,0,.08); color:#0F2942; }
+.c26 .bg { position:absolute; top:-20px; right:-10px; font-size:8rem; font-weight:900; color:rgba(29,78,216,.05); line-height:1; pointer-events:none; letter-spacing:-.05em; }
+.c26 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#1D4ED8; line-height:1; margin-bottom:10px; position:relative; }
+.c26 .a { font-size:.88rem; font-weight:700; margin-bottom:8px; position:relative; }
+.c26 .b { font-size:.81rem; line-height:1.75; color:#4E6E8E; flex:1; margin-bottom:16px; position:relative; }
+.c26 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#1D4ED8; display:flex; align-items:center; gap:3px; position:relative; }
+
+/* 27 — Slate dunkel modern */
+.c27 { background:#0f172a; border-radius:14px; padding:28px; display:flex; flex-direction:column; border:1px solid rgba(255,255,255,.06); }
+.c27 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#f8fafc; line-height:1; margin-bottom:10px; }
+.c27 .a { font-size:.88rem; font-weight:700; color:#cbd5e1; margin-bottom:8px; }
+.c27 .b { font-size:.81rem; line-height:1.75; color:#475569; flex:1; margin-bottom:16px; }
+.c27 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#60a5fa; display:flex; align-items:center; gap:3px; }
+
+/* 28 — Bottom color strip */
+.c28 { background:#fff; border-radius:14px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 12px rgba(0,0,0,.07); color:#0F2942; }
+.c28 .in { padding:28px; flex:1; display:flex; flex-direction:column; }
+.c28 .strip { height:4px; background:linear-gradient(90deg,#1D4ED8,#7c3aed,#ec4899); }
+.c28 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#1D4ED8; line-height:1; margin-bottom:10px; }
+.c28 .a { font-size:.88rem; font-weight:700; margin-bottom:8px; }
+.c28 .b { font-size:.81rem; line-height:1.75; color:#4E6E8E; flex:1; margin-bottom:16px; }
+.c28 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#1D4ED8; display:flex; align-items:center; gap:3px; }
+
+/* 29 — Teal gradient */
+.c29 { background:linear-gradient(135deg,#0d9488,#0891b2); border-radius:14px; padding:28px; display:flex; flex-direction:column; }
+.c29 .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#fff; line-height:1; margin-bottom:10px; }
+.c29 .a { font-size:.88rem; font-weight:700; color:#fff; margin-bottom:8px; }
+.c29 .b { font-size:.81rem; line-height:1.75; color:rgba(255,255,255,.65); flex:1; margin-bottom:16px; }
+.c29 .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.85); display:flex; align-items:center; gap:3px; }
+
+/* 30 — Erste dunkel rest hell gemischt */
+.mix30 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:980px; }
+.c30d { background:#0F2942; border-radius:14px; padding:28px; display:flex; flex-direction:column; box-shadow:0 4px 24px rgba(0,0,0,.3); }
+.c30l { background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:14px; padding:28px; display:flex; flex-direction:column; box-shadow:0 2px 12px rgba(0,0,0,.05); color:#0F2942; }
+.c30d .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#93c5fd; line-height:1; margin-bottom:10px; }
+.c30l .n { font-size:2.6rem; font-weight:800; letter-spacing:-.04em; color:#1D4ED8; line-height:1; margin-bottom:10px; }
+.c30d .a { font-size:.88rem; font-weight:700; color:#f0f4f8; margin-bottom:8px; }
+.c30l .a { font-size:.88rem; font-weight:700; margin-bottom:8px; }
+.c30d .b { font-size:.81rem; line-height:1.75; color:rgba(240,244,248,.45); flex:1; margin-bottom:16px; }
+.c30l .b { font-size:.81rem; line-height:1.75; color:#4E6E8E; flex:1; margin-bottom:16px; }
+.c30d .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#93c5fd; display:flex; align-items:center; gap:3px; }
+.c30l .s { font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#1D4ED8; display:flex; align-items:center; gap:3px; }
+</style>
+</head>
+<body>
+<h1>30 Karten-Varianten</h1>
+
+<div class="v"><div class="vl">1 — Stripe: Soft Shadow, Weiss</div><div class="g">
+  <div class="c1"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c1"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c1"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">2 — Dark Navy</div><div class="g">
+  <div class="c2"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c2"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c2"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">3 — Glassmorphism auf Dunkel</div><div class="bg3"><div class="g">
+  <div class="c3"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c3"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c3"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div></div>
+
+<div class="v"><div class="vl">4 — Emerald Solid</div><div class="g">
+  <div class="c4"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c4"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c4"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">5 — Terracotta Editorial Serif</div><div class="g">
+  <div class="c5"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c5"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c5"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">6 — Aurora Gradient Lila/Pink</div><div class="g">
+  <div class="c6"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c6"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c6"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">7 — Neon Terminal</div><div class="g">
+  <div class="c7"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c7"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c7"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">8 — Gold Luxury Dark</div><div class="g">
+  <div class="c8"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c8"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c8"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">9 — Neumorphism</div><div class="bg9"><div class="g">
+  <div class="c9"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c9"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c9"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div></div>
+
+<div class="v"><div class="vl">10 — Brutalist Gelb/Schwarz</div><div class="g">
+  <div class="c10"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c10"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c10"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">11 — Frosted Glass Hell</div><div class="bg11"><div class="g">
+  <div class="c11"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c11"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c11"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div></div>
+
+<div class="v"><div class="vl">12 — Newspaper Cream Serif</div><div class="g">
+  <div class="c12"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c12"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c12"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">13 — Linke Akzentlinie Bold</div><div class="g">
+  <div class="c13"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c13"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c13"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">14 — Ocean Deep</div><div class="g">
+  <div class="c14"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c14"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c14"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">15 — Schwarz Zahl + Trennlinie</div><div class="g" style="background:#fff;padding:16px;border-radius:14px;">
+  <div class="c15"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c15"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c15"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">16 — Plum Violet Dark</div><div class="g">
+  <div class="c16"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c16"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c16"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">17 — Warmes Creme/Beige</div><div class="g" style="background:#f0ebe3;padding:16px;border-radius:14px;">
+  <div class="c17"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c17"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c17"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">18 — Split Diagonal</div><div class="g">
+  <div class="c18"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c18"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c18"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">19 — Clay 3D Offset Shadow</div><div class="bg19"><div class="g">
+  <div class="c19"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c19"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c19"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div></div>
+
+<div class="v"><div class="vl">20 — Monochrom Grau</div><div class="g" style="background:#f3f4f6;padding:16px;border-radius:14px;">
+  <div class="c20"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c20"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c20"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">21 — Source Tag Oben</div><div class="g" style="background:#f0f4f8;padding:16px;border-radius:14px;">
+  <div class="c21"><div class="tag">Deloitte 2026 ↗</div><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div></div>
+  <div class="c21"><div class="tag">Bitkom 2026 ↗</div><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div></div>
+  <div class="c21"><div class="tag">Deloitte 2026 ↗</div><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div></div>
+</div></div>
+
+<div class="v"><div class="vl">22 — Vercel: Ein gemeinsamer Rahmen</div>
+  <div class="wrap22">
+    <div class="c22"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+    <div class="c22"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+    <div class="c22"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  </div>
+</div>
+
+<div class="v"><div class="vl">23 — Mesh Gradient Warm</div><div class="g">
+  <div class="c23"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c23"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c23"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">24 — Midnight Slate</div><div class="g">
+  <div class="c24"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c24"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c24"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">25 — Rose Soft</div><div class="g">
+  <div class="c25"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c25"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c25"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">26 — Großes Wasserzeichen Hintergrund</div><div class="g" style="background:#f0f4f8;padding:16px;border-radius:14px;">
+  <div class="c26"><div class="bg">75%</div><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c26"><div class="bg">53%</div><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c26"><div class="bg">43%</div><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">27 — Slate Dark Modern</div><div class="g">
+  <div class="c27"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c27"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c27"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">28 — Bottom Gradient Strip</div><div class="g" style="background:#f0f4f8;padding:16px;border-radius:14px;">
+  <div class="c28"><div class="in"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div><div class="strip"></div></div>
+  <div class="c28"><div class="in"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div><div class="strip"></div></div>
+  <div class="c28"><div class="in"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div><div class="strip"></div></div>
+</div></div>
+
+<div class="v"><div class="vl">29 — Teal Gradient</div><div class="g">
+  <div class="c29"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c29"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c29"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+<div class="v"><div class="vl">30 — Erste Dunkel, Rest Hell</div><div class="mix30">
+  <div class="c30d"><div class="n">75%</div><div class="a">der KI-Projekte scheitern</div><div class="b">zwischen erstem Test und echtem Einsatz. Die Technologie ist selten das Problem. Die fehlende Einführung schon.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+  <div class="c30l"><div class="n">53%</div><div class="a">nennen fehlendes Know-how</div><div class="b">als größten Stolperstein. Nicht das Budget. Nicht die Tools. Sondern das fehlende Wissen im Team.</div><a class="s arr" href="#">Bitkom 2026</a></div>
+  <div class="c30l"><div class="n">43%</div><div class="a">der KMU ohne KI-Pläne</div><div class="b">Gleichzeitig stufen 91% der Großkonzerne KI als geschäftskritisch ein. Wer nicht handelt verliert Boden.</div><a class="s arr" href="#">Deloitte 2026</a></div>
+</div></div>
+
+</body>
+</html>
