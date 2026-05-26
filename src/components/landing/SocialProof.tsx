@@ -33,7 +33,7 @@ export function SocialProof() {
           Marktkontext
         </p>
 
-        <h2 className="text-[1.6rem] font-semibold tracking-[-0.03em] text-ink mb-10 md:text-[3rem] md:mb-14 leading-[1.1] text-center">
+        <h2 className="text-[1.9rem] font-semibold tracking-[-0.03em] text-ink mb-10 md:text-[3rem] md:mb-14 leading-[1.1] text-center">
           KI wird getestet statt{" "}
           <span className="text-brand">produktiv genutzt.</span>
         </h2>

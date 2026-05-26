@@ -34,7 +34,7 @@ export function SiteNav() {
 
           {/* Desktop CTA */}
           <button className="hidden md:inline-flex h-10 items-center border border-brand bg-brand px-5 text-sm font-semibold text-white transition-colors hover:bg-brand/90">
-            Kostenloses Strategiegespräch
+            Kostenloses Erstgespräch
           </button>
 
           {/* Mobile: CTA + Burger */}

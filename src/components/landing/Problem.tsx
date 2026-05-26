@@ -25,7 +25,7 @@ export function Problem() {
                 next[itemIndex] = true;
                 return next;
               });
-            }, step * 1200);
+            }, 800 + step * 800);
           });
           observer.disconnect();
         }
@@ -44,7 +44,7 @@ export function Problem() {
 
           {/* Left: headline + text */}
           <div>
-            <h2 className="text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-5xl">
+            <h2 className="text-[1.9rem] font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-5xl text-center md:text-left">
               KI Einführungen scheitern{" "}
               <span style={{ color: "#e53e3e" }}>IMMER</span>
               , wenn

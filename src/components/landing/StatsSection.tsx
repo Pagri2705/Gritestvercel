@@ -32,7 +32,7 @@ function GradientLine({ active }: { active: number }) {
 }
 
 export function StatsSection() {
-  const [hovered, setHovered] = useState(0);
+  const [hovered, setHovered] = useState(1);
 
   return (
     <section className="bg-white pt-8 pb-0 md:pt-12">

@@ -52,11 +52,11 @@ export function AnimatedDemo() {
 
           {/* Left: Text */}
           <div>
-            <h2 className="text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-5xl">
+            <h2 className="text-[1.9rem] font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-5xl text-center md:text-left">
               Jedes KI Tool.<br />
               <span className="text-brand">Ein strukturierter Ansatz.</span>
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-ink-muted md:text-lg">
+            <p className="mt-6 text-base leading-relaxed text-ink-muted md:text-lg text-center md:text-left">
               Ob ChatGPT, Claude oder Gemini — im Workshop lernen Ihre Mitarbeiter, moderne KI Tools direkt für ihre eigenen Aufgaben einzusetzen.
             </p>
           </div>
@@ -110,8 +110,8 @@ export function AnimatedDemo() {
               className="absolute p-5 shadow-lg"
               style={{
                 bottom: 32,
-                right: 32,
-                width: "55%",
+                right: 16,
+                width: "68%",
                 borderRadius: "12px",
                 opacity: showResult ? 1 : 0,
                 background: "rgba(255,255,255,0.92)",
