@@ -16,6 +16,8 @@ import { RoiCalculator } from "@/components/landing/RoiCalculator";
 import { Pricing } from "@/components/landing/Pricing";
 import { Faq } from "@/components/landing/Faq";
 import { AnimatedDemo } from "@/components/landing/AnimatedDemo";
+import { WhyItFails } from "@/components/landing/WhyItFails";
+import { FailureCost } from "@/components/landing/FailureCost";
 import { FinalCta } from "@/components/landing/FinalCta";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 
@@ -72,9 +74,11 @@ function Index() {
           <Hero />
         </div>
         <StatsSection />
-        <div className="bg-white h-[40px]" />
+        <div className="bg-white h-[90px]" />
         <Problem />
         <SocialProof />
+        <WhyItFails />
+        <FailureCost />
         <AnimatedDemo />
         <div className="flex items-center justify-center bg-white py-10 px-6">
           <div style={{ width: "100%", maxWidth: 560, height: 420, position: "relative", overflow: "hidden", border: "2px dashed #94a3b8", display: "flex", alignItems: "center", justifyContent: "center" }}>
