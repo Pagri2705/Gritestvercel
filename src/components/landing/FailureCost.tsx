@@ -70,75 +70,92 @@ export function FailureCost() {
           Es geht nicht nur um das verlorene Geld. Es geht darum, was danach kommt.
         </p>
 
-        {/* Timeline */}
+        {/* Alternating timeline */}
         <div ref={ref} className="relative">
 
-          {/* Vertical dotted line */}
+          {/* Vertical center line */}
           <div
             className="absolute top-0 bottom-0"
             style={{
-              left: 28,
+              left: "50%",
+              transform: "translateX(-50%)",
               width: 2,
               backgroundImage: "repeating-linear-gradient(to bottom, #d1d5db 0px, #d1d5db 6px, transparent 6px, transparent 12px)",
             }}
           />
 
-          <div className="flex flex-col gap-10">
-            {steps.map((step, i) => (
-              <div
-                key={i}
-                className="flex gap-6"
-                style={{
-                  opacity: visible[i] ? 1 : 0,
-                  transform: visible[i] ? "translateX(0)" : "translateX(-16px)",
-                  transition: "opacity 0.45s ease, transform 0.45s ease",
-                }}
-              >
-                {/* Number + dot */}
-                <div className="relative shrink-0 flex flex-col items-center" style={{ width: 58 }}>
-                  {/* Dot on line */}
+          <div className="flex flex-col" style={{ gap: 48 }}>
+            {steps.map((step, i) => {
+              const isLeft = i % 2 === 0;
+              return (
+                <div
+                  key={i}
+                  className="relative flex items-center"
+                  style={{
+                    opacity: visible[i] ? 1 : 0,
+                    transform: visible[i] ? "translateY(0)" : "translateY(12px)",
+                    transition: "opacity 0.45s ease, transform 0.45s ease",
+                  }}
+                >
+                  {/* Left side */}
+                  <div className="flex-1 flex justify-end pr-6">
+                    {isLeft ? (
+                      /* Card on left */
+                      <div className="w-full max-w-[260px] overflow-hidden rounded-xl" style={{ border: "1px solid #e5e7eb" }}>
+                        <div className="px-4 py-2.5" style={{ background: step.color }}>
+                          <p className="text-white font-bold text-[0.88rem]">{step.title}</p>
+                        </div>
+                        <div className="px-4 py-3" style={{ background: "#f9fafb" }}>
+                          <p className="text-[0.78rem] text-ink/65 leading-relaxed">{step.content}</p>
+                        </div>
+                      </div>
+                    ) : (
+                      /* Faded number on left */
+                      <span
+                        className="font-bold select-none"
+                        style={{ fontSize: "5.5rem", color: step.color, opacity: 0.1, lineHeight: 1 }}
+                      >
+                        {i + 1}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Center dot */}
                   <div
-                    className="absolute top-4 grid place-items-center rounded-full z-10"
+                    className="relative z-10 shrink-0 rounded-full"
                     style={{
                       width: 14,
                       height: 14,
                       background: step.color,
-                      left: "50%",
-                      transform: "translateX(-50%)",
                       boxShadow: `0 0 0 3px white`,
                     }}
                   />
-                  {/* Faded number */}
-                  <span
-                    className="font-bold leading-none select-none"
-                    style={{
-                      fontSize: "5rem",
-                      color: step.color,
-                      opacity: 0.12,
-                      lineHeight: 1,
-                      marginTop: -8,
-                    }}
-                  >
-                    {i + 1}
-                  </span>
-                </div>
 
-                {/* Card */}
-                <div className="flex-1 overflow-hidden rounded-xl" style={{ border: "1px solid #e5e7eb" }}>
-                  {/* Colored header */}
-                  <div
-                    className="px-5 py-3"
-                    style={{ background: step.color }}
-                  >
-                    <p className="text-white font-bold text-[0.95rem]">{step.title}</p>
-                  </div>
-                  {/* Content */}
-                  <div className="px-5 py-4" style={{ background: "#f9fafb" }}>
-                    <p className="text-[0.875rem] text-ink/70 leading-relaxed">{step.content}</p>
+                  {/* Right side */}
+                  <div className="flex-1 flex justify-start pl-6">
+                    {!isLeft ? (
+                      /* Card on right */
+                      <div className="w-full max-w-[260px] overflow-hidden rounded-xl" style={{ border: "1px solid #e5e7eb" }}>
+                        <div className="px-4 py-2.5" style={{ background: step.color }}>
+                          <p className="text-white font-bold text-[0.88rem]">{step.title}</p>
+                        </div>
+                        <div className="px-4 py-3" style={{ background: "#f9fafb" }}>
+                          <p className="text-[0.78rem] text-ink/65 leading-relaxed">{step.content}</p>
+                        </div>
+                      </div>
+                    ) : (
+                      /* Faded number on right */
+                      <span
+                        className="font-bold select-none"
+                        style={{ fontSize: "5.5rem", color: step.color, opacity: 0.1, lineHeight: 1 }}
+                      >
+                        {i + 1}
+                      </span>
+                    )}
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
         </div>
