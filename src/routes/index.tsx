@@ -18,6 +18,10 @@ import { Faq } from "@/components/landing/Faq";
 import { AnimatedDemo } from "@/components/landing/AnimatedDemo";
 import { WhyItFails } from "@/components/landing/WhyItFails";
 import { FailureCost } from "@/components/landing/FailureCost";
+import { Programm } from "@/components/landing/Programm";
+import { Lernkreislauf } from "@/components/landing/Lernkreislauf";
+import { EigeneBildSektion } from "@/components/landing/EigeneBildSektion";
+import { WirArbeitenMit } from "@/components/landing/WirArbeitenMit";
 import { FinalCta } from "@/components/landing/FinalCta";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 
@@ -79,6 +83,10 @@ function Index() {
         <SocialProof />
         <WhyItFails />
         <FailureCost />
+        <Programm />
+        <Lernkreislauf />
+        <EigeneBildSektion />
+        <WirArbeitenMit />
         <AnimatedDemo />
         <div className="flex items-center justify-center bg-white py-10 px-6">
           <div style={{ width: "100%", maxWidth: 560, height: 420, position: "relative", overflow: "hidden", border: "2px dashed #94a3b8", display: "flex", alignItems: "center", justifyContent: "center" }}>

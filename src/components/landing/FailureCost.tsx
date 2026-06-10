@@ -68,8 +68,9 @@ export function FailureCost() {
           Ein Fehlversuch reicht um das Potenzial zu hemmen.
         </h2>
 
-        <p className="text-center text-[0.9rem] md:text-base text-ink/50 max-w-[520px] mx-auto mb-16 leading-relaxed">
-          Verlorenes Geld können Sie wieder verdienen, der zweite Einführungsversuch wird jedoch schwer.
+        <p className="text-center text-[0.9rem] md:text-base text-ink/50 max-w-[680px] mx-auto mb-16 leading-relaxed">
+          Verlorenes Geld können Sie wieder verdienen, der zweite Einführungsversuch{" "}
+          <span style={{ whiteSpace: "nowrap" }}>wird jedoch schwer.</span>
         </p>
 
         <div ref={ref}>
@@ -93,7 +94,7 @@ export function FailureCost() {
                 >
                   {isLeft ? (
                     <>
-                      <span style={{ fontSize: "5.5rem", fontWeight: 700, color: step.color, opacity: 0.12, lineHeight: 1, userSelect: "none", marginRight: 28, marginLeft: -54, flexShrink: 0 }}>
+                      <span style={{ fontSize: "5.5rem", fontWeight: 700, color: step.color, opacity: 0.4, lineHeight: 1, userSelect: "none", marginRight: 28, marginLeft: -54, flexShrink: 0 }}>
                         {i + 1}
                       </span>
                       <div style={{ width: "54%", minHeight: HALF_CARD * 2, border: "1px solid #e5e7eb", borderRadius: 12, overflow: "hidden", display: "flex", flexDirection: "column" }}>
@@ -116,7 +117,7 @@ export function FailureCost() {
                           <p className="text-[0.875rem] text-ink/65 leading-relaxed">{step.content}</p>
                         </div>
                       </div>
-                      <span style={{ fontSize: "5.5rem", fontWeight: 700, color: step.color, opacity: 0.12, lineHeight: 1, userSelect: "none", marginLeft: 28, marginRight: -54, flexShrink: 0 }}>
+                      <span style={{ fontSize: "5.5rem", fontWeight: 700, color: step.color, opacity: 0.4, lineHeight: 1, userSelect: "none", marginLeft: 28, marginRight: -54, flexShrink: 0 }}>
                         {i + 1}
                       </span>
                     </>

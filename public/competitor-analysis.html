@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI Anbieter Research</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0d0f14;color:#e2e8f0;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.topbar{display:flex;align-items:center;gap:8px;padding:0 16px;height:52px;background:#12151f;border-bottom:1px solid #2a2d3a;flex-shrink:0;overflow-x:auto;scrollbar-width:none}
+.topbar::-webkit-scrollbar{display:none}
+.tl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a78bfa;white-space:nowrap;margin-right:8px;flex-shrink:0}
+.tab{display:flex;align-items:center;gap:5px;padding:6px 11px;border-radius:8px;cursor:pointer;white-space:nowrap;font-size:12px;font-weight:500;color:#8892a4;border:1px solid transparent;flex-shrink:0;background:none;transition:all .15s}
+.tab:hover{color:#e2e8f0;background:#1a1d27;border-color:#2a2d3a}
+.tab.active{color:#fff;background:#1f2335;border-color:#a78bfa}
+.tn{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;font-size:10px;font-weight:700;background:#2a2d3a;color:#8892a4}
+.tab.active .tn{background:#a78bfa;color:#fff}
+.infobar{display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:36px;background:#0f1117;border-bottom:1px solid #1e2130;flex-shrink:0;gap:12px;overflow:hidden}
+.il{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.in{font-size:13px;font-weight:600;color:#fff;white-space:nowrap}
+.iu{font-size:11px;color:#a78bfa;text-decoration:none;opacity:.7;white-space:nowrap}
+.iu:hover{opacity:1}
+.ip{font-size:11.5px;color:#8892a4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fc{flex:1;position:relative;overflow:hidden}
+iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;display:none;background:#fff}
+iframe.active{display:block}
+.fb{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:#12151f}
+.fb.visible{display:flex}
+.fb h3{font-size:18px;font-weight:600;color:#fff}
+.fb p{color:#8892a4;font-size:13px;text-align:center;max-width:420px;line-height:1.6}
+.fb a{padding:10px 20px;background:#a78bfa;color:#fff;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600}
+.hint{position:absolute;bottom:12px;right:16px;font-size:11px;color:#4a5568;pointer-events:none}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="tl">10 KI-Anbieter</span>
+  <button class="tab active" onclick="show(0)"><span class="tn">1</span>Roover AI</button>
+  <button class="tab" onclick="show(1)"><span class="tn">2</span>Akademie f. KI</button>
+  <button class="tab" onclick="show(2)"><span class="tn">3</span>NEXperts</button>
+  <button class="tab" onclick="show(3)"><span class="tn">4</span>Inst. Dig. Komp.</button>
+  <button class="tab" onclick="show(4)"><span class="tn">5</span>activeMind AG</button>
+  <button class="tab" onclick="show(5)"><span class="tn">6</span>modal Akademie</button>
+  <button class="tab" onclick="show(6)"><span class="tn">7</span>navigate.de</button>
+  <button class="tab" onclick="show(7)"><span class="tn">8</span>Ventum Consulting</button>
+  <button class="tab" onclick="show(8)"><span class="tn">9</span>datom</button>
+  <button class="tab" onclick="show(9)"><span class="tn">10</span>biwe Bildungswerk</button>
+</div>
+
+<div class="infobar">
+  <div class="il">
+    <span class="in" id="iname">Roover AI Academy</span>
+    <a class="iu" id="iurl" href="https://roover.de/ai-academy/ki-schulung/" target="_blank">roover.de</a>
+  </div>
+  <span class="ip" id="ipos">B2B AI Upskilling DACH - individualisiertes Schulungsprogramm, Enterprise-Referenzen (Roland Berger, REWE, DFB)</span>
+</div>
+
+<div class="fc">
+  <iframe id="f0" class="active" src="https://roover.de/ai-academy/ki-schulung/"></iframe>
+  <iframe id="f1" src="https://www.akademie-ki.com/"></iframe>
+  <iframe id="f2" src="https://nexperts.ai/"></iframe>
+  <iframe id="f3" src="https://institut-digitale-kompetenz.de/"></iframe>
+  <iframe id="f4" src="https://www.activemind.de/kuenstliche-intelligenz/workshop/"></iframe>
+  <iframe id="f5" src="https://www.modal.de/weiterbildung/ki-schulung/"></iframe>
+  <iframe id="f6" src="https://navigate.de/leistungen/wir-bringen-sie-voran/ki-schulungen"></iframe>
+  <iframe id="f7" src="https://www.ventum-consulting.com/workshops/ki-workshop/"></iframe>
+  <iframe id="f8" src="https://www.datom.de/ki-fuer-unternehmen/"></iframe>
+  <iframe id="f9" src="https://www.biwe.de/themenwelten/transformation/ki-angebote"></iframe>
+
+  <div class="fb" id="fb">
+    <h3 id="fb-name">Seite blockiert iFrame</h3>
+    <p id="fb-reason">Diese Seite erlaubt keine Einbettung (X-Frame-Options).</p>
+    <a id="fb-link" href="#" target="_blank">Direkt im Browser oeffnen</a>
+  </div>
+  <div class="hint">Pfeiltasten links/rechts zum Navigieren</div>
+</div>
+
+<script>
+var C=[
+  {n:"Roover AI Academy",u:"https://roover.de/ai-academy/ki-schulung/",s:"roover.de",p:"B2B AI Upskilling DACH - individualisiertes Schulungsprogramm, Enterprise-Referenzen (Roland Berger, REWE, DFB)"},
+  {n:"Akademie fuer KI",u:"https://www.akademie-ki.com/",s:"akademie-ki.com",p:"Erste KI-Only Akademie Oesterreich - 70% Hands-on, Slogan KI mit Herz"},
+  {n:"NEXperts",u:"https://nexperts.ai/",s:"nexperts.ai",p:"360 Grad KI-Transformation: Strategie, Implementierung, Training, Talent - End-to-End Mittelstand"},
+  {n:"Institut Digitale Kompetenz",u:"https://institut-digitale-kompetenz.de/",s:"idk.de",p:"Staatlich gefoerderte KI-Schulung in 5 Wochen inkl. EU AI Act Compliance"},
+  {n:"activeMind AG",u:"https://www.activemind.de/kuenstliche-intelligenz/workshop/",s:"activemind.de",p:"Premium B2B 1-Tages-Workshop fuer KMU - DSGVO und AI Act inklusive"},
+  {n:"modal Akademie",u:"https://www.modal.de/weiterbildung/ki-schulung/",s:"modal.de",p:"Compliance-First - EU AI Act und breites Curriculum, 4.94/5 Bewertung"},
+  {n:"navigate.de",u:"https://navigate.de/leistungen/wir-bringen-sie-voran/ki-schulungen",s:"navigate.de",p:"Zertifizierter KI-Manager und Datenschutzanwalt - Compliance-Pflicht als Einstieg"},
+  {n:"Ventum Consulting",u:"https://www.ventum-consulting.com/workshops/ki-workshop/",s:"ventum-consulting.com",p:"Anti-Fehlversuch-Positionierung - Methodik fuer wirksame KI-Investitionen vom ersten Tag"},
+  {n:"datom",u:"https://www.datom.de/ki-fuer-unternehmen/",s:"datom.de",p:"Microsoft-aligned Compliance-first (EU AI Act, NIS-2) - 3000 Euro mit bis zu 50% Foerderung"},
+  {n:"biwe Bildungswerk",u:"https://www.biwe.de/themenwelten/transformation/ki-angebote",s:"biwe.de",p:"IHK-Bildungswerk BW - Seminare von Basis bis Beratung, institutionelle Glaubwuerdigkeit"}
+];
+var cur=0;
+function show(i){
+  document.getElementById("fb").classList.remove("visible");
+  document.querySelectorAll(".tab").forEach(function(t,j){t.classList.toggle("active",j===i)});
+  document.querySelectorAll("iframe").forEach(function(f,j){f.classList.toggle("active",j===i)});
+  var c=C[i];
+  document.getElementById("iname").textContent=c.n;
+  var u=document.getElementById("iurl"); u.href=c.u; u.textContent=c.s;
+  document.getElementById("ipos").textContent=c.p;
+  cur=i;
+}
+document.querySelectorAll("iframe").forEach(function(fr,i){
+  fr.addEventListener("load",function(){
+    if(i!==cur)return;
+    try{var d=fr.contentDocument;if(!d||!d.body)fall(i);}catch(e){fall(i);}
+  });
+  fr.addEventListener("error",function(){if(i===cur)fall(i);});
+});
+function fall(i){
+  var c=C[i];
+  document.getElementById("fb").classList.add("visible");
+  document.getElementById("fb-name").textContent=c.n+" blockiert iFrame";
+  document.getElementById("fb-reason").textContent="Diese Seite erlaubt keine Einbettung. Klick unten um direkt zu oeffnen.";
+  var l=document.getElementById("fb-link"); l.href=c.u; l.textContent="Direkt oeffnen: "+c.n;
+}
+document.addEventListener("keydown",function(e){
+  if(e.key==="ArrowRight")show(Math.min(cur+1,9));
+  if(e.key==="ArrowLeft")show(Math.max(cur-1,0));
+});
+</script>
+</body>
+</html>
