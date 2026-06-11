@@ -88,7 +88,7 @@ export function WhyItFails() {
           Problem zusammengefasst
         </p>
 
-        <h2 className="text-[1.9rem] md:text-[3rem] font-semibold leading-[1.1] tracking-[-0.03em] text-ink text-center mb-4">
+        <h2 className="text-[1.9rem] md:text-[2.8rem] font-semibold leading-[1.1] tracking-[-0.03em] text-ink text-center mb-4">
           KI scheitert zu 80% an der Einführung.
         </h2>
 

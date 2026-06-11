@@ -15,7 +15,7 @@ export function Lernkreislauf() {
               position: "relative",
               width: 1160,
               height: 780,
-              background: "#8d97b0",
+              background: "radial-gradient(100% 80% at 20% 20%, #C6D6C2 0%, transparent 60%), linear-gradient(150deg, #E3D9BD 0%, #D9A86E 100%)",
               borderRadius: 4,
               overflow: "hidden",
               flexShrink: 0,
@@ -110,9 +110,9 @@ export function Lernkreislauf() {
                 <span>KI verstehen</span>
                 <span style={{ display: "flex", alignItems: "center", gap: 7, flexShrink: 0 }}>
                   <img src="https://cdn.simpleicons.org/claude" alt="Claude" width={17} height={17} />
-                  <img src="https://cdn.simpleicons.org/openai" alt="ChatGPT" width={17} height={17} />
-                  <img src="https://cdn.simpleicons.org/githubcopilot" alt="Copilot" width={17} height={17} />
-                  <img src="https://cdn.simpleicons.org/canva" alt="Canva" width={17} height={17} />
+                  <img src="https://cdn.oaistatic.com/assets/favicon-o20kmmos.svg" alt="ChatGPT" width={17} height={17} />
+                  <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" alt="Gemini" width={17} height={17} />
+                  <img src="https://copilot.microsoft.com/favicon.ico" alt="Copilot" width={17} height={17} />
                 </span>
               </Pill>
               <Pill>Grundlagen moderner KI-Systeme</Pill>
@@ -157,19 +157,18 @@ export function Lernkreislauf() {
             <div
               style={{
                 position: "absolute",
-                left: 96,
-                top: 148,
+                left: 60,
+                top: 100,
                 maxWidth: 230,
                 zIndex: 2,
-                color: "rgba(245,246,249,0.9)",
+                color: "#211B14",
                 fontWeight: 600,
                 fontSize: 14,
                 letterSpacing: "-0.01em",
                 lineHeight: 1.45,
-                textShadow: "0 1px 3px rgba(30,38,60,.25)",
               }}
             >
-              🔄 Zurück zu Verstehen — neue Anwendungsfälle entstehen, das Team wird kontinuierlich besser.
+              🔄 Der Kreislauf beginnt von vorn, nur schneller: Mit jeder Runde erschließt Ihr Team neue Anwendungsfälle und neue KI-Systeme selbstständig — die Abhängigkeit von externer Beratung endet hier.
             </div>
           </div>
         </div>

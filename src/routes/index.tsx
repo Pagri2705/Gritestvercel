@@ -4,11 +4,8 @@ import { Smartphone, Monitor } from "lucide-react";
 import { SiteNav } from "@/components/landing/SiteNav";
 import { Hero } from "@/components/landing/Hero";
 import { StatsSection } from "@/components/landing/StatsSection";
-import { SocialProof } from "@/components/landing/SocialProof";
 import { TrustBars } from "@/components/landing/TrustBars";
 import { Problem } from "@/components/landing/Problem";
-import { Process } from "@/components/landing/Process";
-import { Outcomes } from "@/components/landing/Outcomes";
 import { UseCases } from "@/components/landing/UseCases";
 import { ChatTestimonials } from "@/components/landing/ChatTestimonials";
 import { About } from "@/components/landing/About";
@@ -22,6 +19,7 @@ import { Programm } from "@/components/landing/Programm";
 import { Lernkreislauf } from "@/components/landing/Lernkreislauf";
 import { EigeneBildSektion } from "@/components/landing/EigeneBildSektion";
 import { WirArbeitenMit } from "@/components/landing/WirArbeitenMit";
+import { VentarSektionen } from "@/components/landing/VentarSektionen";
 import { FinalCta } from "@/components/landing/FinalCta";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 
@@ -80,13 +78,13 @@ function Index() {
         <StatsSection />
         <div className="bg-white h-[90px]" />
         <Problem />
-        <SocialProof />
         <WhyItFails />
         <FailureCost />
         <Programm />
         <Lernkreislauf />
         <EigeneBildSektion />
         <WirArbeitenMit />
+        <VentarSektionen />
         <AnimatedDemo />
         <div className="flex items-center justify-center bg-white py-10 px-6">
           <div style={{ width: "100%", maxWidth: 560, height: 420, position: "relative", overflow: "hidden", border: "2px dashed #94a3b8", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -94,8 +92,6 @@ function Index() {
             <span style={{ position: "relative", zIndex: 1, color: "white", fontSize: 14, fontFamily: "monospace" }}>560 × 420px</span>
           </div>
         </div>
-        <Process />
-        <Outcomes />
         <UseCases />
         <ChatTestimonials />
         <About />
