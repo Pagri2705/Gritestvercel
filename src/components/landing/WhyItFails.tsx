@@ -96,10 +96,10 @@ export function WhyItFails() {
           Ohne professionelle Analyse und klare Struktur liegt der Erfolg bei 1%.
         </p>
 
-        <div className="max-w-[720px] mx-auto">
+        <div className="max-w-[720px] mx-auto @container">
 
           {/* Primary 2×2 */}
-          <div ref={primaryRef} className="grid grid-cols-2 gap-x-16 gap-y-12">
+          <div ref={primaryRef} className="grid grid-cols-1 @lg:grid-cols-2 gap-8 @lg:gap-x-16 @lg:gap-y-12">
             {primary.map(({ icon: Icon, title, desc }, i) => (
               <div
                 key={i}
@@ -137,7 +137,7 @@ export function WhyItFails() {
           </div>
 
           {/* Secondary 3-col */}
-          <div ref={secondaryRef} className="grid grid-cols-3 gap-x-10 gap-y-10">
+          <div ref={secondaryRef} className="grid grid-cols-1 @lg:grid-cols-3 gap-8 @lg:gap-x-10 @lg:gap-y-10">
             {secondary.map(({ icon: Icon, title, desc }, i) => (
               <div
                 key={i}

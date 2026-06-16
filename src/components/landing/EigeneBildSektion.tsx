@@ -1,19 +1,31 @@
 export function EigeneBildSektion() {
   return (
     <section
+      className="eb-section"
       style={{
         background: "#f5f0e8",
         color: "#1a1a1a",
         fontFamily: "system-ui, -apple-system, 'Segoe UI', sans-serif",
+        containerType: "inline-size",
       }}
     >
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "72px 48px",
-        }}
-      >
+      <style>{`
+        .eb-inner { max-width: 1200px; margin: 0 auto; padding: 72px 48px; }
+        .eb-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 72px; }
+        .eb-h2 { font-size: 42px; }
+        .eb-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 60px; }
+        @container (max-width: 760px) {
+          .eb-inner { padding: 48px 24px; }
+          .eb-hero { grid-template-columns: 1fr; gap: 28px; margin-bottom: 48px; }
+          .eb-h2 { font-size: 30px; }
+          .eb-features { grid-template-columns: 1fr 1fr; gap: 28px 24px; }
+        }
+        @container (max-width: 460px) {
+          .eb-features { grid-template-columns: 1fr; gap: 24px; }
+          .eb-h2 { font-size: 27px; }
+        }
+      `}</style>
+      <div className="eb-inner">
         {/* Eyebrow centered over whole section */}
         <p
           style={{
@@ -30,19 +42,11 @@ export function EigeneBildSektion() {
         </p>
 
         {/* Hero: text left, image right */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 80,
-            alignItems: "center",
-            marginBottom: 72,
-          }}
-        >
+        <div className="eb-hero">
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <h2
+              className="eb-h2"
               style={{
-                fontSize: 42,
                 fontWeight: 700,
                 lineHeight: 1.1,
                 letterSpacing: "-0.02em",
@@ -80,13 +84,7 @@ export function EigeneBildSektion() {
         </div>
 
         {/* Feature grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "40px 60px",
-          }}
-        >
+        <div className="eb-features">
           {[
             { title: "Weniger Zögern, mehr Machen", text: "Aufgaben, bei denen früher erst lange überlegt wurde, werden heute direkt mit KI angegangen, ohne Hemmschwelle und ohne Rückfrage beim Chef." },
             { title: "Zeit für das Wesentliche", text: "Routinearbeit wie Texte, Zusammenfassungen und Vorlagen läuft in Minuten statt Stunden. Die gewonnene Zeit fließt zurück ins Kerngeschäft." },

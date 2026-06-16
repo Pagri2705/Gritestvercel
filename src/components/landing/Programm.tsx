@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Brain, PenLine, Users, Briefcase, Compass } from "lucide-react";
 
 const slides = ["/ewa/ewa1.jpg", "/ewa/ewa2.webp", "/ewa/ewa3.webp"];
@@ -47,6 +47,32 @@ export function Programm() {
   const [translateY, setTranslateY] = useState(0);
   const [cardHeight, setCardHeight] = useState(0);
   const [maxTranslate, setMaxTranslate] = useState(0);
+  const [mobile, setMobile] = useState(false);
+  const obsRef = useRef<ResizeObserver | null>(null);
+
+  // Callback-Ref: misst die Breite und schaltet Mobile/Desktop um (greift auch in der Mobile-Vorschau)
+  const measureRef = useCallback((node: HTMLDivElement | null) => {
+    obsRef.current?.disconnect();
+    if (node) {
+      obsRef.current = new ResizeObserver(([entry]) => setMobile(entry.contentRect.width < 820));
+      obsRef.current.observe(node);
+    }
+  }, []);
+
+  const setWrapper = useCallback(
+    (node: HTMLDivElement | null) => {
+      wrapperRef.current = node;
+      measureRef(node);
+    },
+    [measureRef],
+  );
+
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setSlideIndex((i) => (i + 1) % slides.length), 3500);
+    return () => clearInterval(id);
+  }, []);
 
   useLayoutEffect(() => {
     const measure = () => {
@@ -60,7 +86,7 @@ export function Programm() {
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, []);
+  }, [mobile]);
 
   useEffect(() => {
     if (!maxTranslate) return;
@@ -76,17 +102,92 @@ export function Programm() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [maxTranslate]);
 
-  const [slideIndex, setSlideIndex] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setSlideIndex(i => (i + 1) % slides.length), 3500);
-    return () => clearInterval(id);
-  }, []);
-
   const visibleH = (cardHeight || 160) * VISIBLE + (VISIBLE - 1) * GAP;
 
+  if (mobile) {
+    return (
+      <section ref={measureRef} style={{ background: "#f7f8fa" }} className="py-14 px-5">
+        <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-brand mb-4 text-center">
+          Das Programm
+        </p>
+        <h2 className="text-[1.7rem] font-semibold leading-[1.12] tracking-[-0.03em] text-ink text-center mb-3">
+          Ablauf des KI&#8209;Einführungsprogramms
+        </h2>
+        <p className="text-center text-[0.875rem] text-ink/50 max-w-[420px] mx-auto mb-7 leading-relaxed">
+          Einmal lernen. Danach selbst anwenden — ohne jeden neuen Trend einen Berater zu engagieren.
+        </p>
+
+        {/* Diashow */}
+        <div
+          style={{
+            width: "100%",
+            aspectRatio: "16 / 10",
+            overflow: "hidden",
+            position: "relative",
+            borderRadius: 12,
+            marginBottom: 28,
+          }}
+        >
+          {slides.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt=""
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                opacity: i === slideIndex ? 1 : 0,
+                transition: "opacity 0.7s ease",
+              }}
+            />
+          ))}
+          <div style={{ position: "absolute", bottom: 12, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 6 }}>
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setSlideIndex(i)}
+                style={{
+                  width: i === slideIndex ? 20 : 6,
+                  height: 6,
+                  borderRadius: 999,
+                  border: "none",
+                  background: i === slideIndex ? "white" : "rgba(255,255,255,0.5)",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                  padding: 0,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Schritte gestapelt */}
+        <div className="flex flex-col gap-3">
+          {steps.map((step, i) => {
+            const Icon = step.icon;
+            return (
+              <div key={i} className="px-6 py-6" style={{ background: "white", borderRadius: 10 }}>
+                <div className="flex items-center gap-2 mb-3">
+                  <Icon size={17} style={{ color: "#6366f1" }} strokeWidth={1.5} />
+                  <p className="text-[0.72rem] font-bold uppercase tracking-[0.1em]" style={{ color: "#6366f1" }}>
+                    {step.label}
+                  </p>
+                </div>
+                <h3 className="text-[1.2rem] font-semibold text-ink leading-[1.2] mb-2">{step.title}</h3>
+                <p className="text-[0.875rem] text-ink/55 leading-relaxed">{step.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <div ref={wrapperRef} style={{ height: `calc(${(steps.length - VISIBLE) * 90}vh + 140vh)`, isolation: "isolate" }}>
+    <div ref={setWrapper} style={{ height: `calc(${(steps.length - VISIBLE) * 90}vh + 140vh)`, isolation: "isolate" }}>
       <div
         style={{
           position: "sticky",

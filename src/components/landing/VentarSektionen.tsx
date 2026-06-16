@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 const css = `
 .vs-root{--cream:#FBF6ED;--paper:#F5EFE4;--ink:#211B14;--ink-soft:#4F4A42;--ink-faint:#857E72;--orange:#F84C00;--orange-deep:#D94300;--olive:#2E3A2B;--line:#211B14;--line-soft:#D8D0C0;--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.07'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
-.vs-root{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased}
+.vs-root{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased;container-type:inline-size}
 .vs-root a{color:inherit;text-decoration:none}
 .vs-root .vs-wrap{max-width:1140px;margin:0 auto;padding:0 24px}
 .vs-root .vs-section{padding:60px 0}
@@ -43,7 +43,7 @@ const css = `
 .vs-root .split-check{list-style:none;display:grid;gap:11px;margin-top:4px}
 .vs-root .split-check li{display:flex;gap:11px;font-size:15.5px;color:#C2C9B6}
 .vs-root .split-check .t{color:#FF8A4D;font-weight:800;flex:none}
-@media(max-width:860px){.vs-root .split{grid-template-columns:1fr}.vs-root .split-visual{border-left:none!important;border-top:1px solid var(--line)}}
+@container (max-width:760px){.vs-root .split{grid-template-columns:1fr}.vs-root .split-visual{border-left:none!important;border-top:1px solid var(--line)}}
 .vs-root .statement{text-align:center;padding:34px 0}
 .vs-root .statement h2{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(30px,4.8vw,52px);letter-spacing:-.03em;line-height:1.1}
 .vs-root .statement h2 .o{color:var(--orange)}
@@ -56,7 +56,7 @@ const css = `
 .vs-root .d3-grid .eyebrow{color:#F4F1E6}
 .vs-root .d3-grid h2{color:#F8F5EA;margin-top:16px}
 .vs-root .d3-grid p{color:#C2C9B6;margin-top:14px;font-size:16.5px}
-@media(max-width:920px){.vs-root .d3-grid{grid-template-columns:1fr}}
+@container (max-width:760px){.vs-root .d3-grid{grid-template-columns:1fr}}
 .vs-root .chat{background:#26301F;border:1px solid rgba(244,241,230,.18);border-radius:16px;box-shadow:0 34px 80px rgba(20,16,10,.35);overflow:hidden;color:#EFEAE0}
 .vs-root .chat-bar{display:flex;align-items:center;gap:12px;padding:15px 20px;border-bottom:1px solid rgba(244,241,230,.14);background:#1F2819}
 .vs-root .chat-ava{width:34px;height:34px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;flex:none}

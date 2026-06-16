@@ -32,7 +32,16 @@ const steps = [
 
 export function FailureCost() {
   const [visible, setVisible] = useState<boolean[]>(Array(steps.length).fill(false));
+  const [mobile, setMobile] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new ResizeObserver(([entry]) => setMobile(entry.contentRect.width < 560));
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -74,7 +83,48 @@ export function FailureCost() {
         </p>
 
         <div ref={ref}>
-          {steps.map((step, i) => {
+          {mobile
+            ? steps.map((step, i) => {
+                const isLast = i === steps.length - 1;
+                return (
+                  <div key={i}>
+                    <div
+                      style={{
+                        border: "1px solid #e5e7eb",
+                        borderRadius: 12,
+                        overflow: "hidden",
+                        opacity: visible[i] ? 1 : 0,
+                        transform: visible[i] ? "translateY(0)" : "translateY(10px)",
+                        transition: "opacity 0.45s ease, transform 0.45s ease",
+                      }}
+                    >
+                      <div className="flex items-center gap-3 px-4 py-2.5" style={{ background: step.color }}>
+                        <span style={{ fontSize: "1.4rem", fontWeight: 700, color: "rgba(255,255,255,0.75)", lineHeight: 1, flexShrink: 0 }}>
+                          {i + 1}
+                        </span>
+                        <p className="text-white font-bold text-[0.95rem]">{step.title}</p>
+                      </div>
+                      <div className="px-5 py-4" style={{ background: "#f9fafb" }}>
+                        <p className="text-[0.9rem] text-ink/65 leading-relaxed">{step.content}</p>
+                      </div>
+                    </div>
+                    {!isLast && (
+                      <div style={{ display: "flex", justifyContent: "center" }}>
+                        <div
+                          style={{
+                            width: 0,
+                            height: 28,
+                            borderLeft: "2px dashed " + steps[i + 1].color,
+                            opacity: visible[i] ? 1 : 0,
+                            transition: "opacity 0.3s ease 0.3s",
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                );
+              })
+            : steps.map((step, i) => {
             const isLeft = i % 2 === 0;
             const isLast = i === steps.length - 1;
             const nextStep = steps[i + 1];
