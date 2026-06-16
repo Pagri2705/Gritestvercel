@@ -60,7 +60,7 @@ export function Problem() {
             className="relative overflow-hidden rounded-2xl w-full"
             style={{
               maxWidth: 550,
-              backgroundImage: "url('/bg-stats.jpg')",
+              backgroundImage: "url('/ewa/problem-bg.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

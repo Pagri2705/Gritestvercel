@@ -156,7 +156,7 @@ export function WhyItFails() {
                 </div>
                 <div className="pt-1">
                   <p className="text-[0.88rem] font-bold text-ink/80 leading-snug mb-1">{title}</p>
-                  <p className="text-[0.78rem] text-ink/45 leading-relaxed">{desc}</p>
+                  <p lang="de" className="text-[0.78rem] text-ink/45 leading-relaxed hyphens-auto">{desc}</p>
                 </div>
               </div>
             ))}

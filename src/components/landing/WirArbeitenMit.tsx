@@ -1,10 +1,10 @@
 export function WirArbeitenMit() {
   const tools = [
     { name: "Claude / Claude Code", icon: "https://cdn.simpleicons.org/claude", alt: "Claude" },
-    { name: "ChatGPT / Codex", icon: "https://cdn.simpleicons.org/openai", alt: "OpenAI" },
-    { name: "Gemini", icon: "https://cdn.simpleicons.org/googlegemini", alt: "Gemini" },
-    { name: "Copilot", icon: "https://cdn.simpleicons.org/githubcopilot/000000", alt: "Copilot" },
-    { name: "Lovable", icon: "https://cdn.simpleicons.org/lovable", alt: "Lovable" },
+    { name: "ChatGPT / Codex", icon: "https://cdn.oaistatic.com/assets/favicon-o20kmmos.svg", alt: "ChatGPT" },
+    { name: "Gemini", icon: "https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg", alt: "Gemini" },
+    { name: "Copilot", icon: "https://copilot.microsoft.com/favicon.ico", alt: "Copilot" },
+    { name: "Lovable", icon: "https://lovable.dev/favicon.ico", alt: "Lovable" },
     { name: "n8n", icon: "https://cdn.simpleicons.org/n8n", alt: "n8n" },
     { name: "Make", icon: "https://cdn.simpleicons.org/make", alt: "Make" },
   ];
@@ -27,39 +27,34 @@ export function WirArbeitenMit() {
           padding: "36px 32px 40px",
         }}
       >
-        {/* Orange dot */}
-        <div
-          style={{
-            width: 12,
-            height: 12,
-            background: "#ff4f00",
-            borderRadius: 2,
-            marginBottom: 22,
-          }}
-        />
-
         <h2
           style={{
             fontFamily: "Georgia, 'Times New Roman', serif",
             fontWeight: 400,
-            fontSize: 32,
+            fontSize: 27,
             letterSpacing: "-0.01em",
             color: "#1c1a17",
             marginBottom: 14,
           }}
         >
-          Lorem ipsum dolor
+          Mit welchen KI-Tools arbeiten<br />wir
         </h2>
 
         <p
+          lang="de"
           style={{
-            fontSize: 15.5,
+            fontSize: 14,
             lineHeight: 1.6,
             color: "#2e2b26",
             marginBottom: 28,
+            maxWidth: 350,
+            textAlign: "justify",
+            hyphens: "auto",
           }}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.
+          Es gibt hunderte KI-Tools, und täglich kommen neue dazu. Wir setzen bewusst auf die wenigen, die sich als
+          Goldstandard etabliert haben: ausgereift, zuverlässig und in der Praxis bewährt. Genau diese zeigen wir
+          Ihrem Team.
         </p>
 
         {/* Gradient panel */}
@@ -88,56 +83,49 @@ export function WirArbeitenMit() {
               padding: "18px 16px 14px",
             }}
           >
-            {/* Badge */}
+            {/* Badge text */}
             <div
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                border: "1.5px solid #ff4f00",
-                borderRadius: 7,
-                padding: "7px 12px",
-                fontSize: 13.5,
+                textAlign: "center",
+                fontSize: 17.5,
                 fontWeight: 600,
                 color: "#1c1a17",
                 marginBottom: 14,
               }}
             >
-              <svg
-                width={15}
-                height={15}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#ff4f00"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
               Wir arbeiten mit
             </div>
 
             {/* Tool rows */}
-            {tools.map((tool, i) => (
-              <div
-                key={i}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: 10,
-                  padding: "9px 8px",
-                  fontSize: 13,
-                  color: "#2e2b26",
-                  borderRadius: 6,
-                  background: i === 0 ? "#f2f0fa" : "transparent",
-                }}
-              >
-                <span>{tool.name}</span>
-                <img src={tool.icon} alt={tool.alt} width={16} height={16} style={{ display: "block", flexShrink: 0 }} />
-              </div>
-            ))}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, 1fr)",
+                gap: 10,
+              }}
+            >
+              {tools.map((tool, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "16px 8px",
+                    fontSize: 12.5,
+                    color: "#2e2b26",
+                    borderRadius: 8,
+                    background: "#f2f0fa",
+                    textAlign: "center",
+                    gridColumn: i === tools.length - 1 && tools.length % 2 === 1 ? "1 / -1" : undefined,
+                  }}
+                >
+                  <img src={tool.icon} alt={tool.alt} width={28} height={28} style={{ display: "block", flexShrink: 0 }} />
+                  <span style={{ lineHeight: 1.3 }}>{tool.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

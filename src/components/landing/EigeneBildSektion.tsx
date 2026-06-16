@@ -14,6 +14,21 @@ export function EigeneBildSektion() {
           padding: "72px 48px",
         }}
       >
+        {/* Eyebrow centered over whole section */}
+        <p
+          style={{
+            fontSize: "0.7rem",
+            fontWeight: 700,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            color: "oklch(0.432 0.195 258)",
+            textAlign: "center",
+            marginBottom: 40,
+          }}
+        >
+          Was sich verändert hat
+        </p>
+
         {/* Hero: text left, image right */}
         <div
           style={{
@@ -25,17 +40,6 @@ export function EigeneBildSektion() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-            <p
-              style={{
-                fontSize: 12,
-                fontWeight: 600,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "#6b6560",
-              }}
-            >
-              Lorem ipsum dolor
-            </p>
             <h2
               style={{
                 fontSize: 42,
@@ -45,20 +49,20 @@ export function EigeneBildSektion() {
                 color: "#111",
               }}
             >
-              Lorem ipsum dolor sit amet consectetur
+              Was sich bei unseren Kunden verändert hat
             </h2>
             <p style={{ fontSize: 16, lineHeight: 1.7, color: "#3d3830" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-              ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+              Selbstverständlich fragt sich jeder Unternehmer, was wird das meinem Unternehmen bringen und wie sieht
+              diese Veränderung aus.
+              <br />
+              Das hier sind die am stärksten spürbaren Faktoren.
             </p>
           </div>
 
           <div
             style={{
               width: "100%",
-              aspectRatio: "4 / 3",
+              aspectRatio: "3 / 2",
               borderRadius: 4,
               overflow: "hidden",
               background: "#ddd8ce",
@@ -71,8 +75,7 @@ export function EigeneBildSektion() {
               letterSpacing: ".04em",
             }}
           >
-            {/* FOTO: <img src="dein-foto.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
-            — DEIN FOTO —
+            <img src="/ewa/veraenderung.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
         </div>
 
@@ -85,11 +88,11 @@ export function EigeneBildSektion() {
           }}
         >
           {[
-            { title: "Lorem ipsum dolor", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore." },
-            { title: "Sed do eiusmod", text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." },
-            { title: "Ut enim ad minim", text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur sint." },
-            { title: "Quis nostrud exercitation", text: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
-            { title: "Duis aute irure", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore dolore." },
+            { title: "Weniger Zögern, mehr Machen", text: "Aufgaben, bei denen früher erst lange überlegt wurde, werden heute direkt mit KI angegangen, ohne Hemmschwelle und ohne Rückfrage beim Chef." },
+            { title: "Zeit für das Wesentliche", text: "Routinearbeit wie Texte, Zusammenfassungen und Vorlagen läuft in Minuten statt Stunden. Die gewonnene Zeit fließt zurück ins Kerngeschäft." },
+            { title: "Wissen bleibt im Team", text: "Statt dass nur einer „der KI-Typ“ ist, arbeiten alle mit. Das Wissen verteilt sich und bleibt auch, wenn jemand das Unternehmen verlässt." },
+            { title: "Sicherheit im Umgang mit Daten", text: "Mitarbeiter wissen heute genau, welche Informationen in ein KI-Tool dürfen und welche nicht. Der Umgang ist bewusst statt riskant." },
+            { title: "Eigenständig statt abhängig", text: "Neue Tools werden selbst getestet und eingeführt, ohne dass jedes Mal externe Beratung nötig ist. Das Team kommt allein weiter." },
           ].map((item, i) => (
             <div key={i} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               <h3

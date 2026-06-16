@@ -157,9 +157,9 @@ export function Lernkreislauf() {
             <div
               style={{
                 position: "absolute",
-                left: 60,
-                top: 100,
-                maxWidth: 230,
+                left: 32,
+                top: 40,
+                maxWidth: 360,
                 zIndex: 2,
                 color: "#211B14",
                 fontWeight: 600,
@@ -168,7 +168,8 @@ export function Lernkreislauf() {
                 lineHeight: 1.45,
               }}
             >
-              🔄 Der Kreislauf beginnt von vorn, nur schneller: Mit jeder Runde erschließt Ihr Team neue Anwendungsfälle und neue KI-Systeme selbstständig — die Abhängigkeit von externer Beratung endet hier.
+              <span style={{ display: "block", whiteSpace: "nowrap" }}>Der Kreislauf beginnt von vorn, nur schneller:</span>
+              Mit jeder Runde erschließt Ihr Team neue Anwendungsfälle und neue KI-Systeme selbstständig — die Abhängigkeit von externer Beratung endet hier.
             </div>
           </div>
         </div>
