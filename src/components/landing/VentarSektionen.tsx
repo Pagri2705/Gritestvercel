@@ -191,87 +191,6 @@ export function VentarSektionen() {
   return (
     <div className="vs-root">
 
-      {/* BLOCK A1: Olivband + Bild-Karte */}
-      <div className="vs-section">
-        <div className="vs-wrap">
-          <div className="band band-olive grainy">
-            <div className="imgcard"><span className="ph-note">Platzhalter — dein Workshop-Foto</span></div>
-            <span className="eyebrow" style={{ marginTop: 36 }}>Training vor Ort oder remote</span>
-            <h2 style={{ marginTop: 16 }}>Bringen Sie Ihre schwierigste Aufgabe mit. Sie gehen mit der Lösung raus.</h2>
-            <p style={{ marginTop: 14 }}>Kein Folien-Seminar: Wir arbeiten an den echten E-Mails, Angeboten und Berichten Ihres Betriebs. Was im Training entsteht, nutzt Ihr Team ab dem nächsten Morgen.</p>
-          </div>
-        </div>
-      </div>
-
-      {/* BLOCK B1: Split — Text + UI-Panel */}
-      <div className="vs-section">
-        <div className="vs-wrap">
-          <div className="split">
-            <div className="split-text">
-              <span className="eyebrow">Dokumenten-Verarbeitung</span>
-              <h3>Definieren Sie genau, was automatisch läuft</h3>
-              <p>Eingehende PDFs, Formulare und Belege werden ausgelesen, geprüft und in Ihre Systeme übertragen. Sie legen die Regeln fest — die KI hält sich daran.</p>
-              <div><a className="btn" style={{ border: "1.5px solid var(--ink)" }} href="#">Mehr erfahren →</a></div>
-            </div>
-            <div className="split-visual grainy">
-              <div className="panel">
-                <div className="ph">Posteingang · Belege <span className="badge">Automatisch</span></div>
-                <div className="prow"><span>Rechnung_Mueller_0626.pdf</span><b>→ DATEV</b></div>
-                <div className="prow"><span>Lieferschein_KW24.pdf</span><b>→ Lager</b></div>
-                <div className="prow"><span>Anfrage_Praxis_Weber.pdf</span><b>→ CRM</b></div>
-                <div className="prow"><span>Stundenzettel_Juni.pdf</span><b>→ Lohn</b></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* BLOCK B2: Split — Text + Riesenzahl */}
-      <div className="vs-section">
-        <div className="vs-wrap">
-          <div className="split">
-            <div className="split-text">
-              <span className="eyebrow">Im eigenen Betrieb gemessen</span>
-              <h3>Ein Workflow. Sechs Stunden. Jede Woche.</h3>
-              <p>Bevor Ventar KI das erste Kundenprojekt verkauft hat, lief das System im eigenen Pflegedienst. Die Zahl rechts ist keine Schätzung — sie kommt aus unserem eigenen Dienstplan.</p>
-            </div>
-            <div className="split-visual split-num grainy">
-              <div>
-                <b>6 h</b>
-                <span>pro Mitarbeiter und Woche zurück — Woche für Woche</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* BLOCK B3: Split dunkel — Olivgrund + Checkliste */}
-      <div className="vs-section">
-        <div className="vs-wrap">
-          <div className="split split-dark grainy">
-            <div className="split-text">
-              <span className="eyebrow" style={{ color: "#F4F1E6" }}>So läuft das Training</span>
-              <h3>Kein Seminar. Eine Werkstatt.</h3>
-              <p>Wir arbeiten an Ihren echten Aufgaben — und am Ende des Tages kann Ihr Team das hier:</p>
-              <ul className="split-check">
-                <li><span className="t">✓</span>Prompts schreiben, die beim ersten Versuch sitzen</li>
-                <li><span className="t">✓</span>Eigene Aufgaben in wiederverwendbare Vorlagen gießen</li>
-                <li><span className="t">✓</span>Erkennen, welche Daten KI sehen darf — und welche nie</li>
-              </ul>
-            </div>
-            <div className="split-visual grainy">
-              <div className="panel">
-                <div className="ph">Trainings-Tag · Ablauf <span className="badge">Live</span></div>
-                <div className="prow"><span>09:00 — Grundlagen am echten Fall</span><b>✓</b></div>
-                <div className="prow"><span>11:00 — Eigene Aufgaben lösen</span><b>✓</b></div>
-                <div className="prow"><span>14:00 — Vorlagen fürs Team bauen</span><b>●</b></div>
-                <div className="prow"><span>16:00 — DSGVO-Leitplanken</span><b>○</b></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* BLOCK C1: Statement — Grotesk, fett, zentriert */}
       <div className="vs-section">
         <div className="vs-wrap">
@@ -288,33 +207,6 @@ export function VentarSektionen() {
           <div className="statement-band band-olive grainy">
             <h2>KI ersetzt keine Mitarbeiter.<br /><span className="o">Sie ersetzt die Arbeit, die keiner vermisst.</span></h2>
             <p>Abtippen, sortieren, formatieren, nachfassen — das übernimmt das System. Ihre Leute machen das, wofür Sie sie eingestellt haben.</p>
-          </div>
-        </div>
-      </div>
-
-      {/* BLOCK D3: Chat im Split */}
-      <div className="vs-section">
-        <div className="vs-wrap">
-          <div className="band band-olive grainy">
-            <div className="d3-grid">
-              <div>
-                <span className="eyebrow">Live-Demo</span>
-                <h2>Das hier tippt kein Entwickler. Das tippt Ihre Verwaltung.</h2>
-                <p>Nach dem Training schreiben Ihre Mitarbeiter solche Anweisungen selbst — in normalem Deutsch, ohne eine Zeile Code. Die KI erledigt den Rest.</p>
-              </div>
-              <div className="chat" ref={chatRef}>
-                <div className="chat-bar">
-                  <span className="chat-ava">KI</span>
-                  <span className="chat-id"><b>Doku-Assistent</b><span className="status">bereit</span></span>
-                  <span className="chat-live">Live-Demo</span>
-                </div>
-                <div className="chat-body" />
-                <div className="chat-foot">
-                  <span className="chat-input">Aufgabe eingeben …</span>
-                  <span className="chat-send">↑</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

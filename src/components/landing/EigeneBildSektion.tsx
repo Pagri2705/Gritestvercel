@@ -3,7 +3,7 @@ export function EigeneBildSektion() {
     <section
       className="eb-section"
       style={{
-        background: "#f5f0e8",
+        background: "#f7f8fa",
         color: "#1a1a1a",
         fontFamily: "system-ui, -apple-system, 'Segoe UI', sans-serif",
         containerType: "inline-size",
