@@ -1,4 +1,8 @@
-﻿import { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+
+const WAGE = 30;
+const MINUTES_PER_DAY = 40;
+const HOURS_PER_WEEK = (MINUTES_PER_DAY * 5) / 60;
 
 function fmt(n: number) {
   return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
@@ -6,83 +10,74 @@ function fmt(n: number) {
 
 export function RoiCalculator() {
   const [employees, setEmployees] = useState(10);
-  const [wage, setWage] = useState(50);
-  const [hoursSaved, setHoursSaved] = useState(5);
 
-  const { week, month, year } = useMemo(() => {
-    const week = employees * wage * hoursSaved;
-    return { week, month: week * 4.33, year: week * 52 };
-  }, [employees, wage, hoursSaved]);
+  const day = useMemo(() => employees * WAGE * (MINUTES_PER_DAY / 60), [employees]);
+  const year = useMemo(() => employees * WAGE * HOURS_PER_WEEK * 52, [employees]);
 
   return (
     <section className="bg-white py-10 md:py-14">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="mb-14">
-          <h2 className="text-4xl font-semibold leading-[1.1] tracking-[-0.02em] text-ink md:text-5xl">
-            Wie viel Zeit kosten wiederkehrende Aufgaben im Unternehmen?
+      <div className="mx-auto max-w-3xl px-6">
+        <div className="text-center mb-10">
+          <h2 className="text-[1.9rem] md:text-[2.8rem] font-semibold leading-[1.1] tracking-[-0.02em] text-ink mb-4">
+            Was kostet verschwendete Zeit wirklich?
           </h2>
+          <p className="text-base text-ink-muted">
+            Bewegen Sie den Slider — der Rest ist bereits einkalkuliert.
+          </p>
         </div>
 
-        <div className="grid gap-8 rounded-2xl border border-border bg-surface-elevated p-8 shadow-card md:p-12 lg:grid-cols-2 lg:gap-12">
-          <div className="space-y-7">
-            <Field label="Anzahl Mitarbeiter" value={employees} min={1} max={500} step={1} onChange={setEmployees} suffix="" />
-            <Field label="Durchschnittlicher Stundenlohn" value={wage} min={10} max={300} step={5} onChange={setWage} suffix=" â‚¬" />
-            <Field label="Zeitersparnis pro Woche (Std. / Mitarbeiter)" value={hoursSaved} min={0} max={40} step={1} onChange={setHoursSaved} suffix=" h" />
+        <div className="rounded-2xl border border-border bg-surface-elevated shadow-card overflow-hidden">
+
+          {/* Ergebnis */}
+          <div className="bg-brand px-8 md:px-10 py-8 text-white">
+            <div className="grid grid-cols-2 divide-x divide-white/20 text-center">
+              <div className="pr-6">
+                <p className="text-xs font-semibold uppercase tracking-widest text-white/60 mb-2">Pro Tag</p>
+                <p className="text-3xl font-bold tracking-tight tabular-nums">{fmt(day)}</p>
+              </div>
+              <div className="pl-6">
+                <p className="text-xs font-semibold uppercase tracking-widest text-white/60 mb-2">Pro Jahr</p>
+                <p className="text-3xl font-bold tracking-tight tabular-nums">{fmt(year)}</p>
+              </div>
+            </div>
           </div>
 
-          <div className="flex flex-col justify-between rounded-2xl bg-brand p-8 text-white md:p-10">
-            <div className="text-xs font-semibold uppercase tracking-widest text-white/60">Ergebnis</div>
-            <div className="mt-8 space-y-6">
-              <Result label="Ersparnis pro Woche" value={fmt(week)} />
-              <div className="h-px bg-white/10" />
-              <Result label="Ersparnis pro Monat" value={fmt(month)} />
-              <div className="h-px bg-white/10" />
-              <Result label="Ersparnis pro Jahr" value={fmt(year)} highlight />
+          {/* Slider */}
+          <div className="p-8 md:p-10">
+            <div className="flex items-baseline justify-between mb-5">
+              <span className="text-base font-semibold text-ink">Anzahl Mitarbeiter</span>
+              <span className="text-3xl font-bold text-ink tabular-nums">{employees}</span>
             </div>
-            <p className="mt-8 text-xs text-white/50">
-              Orientierungsrechnung. Individuelle Ergebnisse variieren je nach Unternehmen und Einsatzbereich.
-            </p>
+            <input
+              type="range"
+              min={1} max={200} step={1} value={employees}
+              onChange={(e) => setEmployees(Number(e.target.value))}
+              className="h-2 w-full cursor-pointer appearance-none rounded-full bg-border accent-[var(--brand)]"
+            />
+            <div className="flex justify-between mt-2 text-xs text-ink-muted">
+              <span>1</span>
+              <span>200</span>
+            </div>
           </div>
+
+          {/* Rechenweg */}
+          <div className="border-t border-border px-8 md:px-10 py-5 bg-surface grid grid-cols-3 divide-x divide-border text-center">
+            <div className="px-4">
+              <div className="text-xl font-bold text-ink tabular-nums">{employees}</div>
+              <div className="text-xs text-ink-muted mt-1">Mitarbeiter</div>
+            </div>
+            <div className="px-4">
+              <div className="text-xl font-bold text-ink">40 Min.</div>
+              <div className="text-xs text-ink-muted mt-1">Ersparnis pro Tag</div>
+            </div>
+            <div className="px-4">
+              <div className="text-xl font-bold text-ink">30 €</div>
+              <div className="text-xs text-ink-muted mt-1">Stundensatz inkl. NK</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
-  );
-}
-
-function Field({ label, value, min, max, step, onChange, suffix }: {
-  label: string; value: number; min: number; max: number; step: number; onChange: (n: number) => void; suffix: string;
-}) {
-  return (
-    <div>
-      <div className="flex items-baseline justify-between">
-        <label className="text-sm font-medium text-ink">{label}</label>
-        <div className="text-sm font-bold text-ink tabular-nums">{value}{suffix}</div>
-      </div>
-      <div className="mt-3 flex items-center gap-4">
-        <input
-          type="range"
-          min={min} max={max} step={step} value={value}
-          onChange={(e) => onChange(Number(e.target.value))}
-          className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-border accent-[var(--brand)]"
-        />
-        <input
-          type="number"
-          value={value} min={min} max={max}
-          onChange={(e) => onChange(Number(e.target.value) || 0)}
-          className="h-10 w-24 rounded-lg border border-border bg-surface px-3 text-sm text-ink tabular-nums focus:outline-none focus:ring-2 focus:ring-brand"
-        />
-      </div>
-    </div>
-  );
-}
-
-function Result({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
-  return (
-    <div className="flex items-baseline justify-between gap-4">
-      <div className="text-sm text-white/70">{label}</div>
-      <div className={`tabular-nums font-bold tracking-tight ${highlight ? "text-4xl text-white" : "text-2xl text-white/90"}`}>
-        {value}
-      </div>
-    </div>
   );
 }

@@ -113,8 +113,8 @@ export function Programm() {
         <h2 className="text-[1.7rem] font-semibold leading-[1.12] tracking-[-0.03em] text-ink text-center mb-3">
           Ablauf des KI&#8209;Einführungsprogramms
         </h2>
-        <p className="text-center text-[0.875rem] text-ink/50 max-w-[420px] mx-auto mb-7 leading-relaxed">
-          Einmal lernen. Danach selbst anwenden — ohne jeden neuen Trend einen Berater zu engagieren.
+        <p className="text-center text-[0.9rem] md:text-base text-ink/50 max-w-[420px] mx-auto mb-7 leading-relaxed">
+          Einmal lernen. Danach selbst anwenden ohne jeden neuen Trend einen Berater zu engagieren.
         </p>
 
         {/* Diashow */}
@@ -208,11 +208,11 @@ export function Programm() {
           <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-brand mb-4 text-center">
             Das Programm
           </p>
-          <h2 className="text-[1.9rem] md:text-[2.6rem] font-semibold leading-[1.1] tracking-[-0.03em] text-ink text-center mb-3">
+          <h2 className="text-[1.9rem] font-semibold leading-[1.1] tracking-[-0.03em] text-ink text-center mb-3" style={{ fontSize: "2.675rem" }}>
             Ablauf des KI&#8209;Einführungsprogramms
           </h2>
-          <p className="text-center text-[0.875rem] text-ink/50 max-w-[520px] mx-auto mb-8 leading-relaxed">
-            Einmal lernen. Danach selbst anwenden — ohne jeden neuen Trend einen Berater zu engagieren.
+          <p className="text-center text-[0.9rem] md:text-base text-ink/50 max-w-[520px] mx-auto mb-8 leading-relaxed">
+            Einmal lernen. Danach selbst anwenden ohne jeden neuen Trend einen Berater zu engagieren.
           </p>
 
           {/* Two-col */}

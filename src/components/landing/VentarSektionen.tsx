@@ -191,25 +191,7 @@ export function VentarSektionen() {
   return (
     <div className="vs-root">
 
-      {/* BLOCK C1: Statement — Grotesk, fett, zentriert */}
-      <div className="vs-section">
-        <div className="vs-wrap">
-          <div className="statement">
-            <h2>Jedes Team hat schon KI.<br /><span className="o">Was fehlt, ist das Können.</span></h2>
-            <p>Ihre Mitarbeiter probieren längst herum — jeder für sich, ohne Leitplanken. Die Frage ist nicht ob, sondern wie gut.</p>
-          </div>
-        </div>
-      </div>
 
-      {/* BLOCK C3: Statement Serif auf Olivband */}
-      <div className="vs-section">
-        <div className="vs-wrap">
-          <div className="statement-band band-olive grainy">
-            <h2>KI ersetzt keine Mitarbeiter.<br /><span className="o">Sie ersetzt die Arbeit, die keiner vermisst.</span></h2>
-            <p>Abtippen, sortieren, formatieren, nachfassen — das übernimmt das System. Ihre Leute machen das, wofür Sie sie eingestellt haben.</p>
-          </div>
-        </div>
-      </div>
 
     </div>
   );

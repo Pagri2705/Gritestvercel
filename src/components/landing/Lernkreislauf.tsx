@@ -78,17 +78,16 @@ export function Lernkreislauf() {
                 position: "relative",
                 zIndex: 2,
                 color: "#211B14",
-                fontWeight: 600,
+                fontWeight: 400,
                 fontSize: 14,
                 lineHeight: 1.45,
                 marginBottom: 22,
               }}
             >
-              <span style={{ display: "block", fontWeight: 700, marginBottom: 4 }}>
+              <span style={{ display: "block", fontWeight: 500, marginBottom: 4 }}>
                 Der Kreislauf beginnt von vorn, nur schneller:
               </span>
-              Mit jeder Runde erschließt Ihr Team neue Anwendungsfälle und neue KI-Systeme selbstständig — die
-              Abhängigkeit von externer Beratung endet hier.
+              Jede Runde macht Ihr Team eigenständiger. Neue Tools, neue Anwendungsfälle — ohne externe Hilfe.
             </div>
             <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", gap: 14 }}>
               {CARDS.map((c) => (
@@ -224,8 +223,8 @@ export function Lernkreislauf() {
                   lineHeight: 1.45,
                 }}
               >
-                <span style={{ display: "block", whiteSpace: "nowrap" }}>Der Kreislauf beginnt von vorn, nur schneller:</span>
-                Mit jeder Runde erschließt Ihr Team neue Anwendungsfälle und neue KI-Systeme selbstständig — die Abhängigkeit von externer Beratung endet hier.
+                <span style={{ display: "block", fontWeight: 500, whiteSpace: "nowrap" }}>Der Kreislauf beginnt von vorn, nur schneller:</span>
+                Jede Runde macht Ihr Team eigenständiger. Neue Tools, neue Anwendungsfälle — ohne externe Hilfe.
               </div>
             </div>
           </div>

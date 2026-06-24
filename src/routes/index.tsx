@@ -7,18 +7,15 @@ import { StatsSection } from "@/components/landing/StatsSection";
 import { Problem } from "@/components/landing/Problem";
 import { UseCases } from "@/components/landing/UseCases";
 import { ChatTestimonials } from "@/components/landing/ChatTestimonials";
-import { About } from "@/components/landing/About";
 import { RoiCalculator } from "@/components/landing/RoiCalculator";
 import { Pricing } from "@/components/landing/Pricing";
 import { Faq } from "@/components/landing/Faq";
-import { AnimatedDemo } from "@/components/landing/AnimatedDemo";
 import { WhyItFails } from "@/components/landing/WhyItFails";
 import { FailureCost } from "@/components/landing/FailureCost";
 import { Programm } from "@/components/landing/Programm";
 import { Lernkreislauf } from "@/components/landing/Lernkreislauf";
 import { EigeneBildSektion } from "@/components/landing/EigeneBildSektion";
 import { WirArbeitenMit } from "@/components/landing/WirArbeitenMit";
-import { VentarSektionen } from "@/components/landing/VentarSektionen";
 import { FinalCta } from "@/components/landing/FinalCta";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 
@@ -82,18 +79,9 @@ function Index() {
         <Programm />
         <Lernkreislauf />
         <EigeneBildSektion />
-        <AnimatedDemo />
         <WirArbeitenMit />
-        <VentarSektionen />
-        <div className="flex items-center justify-center bg-white py-10 px-6">
-          <div style={{ width: "100%", maxWidth: 560, height: 420, position: "relative", overflow: "hidden", border: "2px dashed #94a3b8", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, #8aa8a4 0%, #c4aa80 45%, #d4a055 100%)" }} />
-            <span style={{ position: "relative", zIndex: 1, color: "white", fontSize: 14, fontFamily: "monospace" }}>560 × 420px</span>
-          </div>
-        </div>
         <UseCases />
         <ChatTestimonials />
-        <About />
         <RoiCalculator />
         <Pricing />
         <Faq />

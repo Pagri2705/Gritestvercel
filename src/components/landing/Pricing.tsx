@@ -35,7 +35,7 @@ export function Pricing() {
     <section id="pricing" className="bg-white py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-14">
-          <h2 className="text-4xl font-semibold leading-[1.1] tracking-[-0.02em] text-ink md:text-5xl">
+          <h2 className="text-[1.9rem] md:text-[2.8rem] font-semibold leading-[1.1] tracking-[-0.02em] text-ink">
             Workshops die sich für Unternehmen auszahlen
           </h2>
         </div>

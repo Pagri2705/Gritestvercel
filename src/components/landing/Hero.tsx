@@ -59,8 +59,7 @@ export function Hero() {
         </p>
         <p
           className="hero-fade mt-8 md:mt-8 mx-auto text-[0.75rem] md:text-[1rem] leading-relaxed text-white/60"
-          style={{ fontWeight: 450 }}
-          style={{ animationDelay: `${BTN_START - 300}ms` }}
+          style={{ fontWeight: 450, animationDelay: `${BTN_START - 300}ms` }}
         >
           Egal ob KI-Einsteiger oder erfahrener Anwender.<br />Wir holen jeden dort ab, wo er steht.
         </p>

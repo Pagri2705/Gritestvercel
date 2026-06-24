@@ -11,7 +11,7 @@ const conversations: Convo[] = [
     messages: [
       { from: "them", text: "Hey Patrick, wir haben jetzt die ersten 3 Wochen durch und ich bin begeistert. 2 Kollegen kommen etwas langsamer voran und selbst die beiden sind fasziniert.", time: "Fr. 9. Mai, 17:42" },
       { from: "me", text: "Hi Sophia, das freut mich riesig! Wie läuft es denn bei der Angebotserstellung?", time: "Fr. 9. Mai, 17:48" },
-      { from: "them", text: "Richtig gut. Was früher eine halbe Stunde gedauert hat, ist jetzt in fünf Minuten fertig.", time: "Fr. 9. Mai, 17:55" },
+      { from: "them", text: "Richtig gut. Was früher eine halbe Stunde gedauert hat, ist jetzt meistens in 4–6 Minuten fertig.", time: "Fr. 9. Mai, 17:55" },
       { from: "me", text: "Mega. Und die Protokolle, die ihr im Workshop gebaut habt?", time: "Mo. 12. Mai, 08:51" },
       { from: "them", text: "Nutzen wir täglich. Die Monteure schreiben nur noch Stichpunkte, den Rest macht die KI.", time: "Mo. 12. Mai, 09:04" },
       { from: "me", text: "Genau so soll es sein. Meldet euch, wenn ihr den nächsten Bereich angehen wollt.", time: "Mo. 12. Mai, 09:10" },
@@ -25,7 +25,7 @@ const conversations: Convo[] = [
     messages: [
       { from: "them", text: "Moin Patrick, kurzes Update: wir nutzen das jetzt auch für die Kundenmails und Protokolle.", time: "Mi. 30. Apr., 07:48" },
       { from: "me", text: "Stark, Andreas! Hat sich das Team gut eingefunden?", time: "Mi. 30. Apr., 07:55" },
-      { from: "them", text: "Schneller als gedacht. Keiner will mehr zurück zum alten Weg.", time: "Mi. 30. Apr., 08:02" },
+      { from: "them", text: "Schneller als gedacht. Keiner hat mehr Lust den ganzen Kram manuell zu machen.", time: "Mi. 30. Apr., 08:02" },
       { from: "me", text: "Das hört man gern. Wo merkt ihr den größten Unterschied?", time: "Do. 1. Mai, 10:22" },
       { from: "them", text: "Bei den Angeboten. Wir sind deutlich schneller raus und wirken viel professioneller.", time: "Do. 1. Mai, 10:31" },
       { from: "me", text: "Top. Beim nächsten Mal zeige ich euch die Automatisierung für eingehende Anfragen.", time: "Do. 1. Mai, 10:39" },
@@ -41,7 +41,7 @@ const conversations: Convo[] = [
       { from: "them", text: "Hallo Patrick! Ja, die Doku läuft mittlerweile fast von allein. Riesige Erleichterung im Alltag.", time: "Mi. 23. Apr., 14:12" },
       { from: "me", text: "Das freut mich! Wo spart ihr am meisten Zeit?", time: "Mi. 23. Apr., 14:18" },
       { from: "them", text: "Bei den Übergabeprotokollen. Das spart uns jeden Tag locker eine Stunde.", time: "Do. 24. Apr., 09:17" },
-      { from: "me", text: "Eine Stunde pro Tag ist enorm. Nutzt das ganze Team es schon?", time: "Do. 24. Apr., 09:25" },
+      { from: "me", text: "Das ist super, ist dein ganzes Team schon damit am arbeiten?", time: "Do. 24. Apr., 09:25" },
       { from: "them", text: "Fast alle. Die letzten zwei ziehen gerade nach, das wird auch noch.", time: "Do. 24. Apr., 09:33" },
     ],
   },
@@ -104,17 +104,17 @@ export function ChatTestimonials() {
 
   const c = conversations[idx];
   const visible = c.messages.slice(0, shown);
-  const lastIsMe = shown > 0 && c.messages[shown - 1].from === "me" && !typing && composing === null;
+  const lastIsMe = c.messages[shown - 1]?.from === "me" && !typing && composing === null;
 
   return (
     <section className="bg-white py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl font-semibold leading-[1.1] tracking-[-0.02em] text-ink md:text-5xl">
+          <h2 className="text-[1.9rem] md:text-[2.8rem] font-semibold leading-[1.1] tracking-[-0.02em] text-ink">
             So sieht praktische KI Nutzung im Unternehmen aus
           </h2>
           <p className="mt-4 text-base leading-relaxed text-ink-muted md:text-lg">
-            Echte Gespräche nach echten Workshops.
+            Kundenfeedback
           </p>
         </div>
 
@@ -153,13 +153,24 @@ export function ChatTestimonials() {
                   <span style={{ letterSpacing: "-0.02em" }}>11:36</span>
                   <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                     {/* signal */}
-                    <svg width="18" height="12" viewBox="0 0 18 12" fill="#000"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
-                    {/* wifi */}
-                    <svg width="17" height="12" viewBox="0 0 16 12" fill="#000"><path d="M8 2.6c2.3 0 4.4.9 6 2.4l-1.4 1.5A6.4 6.4 0 0 0 8 4.6c-1.8 0-3.4.7-4.6 1.9L2 5C3.6 3.5 5.7 2.6 8 2.6Z"/><path d="M8 6.3c1.3 0 2.5.5 3.3 1.4L8 11 4.7 7.7A4.6 4.6 0 0 1 8 6.3Z"/></svg>
-                    {/* battery mit Prozent */}
+                    <svg width="15" height="11" viewBox="0 0 15 11" fill="#000">
+                      <rect x="0" y="8" width="3" height="3" rx="0.8"/>
+                      <rect x="4" y="5" width="3" height="6" rx="0.8"/>
+                      <rect x="8" y="2" width="3" height="9" rx="0.8"/>
+                      <rect x="12" y="0" width="3" height="11" rx="0.8"/>
+                    </svg>
+                    {/* wifi – Heroicons wifi-solid fill, cropped to content */}
+                    <svg width="15" height="12" viewBox="1 2 22 19" fill="#000" style={{ marginTop: 2 }}>
+                      <path fillRule="evenodd" d="M1.371 8.143c5.858-5.857 15.356-5.857 21.213 0a.75.75 0 010 1.061l-.53.53a.75.75 0 01-1.06 0c-4.98-4.979-13.053-4.979-18.032 0a.75.75 0 01-1.06 0l-.53-.53a.75.75 0 010-1.061zm3.182 3.182c4.1-4.1 10.749-4.1 14.85 0a.75.75 0 010 1.061l-.53.53a.75.75 0 01-1.06 0 8.25 8.25 0 00-11.667 0 .75.75 0 01-1.061 0l-.53-.53a.75.75 0 010-1.06zm3.204 3.204a6 6 0 018.486 0 .75.75 0 010 1.06l-.53.53a.75.75 0 01-1.061 0 3.75 3.75 0 00-5.303 0 .75.75 0 01-1.06 0l-.53-.53a.75.75 0 010-1.06zm3.182 3.182a1.5 1.5 0 112.121 0 1.5 1.5 0 01-2.121 0z" clipRule="evenodd"/>
+                    </svg>
+                    {/* battery */}
                     <span style={{ position: "relative", display: "inline-flex", alignItems: "center" }}>
-                      <svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="#000" opacity="0.3"/><rect x="2" y="2" width="20" height="9" rx="2" fill="#000"/><rect x="25" y="4" width="1.6" height="5" rx="0.8" fill="#000" opacity="0.3"/></svg>
-                      <span style={{ position: "absolute", left: 3, top: 0, width: 20, height: 13, display: "grid", placeItems: "center", fontSize: 8.5, fontWeight: 700, color: "#fff" }}>67</span>
+                      <svg width="27" height="13" viewBox="0 0 27 13" fill="none">
+                        <rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="#000" strokeOpacity="0.35"/>
+                        <rect x="2" y="2" width="16" height="9" rx="2" fill="#000"/>
+                        <rect x="25" y="4" width="1.5" height="5" rx="0.8" fill="#000" fillOpacity="0.4"/>
+                      </svg>
+                      <span style={{ position: "absolute", left: 0, top: 0, width: 25, height: 13, display: "grid", placeItems: "center", fontSize: 10, fontWeight: 700, color: "#fff", lineHeight: 1 }}>81</span>
                     </span>
                   </div>
                 </div>
@@ -167,14 +178,14 @@ export function ChatTestimonials() {
                 {/* Header */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "4px 0 12px", borderBottom: "0.5px solid #e5e5ea", position: "relative" }}>
                   {/* Zurück-Pille mit Badge */}
-                  <div style={{ position: "absolute", left: 12, top: 14, display: "flex", alignItems: "center", gap: 4, background: "#fff", borderRadius: 999, padding: "5px 9px 5px 6px", boxShadow: "0 1px 3px rgba(0,0,0,0.12)" }}>
-                    <svg width="10" height="16" viewBox="0 0 12 20" fill="none" stroke="#007aff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><polyline points="10 2 2 10 10 18" /></svg>
-                    <span style={{ background: "#1c1c1e", color: "#fff", fontSize: 11, fontWeight: 600, borderRadius: 999, padding: "1px 7px", lineHeight: 1.5 }}>24</span>
+                  <div style={{ position: "absolute", left: 12, top: 14, display: "flex", alignItems: "center", gap: 10, background: "#fff", borderRadius: 999, padding: "8px 14px 8px 10px", boxShadow: "0 5px 18px rgba(0,0,0,0.12)" }}>
+                    <svg width="13" height="20" viewBox="0 0 12 20" fill="none" stroke="#111" strokeWidth="2.35" strokeLinecap="round" strokeLinejoin="round"><polyline points="10 2 2 10 10 18" /></svg>
+                    <span style={{ background: "#202124", color: "#fff", fontSize: 13, fontWeight: 700, borderRadius: 999, padding: "3px 10px", lineHeight: 1.25, letterSpacing: "-0.02em" }}>24</span>
                   </div>
                   {/* FaceTime-Kamera oben rechts */}
-                  <div style={{ position: "absolute", right: 14, top: 12, width: 34, height: 34, borderRadius: "50%", background: "#fff", boxShadow: "0 1px 3px rgba(0,0,0,0.12)", display: "grid", placeItems: "center" }}>
-                    <svg width="22" height="15" viewBox="0 0 28 18" fill="none" stroke="#007aff" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="1.5" y="2.5" width="17" height="13" rx="4.5" />
+                  <div style={{ position: "absolute", right: 12, top: 10, width: 46, height: 46, borderRadius: "50%", background: "#fff", boxShadow: "0 5px 18px rgba(0,0,0,0.12)", display: "grid", placeItems: "center" }}>
+                    <svg width="28" height="19" viewBox="0 0 28 18" fill="none" stroke="#111" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="1.5" y="2.5" width="17" height="13" rx="4" />
                       <path d="M18.5 7.2 L25.4 3.4 C26.2 3 26.5 3.4 26.5 4.2 L26.5 13.8 C26.5 14.6 26.2 15 25.4 14.6 L18.5 10.8 Z" />
                     </svg>
                   </div>
@@ -212,8 +223,8 @@ export function ChatTestimonials() {
                               lineHeight: 1.35,
                               borderRadius: 18,
                               ...(me
-                                ? { background: "linear-gradient(180deg,#3aa0ff,#0a7cff)", color: "#fff", borderBottomRightRadius: 5 }
-                                : { background: "#e9e9eb", color: "#000", borderBottomLeftRadius: 5 }),
+                                ? { background: "#007AFF", color: "#fff", borderBottomRightRadius: 4 }
+                                : { background: "#E9E9EB", color: "#000", borderBottomLeftRadius: 4 }),
                             }}
                           >
                             {m.text}
@@ -225,7 +236,7 @@ export function ChatTestimonials() {
 
                   {typing && (
                     <div className="ct-msg" style={{ display: "flex", justifyContent: "flex-start" }}>
-                      <div style={{ background: "#e9e9eb", borderRadius: 18, borderBottomLeftRadius: 5, padding: "11px 14px", display: "flex", gap: 4, alignItems: "center" }}>
+                      <div style={{ background: "#E9E9EB", borderRadius: 18, borderBottomLeftRadius: 4, padding: "11px 14px", display: "flex", gap: 4, alignItems: "center" }}>
                         <span className="ct-dot" /><span className="ct-dot" /><span className="ct-dot" />
                       </div>
                     </div>
@@ -239,7 +250,7 @@ export function ChatTestimonials() {
                 {/* Input bar */}
                 <div style={{ display: "flex", alignItems: "center", gap: 9, padding: "8px 12px 12px" }}>
                   {/* Plus */}
-                  <div style={{ width: 33, height: 33, borderRadius: "50%", background: "#e9e9eb", display: "grid", placeItems: "center", flexShrink: 0 }}>
+                  <div style={{ width: 33, height: 33, borderRadius: "50%", background: "#E9E9EB", display: "grid", placeItems: "center", flexShrink: 0 }}>
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7c7c80" strokeWidth="2.2" strokeLinecap="round"><line x1="12" y1="6" x2="12" y2="18" /><line x1="6" y1="12" x2="18" y2="12" /></svg>
                   </div>
                   {/* Eingabefeld */}
