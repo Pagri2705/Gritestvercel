@@ -5,7 +5,7 @@ const primary = [
   {
     icon: Workflow,
     title: "KI einführen ohne klaren Plan",
-    desc: "Ohne Strategie verpufft das Thema schnell wieder.",
+    desc: "Ohne Strategie verpufft das Thema schnell wieder — schlichtweg weil keine konkreten Anwendungsfälle gefunden werden.",
   },
   {
     icon: UsersRound,
@@ -15,12 +15,12 @@ const primary = [
   {
     icon: GraduationCap,
     title: "Nur technikaffine Kollegen schulen",
-    desc: "Wissen bleibt bei wenigen statt im ganzen Team.",
+    desc: "Mitarbeiter die etwas länger brauchen werden liegen gelassen — das Wissen kommt nicht bei allen an.",
   },
   {
     icon: Clock,
     title: "Einmalige Demo statt Begleitung",
-    desc: "Nach dem Workshop fehlt die Umsetzung im Alltag.",
+    desc: "Nach dem Workshop fehlt die Umsetzung im Alltag und bei kleinen Problemen wird schnell aufgegeben.",
   },
 ];
 
@@ -84,16 +84,12 @@ export function WhyItFails() {
     <section style={{ background: "#f7f8fa" }} className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-6">
 
-        <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-brand mb-5 text-center">
-          Problem zusammengefasst
-        </p>
-
         <h2 className="text-[1.9rem] md:text-[2.8rem] font-semibold leading-[1.1] tracking-[-0.03em] text-ink text-center mb-4">
-          KI scheitert zu 80% an der Einführung.
+          Das sind die häufigsten Gründe.
         </h2>
 
         <p className="text-center text-[0.9rem] md:text-base text-ink/60 max-w-[620px] mx-auto mb-14 leading-relaxed">
-          Ohne professionelle Analyse und klare Struktur liegt der Erfolg bei 1%.
+          Immer wieder dieselben Fehler und genau die lassen sich vermeiden.
         </p>
 
         <div className="max-w-[720px] mx-auto @container">
@@ -137,11 +133,11 @@ export function WhyItFails() {
           </div>
 
           {/* Secondary 3-col */}
-          <div ref={secondaryRef} className="grid grid-cols-1 @lg:grid-cols-3 gap-8 @lg:gap-x-10 @lg:gap-y-10">
+          <div ref={secondaryRef} className="grid grid-cols-1 @lg:grid-cols-3 gap-10 @lg:gap-x-10 @lg:gap-y-10">
             {secondary.map(({ icon: Icon, title, desc }, i) => (
               <div
                 key={i}
-                className="flex items-start gap-4"
+                className="flex flex-col items-center text-center gap-3"
                 style={{
                   opacity: secondaryCount > i ? 1 : 0,
                   transform: secondaryCount > i ? "translateY(0)" : "translateY(10px)",
@@ -154,9 +150,9 @@ export function WhyItFails() {
                 >
                   <Icon className="h-4 w-4" style={{ color: "#6366f1", opacity: 0.7 }} strokeWidth={1.5} />
                 </div>
-                <div className="pt-1">
+                <div>
                   <p className="text-[0.88rem] font-bold text-ink/80 leading-snug mb-1">{title}</p>
-                  <p lang="de" className="text-[0.78rem] text-ink/45 leading-relaxed hyphens-auto">{desc}</p>
+                  <p className="text-[0.78rem] text-ink/45 leading-relaxed" style={{ textWrap: "balance" }}>{desc}</p>
                 </div>
               </div>
             ))}

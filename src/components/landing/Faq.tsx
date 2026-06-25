@@ -19,15 +19,11 @@ const faqs = [
   },
   {
     q: "Was unterscheidet die KI Akademie von einem normalen Online-Kurs?",
-    a: "Online-Kurse vermitteln Wissen. Wir sorgen dafür, dass KI in Ihrem Unternehmen tatsächlich genutzt wird. Das bedeutet: Vor dem Workshop analysieren wir Ihre konkreten Arbeitsabläufe. Im Workshop entwickeln Ihre Mitarbeiter eigene Anwendungen für ihren Job. Nach dem Workshop begleiten wir das Team aktiv — mit wöchentlichen Fragen-Sessions, individuellen Prompt-Entwicklungen und Change-Management-Unterstützung. 62 % aller KI-Projekte scheitern nicht an der Technologie, sondern an fehlender Begleitung danach. Genau diesen Teil übernehmen wir.",
+    a: "Online-Kurse vermitteln Wissen. Wir sorgen dafür, dass KI in Ihrem Unternehmen tatsächlich genutzt wird. Das bedeutet: Vor dem Workshop analysieren wir Ihre konkreten Arbeitsabläufe. Im Workshop entwickeln Ihre Mitarbeiter eigene Anwendungen für ihren Job. Nach dem Workshop begleiten wir das Team aktiv mit wöchentlichen Fragen-Sessions, individuellen Prompt-Entwicklungen und Change-Management-Unterstützung. Genau dieser Teil macht den Unterschied.",
   },
   {
     q: "Können wir die Inhalte auf unsere Branche und unsere Prozesse anpassen?",
-    a: "Ja — das ist der Kernpunkt unseres Programms. Vor jedem Workshop führen wir ein Analysegespräch: Welche Aufgaben kosten Ihr Team täglich die meiste Zeit? Welche Dokumente, Prozesse und Kommunikationswege gibt es? Auf dieser Basis bereiten wir Use Cases vor, die direkt auf Ihren Arbeitsalltag zugeschnitten sind. Kein generisches Beispiel-Material, sondern Prompts und Workflows, die Ihre Mitarbeiter am nächsten Tag einsetzen können.",
-  },
-  {
-    q: "Ist eine Ratenzahlung möglich?",
-    a: "Ja, auf Anfrage bieten wir individuelle Zahlungsmodalitäten an. Sprechen Sie uns gerne im kostenlosen Strategiegespräch darauf an.",
+    a: "Ja, das ist der Kernpunkt unseres Programms. Vor jedem Workshop führen wir ein Analysegespräch: Welche Aufgaben kosten Ihr Team täglich die meiste Zeit? Welche Dokumente, Prozesse und Kommunikationswege gibt es? Auf dieser Basis bereiten wir Use Cases vor, die direkt auf Ihren Arbeitsalltag zugeschnitten sind. Kein generisches Beispiel-Material, sondern Prompts und Workflows, die Ihre Mitarbeiter am nächsten Tag einsetzen können.",
   },
 ];
 
