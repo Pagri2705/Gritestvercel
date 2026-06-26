@@ -17,30 +17,24 @@ export function Problem() {
             </p>
           </div>
 
-          {/* Right: bridge image with quote overlay */}
+          {/* Right: Bild mit Zitat-Overlay */}
           <div
-            className="relative overflow-hidden rounded-2xl w-full"
+            className="relative overflow-hidden w-full"
             style={{
               maxWidth: 550,
               minHeight: 400,
-              backgroundImage: "url('/ewa/bridge.png')",
+              backgroundImage: "url('/ewa/struggle.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
-            {/* Scrim: unten dunkel für Text, oben klar (Brücke sichtbar) */}
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to bottom, rgba(8,15,25,0.15) 0%, rgba(8,15,25,0.45) 50%, rgba(8,15,25,0.92) 100%)",
-              }}
-            />
+            {/* Scrim: gleichmäßig 75% dunkel */}
+            <div className="absolute inset-0" style={{ background: "rgba(8,12,20,0.75)" }} />
 
-            <div className="relative flex flex-col items-center justify-end text-center p-7 md:p-9" style={{ minHeight: 400 }}>
-              <figure className="flex flex-col items-center">
+            <figure className="relative flex flex-col items-center justify-center text-center p-7 md:p-9" style={{ minHeight: 400 }}>
+              <div className="flex flex-col items-center">
                 <span
-                  className="font-black leading-[0.85] tabular-nums"
+                  className="font-black leading-[0.8] tabular-nums"
                   style={{ fontSize: "clamp(2.6rem, 7vw, 3.6rem)", color: "#fff", letterSpacing: "-0.04em" }}
                 >
                   95<span style={{ color: "#e53e3e" }}>%</span>
@@ -48,22 +42,24 @@ export function Problem() {
                 <blockquote className="mt-3 max-w-[320px] text-sm md:text-base font-medium leading-snug text-white">
                   der KI&#8209;Pilotprojekte in Unternehmen liefern keinen messbaren Mehrwert.
                 </blockquote>
-                <figcaption className="mt-4 text-[0.72rem] leading-snug text-white/45">
-                  Quelle:{" "}
-                  <a
-                    href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-medium underline decoration-1 underline-offset-2 transition-colors"
-                    style={{ color: "#7DB3FF" }}
-                  >
-                    Massachusetts Institute of Technology
-                    <ArrowUpRight className="h-3 w-3" strokeWidth={2.5} />
-                  </a>
-                  , State of AI in Business 2025
-                </figcaption>
-              </figure>
-            </div>
+              </div>
+
+              {/* Quelle */}
+              <figcaption className="mt-4 text-[0.62rem] leading-snug text-white/45">
+                Quelle:{" "}
+                <a
+                  href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-medium underline decoration-1 underline-offset-2 transition-colors"
+                  style={{ color: "#7DB3FF" }}
+                >
+                  Massachusetts Institute of Technology
+                  <ArrowUpRight className="h-2.5 w-2.5" strokeWidth={2.5} />
+                </a>
+                , State of AI in Business 2025
+              </figcaption>
+            </figure>
           </div>
 
         </div>
