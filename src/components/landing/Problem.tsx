@@ -1,5 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
-
 export function Problem() {
   return (
     <section style={{ background: "#f7f8fa" }} className="pt-0 pb-16 md:pb-24">
@@ -23,42 +21,21 @@ export function Problem() {
             style={{
               maxWidth: 550,
               minHeight: 400,
-              backgroundImage: "url('/ewa/struggle.png')",
+              backgroundImage: "url('/ba95.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
             {/* Scrim: gleichmäßig 75% dunkel */}
-            <div className="absolute inset-0" style={{ background: "rgba(8,12,20,0.75)" }} />
+            <div className="absolute inset-0" style={{ background: "rgba(8,12,20,0.34)" }} />
 
-            <figure className="relative flex flex-col items-center justify-center text-center p-7 md:p-9" style={{ minHeight: 400 }}>
-              <div className="flex flex-col items-center">
-                <span
-                  className="font-black leading-[0.8] tabular-nums"
-                  style={{ fontSize: "clamp(2.6rem, 7vw, 3.6rem)", color: "#fff", letterSpacing: "-0.04em" }}
-                >
-                  95<span style={{ color: "#e53e3e" }}>%</span>
-                </span>
-                <blockquote className="mt-3 max-w-[320px] text-sm md:text-base font-medium leading-snug text-white">
-                  der KI&#8209;Pilotprojekte in Unternehmen liefern keinen messbaren Mehrwert.
-                </blockquote>
-              </div>
-
-              {/* Quelle */}
-              <figcaption className="mt-4 text-[0.62rem] leading-snug text-white/45">
-                Quelle:{" "}
-                <a
-                  href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 font-medium underline decoration-1 underline-offset-2 transition-colors"
-                  style={{ color: "#7DB3FF" }}
-                >
-                  Massachusetts Institute of Technology
-                  <ArrowUpRight className="h-2.5 w-2.5" strokeWidth={2.5} />
-                </a>
-                , State of AI in Business 2025
-              </figcaption>
+            <figure className="relative flex flex-col items-center justify-center text-center p-7 md:p-10" style={{ minHeight: 400 }}>
+              <p className="text-xl md:text-2xl font-bold leading-snug text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.55)]">
+                Viel Aufwand. <span style={{ color: "#e53e3e" }}>Kein Fortschritt.</span>
+              </p>
+              <p className="mt-4 max-w-[360px] text-sm md:text-base leading-relaxed text-white/85 drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]">
+                Ohne klare Struktur drehen sich Teams im Kreis: Tools werden ausprobiert, wieder verworfen und am Ende bleibt alles beim Alten.
+              </p>
             </figure>
           </div>
 

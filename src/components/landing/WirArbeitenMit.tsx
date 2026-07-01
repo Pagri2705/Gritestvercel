@@ -35,6 +35,7 @@ export function WirArbeitenMit() {
             letterSpacing: "-0.01em",
             color: "#1c1a17",
             marginBottom: 14,
+            textAlign: "center",
           }}
         >
           Mit welchen KI-Tools arbeiten<br />wir
@@ -48,6 +49,8 @@ export function WirArbeitenMit() {
             color: "#2e2b26",
             marginBottom: 28,
             maxWidth: 350,
+            marginLeft: "auto",
+            marginRight: "auto",
             textAlign: "justify",
             hyphens: "auto",
           }}

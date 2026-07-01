@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 
 const HALF_CARD = 72;
 
@@ -194,6 +195,34 @@ export function FailureCost() {
               </div>
             );
           })}
+        </div>
+
+        <div
+          className="relative mt-16 mx-auto max-w-2xl overflow-hidden border border-border bg-surface-elevated px-8 py-7 text-center shadow-card"
+          style={{
+            backgroundImage: "url('/pilot-failure-bg.png')",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        >
+          <div className="absolute inset-0 bg-white/58" aria-hidden="true" />
+          <p className="relative text-2xl md:text-[1.75rem] font-bold leading-snug text-ink drop-shadow-[0_1px_12px_rgba(255,255,255,0.75)]">
+            <span style={{ color: "#e53e3e" }}>95%</span>{" "}
+            <span className="font-medium text-ink">der KI-Pilotprojekte in Unternehmen liefern keinen messbaren Mehrwert.</span>
+          </p>
+          <p className="relative mt-4 text-xs text-ink/60">
+            Quelle:{" "}
+            <a
+              href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-medium text-brand underline decoration-1 underline-offset-2"
+            >
+              Massachusetts Institute of Technology
+              <ArrowUpRight className="h-3 w-3" strokeWidth={2.5} />
+            </a>
+            , State of AI in Business 2025
+          </p>
         </div>
 
         <div className="mt-14 text-center">

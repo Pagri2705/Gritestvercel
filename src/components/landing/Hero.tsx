@@ -43,7 +43,7 @@ export function Hero() {
           className="h-full w-full object-cover"
           style={{ objectPosition: isMobile ? "72% 54%" : "center 54%" }}
         />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(15,41,66,0.88) 0%, rgba(15,41,66,0.58) 60%, rgba(15,41,66,0.65) 100%)" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(15,41,66,0.72) 0%, rgba(15,41,66,0.40) 60%, rgba(15,41,66,0.48) 100%)" }} />
       </div>
 
       {/* Headline + Subheadline */}

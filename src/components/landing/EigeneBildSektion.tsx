@@ -11,7 +11,7 @@ export function EigeneBildSektion() {
     >
       <style>{`
         .eb-inner { max-width: 1200px; margin: 0 auto; padding: 72px 48px; }
-        .eb-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 72px; }
+        .eb-hero { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 64px; align-items: center; margin-bottom: 72px; }
         .eb-h2 { font-size: 42px; }
         .eb-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 60px; }
         @container (max-width: 760px) {
@@ -79,7 +79,7 @@ export function EigeneBildSektion() {
               letterSpacing: ".04em",
             }}
           >
-            <img src="/ewa/veraenderung.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src="/46fd.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
         </div>
 
