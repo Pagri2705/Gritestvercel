@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Sparkles, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,10 +18,8 @@ export function SiteNav() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
 
           <Link to="/" className="flex items-center gap-2.5 font-semibold tracking-tight text-ink">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-white">
-              <Sparkles className="h-4 w-4" />
-            </span>
-            <span className="hidden md:inline">KI Akademie</span>
+            <img src="/ventar-logo.png" alt="Ventar Digital" className="h-28 w-28 object-contain" />
+            <span className="hidden md:inline">Ventar Digital</span>
           </Link>
 
           {/* Desktop nav */}
