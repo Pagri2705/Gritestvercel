@@ -4,7 +4,7 @@ import { BookOpen, GraduationCap, Briefcase, Users } from "lucide-react";
 // Animation timing (ms)
 const H_START    = 300;
 const H_STAGGER  = 80;
-const H1_WORDS   = ["KI", "fur", "jeden", "Mitarbeiter"];
+const H1_WORDS   = ["KI", "für", "jeden", "Mitarbeiter"];
 const SUB_START  = H_START + H1_WORDS.length * H_STAGGER + 600;
 const SUB_LINE1  = "Verständliche und praxisnahe Einführung in moderne KI Tools.".split(" ");
 const SUB_LINE2  = "Für Unternehmen ohne eigene KI Abteilung.".split(" ");
