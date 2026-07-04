@@ -46,7 +46,7 @@ const CARDS: { title: string; step: string; accent?: boolean; pills: ReactNode[]
 
 export function Lernkreislauf() {
   const ref = useRef<HTMLDivElement>(null);
-  const [mobile, setMobile] = useState(false);
+  const [mobile, setMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 820);
 
   useEffect(() => {
     const el = ref.current;

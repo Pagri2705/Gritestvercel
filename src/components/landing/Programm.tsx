@@ -47,7 +47,7 @@ export function Programm() {
   const [translateY, setTranslateY] = useState(0);
   const [cardHeight, setCardHeight] = useState(0);
   const [maxTranslate, setMaxTranslate] = useState(0);
-  const [mobile, setMobile] = useState(false);
+  const [mobile, setMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 820);
   const obsRef = useRef<ResizeObserver | null>(null);
 
   // Callback-Ref: misst die Breite und schaltet Mobile/Desktop um (greift auch in der Mobile-Vorschau)
@@ -111,7 +111,7 @@ export function Programm() {
           Das Programm
         </p>
         <h2 className="text-[1.7rem] font-semibold leading-[1.12] tracking-[-0.03em] text-ink text-center mb-3">
-          Ablauf des KI&#8209;Einführungsprogramms
+          Ablauf des KI-Einführungsprogramms
         </h2>
         <p className="text-center text-[0.9rem] md:text-base text-ink/50 max-w-[420px] mx-auto mb-7 leading-relaxed">
           Einmal lernen. Danach selbst anwenden ohne jeden neuen Trend einen Berater zu engagieren.
@@ -209,7 +209,7 @@ export function Programm() {
             Das Programm
           </p>
           <h2 className="text-[1.9rem] font-semibold leading-[1.1] tracking-[-0.03em] text-ink text-center mb-3" style={{ fontSize: "2.675rem" }}>
-            Ablauf des KI&#8209;Einführungsprogramms
+            Ablauf des KI-Einführungsprogramms
           </h2>
           <p className="text-center text-[0.9rem] md:text-base text-ink/50 max-w-[520px] mx-auto mb-8 leading-relaxed">
             Einmal lernen. Danach selbst anwenden ohne jeden neuen Trend einen Berater zu engagieren.

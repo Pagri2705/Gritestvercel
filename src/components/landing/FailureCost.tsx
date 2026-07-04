@@ -33,7 +33,7 @@ const steps = [
 
 export function FailureCost() {
   const [visible, setVisible] = useState<boolean[]>(Array(steps.length).fill(false));
-  const [mobile, setMobile] = useState(false);
+  const [mobile, setMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 560);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
