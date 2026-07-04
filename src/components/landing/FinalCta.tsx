@@ -4,7 +4,7 @@ export function FinalCta() {
   return (
     <section className="bg-brand py-24 md:py-36">
       <div className="mx-auto max-w-4xl px-6 text-center">
-        <h2 className="text-4xl font-semibold leading-[1.1] tracking-[-0.02em] text-white md:text-5xl lg:text-6xl">
+        <h2 className="text-[1.9rem] md:text-[2.8rem] font-semibold leading-[1.1] tracking-[-0.02em] text-white">
           KI verständlich. Praxisnah. Direkt anwendbar.
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/75">

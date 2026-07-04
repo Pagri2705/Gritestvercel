@@ -1,94 +1,42 @@
-import { useEffect, useRef, useState } from "react";
-import { BookOpen, Lightbulb, LayoutGrid, ShieldAlert } from "lucide-react";
-
-const items = [
-  { icon: BookOpen,    text: "Mitarbeiter wissen nicht, wie sie KI verständlich einsetzen sollen." },
-  { icon: Lightbulb,   text: "Es bleibt unklar, welche Aufgaben KI konkret übernehmen kann." },
-  { icon: LayoutGrid,  text: "Für den täglichen Einsatz fehlt eine klare Struktur und ein Prozess." },
-  { icon: ShieldAlert, text: "Neue Tools erzeugen Unsicherheit im Team." },
-];
-
-const revealOrder = [0, 1, 2, 3];
-
 export function Problem() {
-  const [revealed, setRevealed] = useState([false, false, false, false]);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          revealOrder.forEach((itemIndex, step) => {
-            setTimeout(() => {
-              setRevealed(prev => {
-                const next = [...prev];
-                next[itemIndex] = true;
-                return next;
-              });
-            }, 800 + step * 800);
-          });
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-    if (containerRef.current) observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section style={{ background: "#f7f8fa" }} className="pt-0 pb-16 md:pb-24">
       <div className="mx-auto max-w-7xl px-6 pt-16 md:pt-24">
 
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:items-center">
 
-          {/* Left: headline + text */}
+          {/* Left: headline */}
           <div>
             <h2 className="text-[1.9rem] font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-5xl text-center md:text-left">
-              KI Einführungen scheitern{" "}
-              <span style={{ color: "#e53e3e" }}>IMMER</span>
-              , wenn
+<span style={{ color: "#e53e3e" }}>78%</span> der KI&nbsp;Einführungen scheitern
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-ink-muted md:text-lg max-w-[510px]">
-              ohne Vorbereitung gestartet wird, kein klarer Plan existiert und die Menschen nicht mitgenommen werden, die täglich damit arbeiten sollen.
+            <p className="mt-6 text-base leading-relaxed text-ink-muted md:text-lg max-w-[520px] text-center md:text-left">
+              Es liegt weder an der Technologie noch an mangelndem Wissen.
             </p>
           </div>
 
-          {/* Right: water container with animated cards */}
+          {/* Right: Bild mit Zitat-Overlay */}
           <div
-            ref={containerRef}
-            className="relative overflow-hidden rounded-2xl w-full"
+            className="relative overflow-hidden w-full"
             style={{
               maxWidth: 550,
-              backgroundImage: "url('/bg-stats.jpg')",
+              minHeight: 400,
+              backgroundImage: "url('/ba95.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
-            <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.50)" }} />
+            {/* Scrim: gleichmäßig 75% dunkel */}
+            <div className="absolute inset-0" style={{ background: "rgba(8,12,20,0.34)" }} />
 
-            <div className="relative grid grid-cols-2 gap-3 p-4 md:gap-4 md:p-8">
-              {items.map(({ icon: Icon, text }, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col items-center text-center gap-2 md:gap-3 rounded-xl p-3 md:p-5"
-                  style={{
-                    opacity: revealed[i] ? 1 : 0,
-                    transform: revealed[i] ? "translateY(0)" : "translateY(14px)",
-                    transition: "opacity 0.45s ease, transform 0.45s ease",
-                    background: "rgba(255,255,255,0.95)",
-                  }}
-                >
-                  <div
-                    className="grid h-8 w-8 md:h-9 md:w-9 shrink-0 place-items-center rounded-lg"
-                    style={{ backgroundColor: "rgba(239,68,68,0.12)" }}
-                  >
-                    <Icon className="h-4 w-4" style={{ color: "#e53e3e" }} />
-                  </div>
-                  <p className="text-[0.78rem] md:text-[0.88rem] font-medium leading-relaxed text-ink">{text}</p>
-                </div>
-              ))}
-            </div>
+            <figure className="relative flex flex-col items-center justify-center text-center p-7 md:p-10" style={{ minHeight: 400 }}>
+              <p className="text-xl md:text-2xl font-bold leading-snug text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.55)]">
+                Viel Aufwand. <span style={{ color: "#e53e3e" }}>Kein Fortschritt.</span>
+              </p>
+              <p className="mt-4 max-w-[360px] text-sm md:text-base leading-relaxed text-white/85 drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)]">
+                Ohne klare Struktur drehen sich Teams im Kreis: Tools werden ausprobiert, wieder verworfen und am Ende bleibt alles beim Alten.
+              </p>
+            </figure>
           </div>
 
         </div>

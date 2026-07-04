@@ -1,36 +1,48 @@
 import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+
+const HALF_CARD = 72;
 
 const steps = [
   {
     color: "#e53e3e",
     title: "Das Budget ist weg",
-    content: "Tausende Euro in Tools, Workshops und externe Berater — ohne ein einziges messbares Ergebnis. Kein ROI. Keine Zahlen. Nur ein abgehaktes Projekt.",
+    content: "Tausende Euro in Tools, Workshops und externe Berater. Ohne ein einziges messbares Ergebnis. Kein ROI. Keine Zahlen. Nur ein abgehaktes Projekt.",
   },
   {
     color: "#b7791f",
     title: "Mitarbeiter verlieren den Glauben",
-    content: "Nach dem ersten Fehlversuch entsteht ein Bild: \"KI ist nichts für uns.\" Dieser Gedanke sitzt — und lässt sich kaum noch korrigieren.",
+    content: "Nach dem ersten Fehlversuch entsteht ein Bild: „KI ist nichts für uns." Dieser Gedanke sitzt und lässt sich kaum noch korrigieren.",
   },
   {
     color: "#6b46c1",
-    title: "Widerstand, der sich kaum zurücksetzen lässt",
-    content: "Teams die einmal schlechte Erfahrungen gemacht haben, blockieren künftige Initiativen aktiv. Der erste Fehlversuch vergiftet die Unternehmenskultur.",
+    title: "Widerstand entsteht",
+    content: "Teams die einmal schlechte Erfahrungen gemacht haben, blockieren künftige Initiativen aktiv. Der erste Fehlversuch vergiftet die Unternehmenskultur im Bezug auf künstliche Intelligenz.",
   },
   {
     color: "#2b6cb0",
-    title: "Alle Benefits durch KI — verloren",
+    title: "Must have Benefits gehen verloren",
     content: "Zeitersparnis, Effizienzgewinn, Wettbewerbsvorteil. All das bleibt auf dem Tisch während die Konkurrenz bereits profitiert.",
   },
   {
     color: "#276749",
-    title: "Alles wird schwerer statt leichter",
+    title: "Alles wird schwerer",
     content: "KI wird zum Reizthema. Jeder neue Versuch kämpft gegen das kollektive Gedächtnis des letzten Scheiterns. Der Schaden ist langfristig.",
   },
 ];
 
 export function FailureCost() {
   const [visible, setVisible] = useState<boolean[]>(Array(steps.length).fill(false));
+  const [mobile, setMobile] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new ResizeObserver(([entry]) => setMobile(entry.contentRect.width < 560));
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -56,105 +68,163 @@ export function FailureCost() {
 
   return (
     <section className="bg-white py-16 md:py-24">
-      <div className="mx-auto max-w-3xl px-6">
+      <div className="mx-auto max-w-4xl px-6">
 
         <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-brand mb-5 text-center">
           Die Konsequenz
         </p>
 
         <h2 className="text-[1.9rem] md:text-[2.8rem] font-semibold leading-[1.1] tracking-[-0.03em] text-ink text-center mb-4">
-          Ein Fehlversuch reicht —<br />und das System ist kaputt.
+          Ein Fehlversuch reicht um das Potenzial zu hemmen.
         </h2>
 
-        <p className="text-center text-[0.9rem] md:text-base text-ink/50 max-w-[520px] mx-auto mb-16 leading-relaxed">
-          Es geht nicht nur um das verlorene Geld. Es geht darum, was danach kommt.
+        <p className="text-center text-[0.9rem] md:text-base text-ink/50 max-w-[680px] mx-auto mb-16 leading-relaxed">
+          Verlorenes Geld können Sie wieder verdienen, der zweite Einführungsversuch{" "}
+          <span style={{ whiteSpace: "nowrap" }}>wird jedoch schwer.</span>
         </p>
 
-        {/* Alternating timeline */}
-        {/* Mobile: simple stacked list */}
-        <div ref={ref} className="sm:hidden flex flex-col gap-4">
-          {steps.map((step, i) => (
-            <div
-              key={i}
-              className="overflow-hidden rounded-xl"
-              style={{
-                border: "1px solid #e5e7eb",
-                opacity: visible[i] ? 1 : 0,
-                transform: visible[i] ? "translateY(0)" : "translateY(12px)",
-                transition: "opacity 0.45s ease, transform 0.45s ease",
-              }}
-            >
-              <div className="px-4 py-2.5 flex items-center gap-3" style={{ background: step.color }}>
-                <span className="font-bold text-white/30 text-lg leading-none">{i + 1}</span>
-                <p className="text-white font-bold text-[0.88rem]">{step.title}</p>
-              </div>
-              <div className="px-4 py-3" style={{ background: "#f9fafb" }}>
-                <p className="text-[0.78rem] text-ink/65 leading-relaxed">{step.content}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <div ref={ref}>
+          {mobile
+            ? steps.map((step, i) => {
+                const isLast = i === steps.length - 1;
+                return (
+                  <div key={i}>
+                    <div
+                      style={{
+                        border: "1px solid #e5e7eb",
+                        borderRadius: 12,
+                        overflow: "hidden",
+                        opacity: visible[i] ? 1 : 0,
+                        transform: visible[i] ? "translateY(0)" : "translateY(10px)",
+                        transition: "opacity 0.45s ease, transform 0.45s ease",
+                      }}
+                    >
+                      <div className="flex items-center gap-3 px-4 py-2.5" style={{ background: step.color }}>
+                        <span style={{ fontSize: "1.4rem", fontWeight: 700, color: "rgba(255,255,255,0.75)", lineHeight: 1, flexShrink: 0 }}>
+                          {i + 1}
+                        </span>
+                        <p className="text-white font-bold text-[0.95rem]">{step.title}</p>
+                      </div>
+                      <div className="px-5 py-4" style={{ background: "#f9fafb" }}>
+                        <p className="text-[0.9rem] text-ink/65 leading-relaxed">{step.content}</p>
+                      </div>
+                    </div>
+                    {!isLast && (
+                      <div style={{ display: "flex", justifyContent: "center" }}>
+                        <div
+                          style={{
+                            width: 0,
+                            height: 28,
+                            borderLeft: "2px dashed " + steps[i + 1].color,
+                            opacity: visible[i] ? 1 : 0,
+                            transition: "opacity 0.3s ease 0.3s",
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                );
+              })
+            : steps.map((step, i) => {
+            const isLeft = i % 2 === 0;
+            const isLast = i === steps.length - 1;
+            const nextStep = steps[i + 1];
 
-        {/* Desktop: alternating timeline */}
-        <div className="hidden sm:block relative">
-          <div
-            className="absolute top-0 bottom-0"
-            style={{
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: 2,
-              backgroundImage: "repeating-linear-gradient(to bottom, #d1d5db 0px, #d1d5db 6px, transparent 6px, transparent 12px)",
-            }}
-          />
-          <div className="flex flex-col" style={{ gap: 48 }}>
-            {steps.map((step, i) => {
-              const isLeft = i % 2 === 0;
-              return (
+            return (
+              <div key={i}>
                 <div
-                  key={i}
-                  className="relative flex items-center"
+                  className="flex items-center"
                   style={{
+                    position: "relative",
+                    zIndex: 1,
+                    marginTop: i === 0 ? 0 : -HALF_CARD,
                     opacity: visible[i] ? 1 : 0,
-                    transform: visible[i] ? "translateY(0)" : "translateY(12px)",
+                    transform: visible[i] ? "translateY(0)" : "translateY(10px)",
                     transition: "opacity 0.45s ease, transform 0.45s ease",
                   }}
                 >
-                  <div className="flex-1 flex justify-end pr-6">
-                    {isLeft ? (
-                      <div className="w-full max-w-[260px] overflow-hidden rounded-xl" style={{ border: "1px solid #e5e7eb" }}>
-                        <div className="px-4 py-2.5" style={{ background: step.color }}>
-                          <p className="text-white font-bold text-[0.88rem]">{step.title}</p>
+                  {isLeft ? (
+                    <>
+                      <span style={{ fontSize: "5.5rem", fontWeight: 700, color: step.color, opacity: 0.4, lineHeight: 1, userSelect: "none", marginRight: 28, marginLeft: -54, flexShrink: 0 }}>
+                        {i + 1}
+                      </span>
+                      <div style={{ width: "54%", minHeight: HALF_CARD * 2, border: "1px solid #e5e7eb", borderRadius: 12, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                        <div className="px-4 py-2.5 text-center" style={{ background: step.color }}>
+                          <p className="text-white font-bold text-[0.9rem]">{step.title}</p>
                         </div>
-                        <div className="px-4 py-3" style={{ background: "#f9fafb" }}>
-                          <p className="text-[0.78rem] text-ink/65 leading-relaxed">{step.content}</p>
-                        </div>
-                      </div>
-                    ) : (
-                      <span className="font-bold select-none" style={{ fontSize: "5.5rem", color: step.color, opacity: 0.1, lineHeight: 1 }}>{i + 1}</span>
-                    )}
-                  </div>
-                  <div className="relative z-10 shrink-0 rounded-full" style={{ width: 14, height: 14, background: step.color, boxShadow: "0 0 0 3px white" }} />
-                  <div className="flex-1 flex justify-start pl-6">
-                    {!isLeft ? (
-                      <div className="w-full max-w-[260px] overflow-hidden rounded-xl" style={{ border: "1px solid #e5e7eb" }}>
-                        <div className="px-4 py-2.5" style={{ background: step.color }}>
-                          <p className="text-white font-bold text-[0.88rem]">{step.title}</p>
-                        </div>
-                        <div className="px-4 py-3" style={{ background: "#f9fafb" }}>
-                          <p className="text-[0.78rem] text-ink/65 leading-relaxed">{step.content}</p>
+                        <div className="px-5 py-3" style={{ background: "#f9fafb", flex: 1 }}>
+                          <p className="text-[0.875rem] text-ink/65 leading-relaxed">{step.content}</p>
                         </div>
                       </div>
-                    ) : (
-                      <span className="font-bold select-none" style={{ fontSize: "5.5rem", color: step.color, opacity: 0.1, lineHeight: 1 }}>{i + 1}</span>
-                    )}
-                  </div>
+                    </>
+                  ) : (
+                    <>
+                      <div style={{ flex: 1 }} />
+                      <div style={{ width: "54%", minHeight: HALF_CARD * 2, border: "1px solid #e5e7eb", borderRadius: 12, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                        <div className="px-4 py-2.5 text-center" style={{ background: step.color }}>
+                          <p className="text-white font-bold text-[0.9rem]">{step.title}</p>
+                        </div>
+                        <div className="px-5 py-3" style={{ background: "#f9fafb", flex: 1 }}>
+                          <p className="text-[0.875rem] text-ink/65 leading-relaxed">{step.content}</p>
+                        </div>
+                      </div>
+                      <span style={{ fontSize: "5.5rem", fontWeight: 700, color: step.color, opacity: 0.4, lineHeight: 1, userSelect: "none", marginLeft: 28, marginRight: -54, flexShrink: 0 }}>
+                        {i + 1}
+                      </span>
+                    </>
+                  )}
                 </div>
-              );
-            })}
-          </div>
+
+                {!isLast && (
+                  <div
+                    style={{
+                      position: "relative",
+                      zIndex: 0,
+                      height: 32 + HALF_CARD,
+                      marginLeft: isLeft ? "27%" : "54%",
+                      width: "19%",
+                      borderLeft: isLeft ? ("2px dashed " + nextStep.color) : "none",
+                      borderRight: !isLeft ? ("2px dashed " + nextStep.color) : "none",
+                      borderBottom: "2px dashed " + nextStep.color,
+                      borderRadius: isLeft ? "0 0 0 8px" : "0 0 8px 0",
+                      opacity: visible[i] ? 1 : 0,
+                      transition: "opacity 0.3s ease 0.3s",
+                    }}
+                  />
+                )}
+              </div>
+            );
+          })}
         </div>
 
-        {/* Closing */}
+        <div
+          className="relative mt-16 mx-auto max-w-2xl overflow-hidden border border-border bg-surface-elevated px-8 py-7 text-center shadow-card"
+          style={{
+            backgroundImage: "url('/pilot-failure-bg.png')",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        >
+          <div className="absolute inset-0 bg-white/58" aria-hidden="true" />
+          <p className="relative text-2xl md:text-[1.75rem] font-bold leading-snug text-ink drop-shadow-[0_1px_12px_rgba(255,255,255,0.75)]">
+            <span style={{ color: "#e53e3e" }}>95%</span>{" "}
+            <span className="font-medium text-ink">der KI-Pilotprojekte in Unternehmen liefern keinen messbaren Mehrwert.</span>
+          </p>
+          <p className="relative mt-4 text-xs text-ink/60">
+            Quelle:{" "}
+            <a
+              href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-medium text-brand underline decoration-1 underline-offset-2"
+            >
+              Massachusetts Institute of Technology
+              <ArrowUpRight className="h-3 w-3" strokeWidth={2.5} />
+            </a>
+            , State of AI in Business 2025
+          </p>
+        </div>
+
         <div className="mt-14 text-center">
           <p className="text-[1.1rem] md:text-[1.3rem] font-semibold text-ink leading-snug">
             Deshalb macht man es einmal.<br />
