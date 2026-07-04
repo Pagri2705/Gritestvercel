@@ -12,7 +12,7 @@ const steps = [
   {
     color: "#b7791f",
     title: "Mitarbeiter verlieren den Glauben",
-    content: "Nach dem ersten Fehlversuch entsteht ein Bild: „KI ist nichts für uns." Dieser Gedanke sitzt und lässt sich kaum noch korrigieren.",
+    content: 'Nach dem ersten Fehlversuch entsteht ein Bild: „KI ist nichts für uns." Dieser Gedanke sitzt und lässt sich kaum noch korrigieren.',
   },
   {
     color: "#6b46c1",
