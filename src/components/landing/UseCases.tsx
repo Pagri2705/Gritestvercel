@@ -137,7 +137,7 @@ export function UseCases() {
     <section style={{ background: "#f7f8fa" }} className="py-10 md:py-16">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-12 text-center">
-          <h2 className="font-semibold leading-[1.1] tracking-[-0.02em] text-ink whitespace-nowrap" style={{ fontSize: "2.8rem" }}>
+          <h2 className="font-semibold leading-[1.1] tracking-[-0.02em] text-ink text-[1.75rem] md:text-[2.8rem]">
             So wird KI im Unternehmen praktisch genutzt
           </h2>
           <p className="mt-4 text-[0.9rem] md:text-base leading-relaxed text-ink-muted">
