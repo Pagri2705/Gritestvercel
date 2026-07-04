@@ -99,7 +99,7 @@ export function WhyItFails() {
         <div className="max-w-[720px] mx-auto">
 
           {/* Primary 2×2 */}
-          <div ref={primaryRef} className="grid grid-cols-2 gap-x-16 gap-y-12">
+          <div ref={primaryRef} className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-8 sm:gap-y-12">
             {primary.map(({ icon: Icon, title, desc }, i) => (
               <div
                 key={i}
@@ -137,7 +137,7 @@ export function WhyItFails() {
           </div>
 
           {/* Secondary 3-col */}
-          <div ref={secondaryRef} className="grid grid-cols-3 gap-x-10 gap-y-10">
+          <div ref={secondaryRef} className="grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-8">
             {secondary.map(({ icon: Icon, title, desc }, i) => (
               <div
                 key={i}

@@ -71,9 +71,32 @@ export function FailureCost() {
         </p>
 
         {/* Alternating timeline */}
-        <div ref={ref} className="relative">
+        {/* Mobile: simple stacked list */}
+        <div ref={ref} className="sm:hidden flex flex-col gap-4">
+          {steps.map((step, i) => (
+            <div
+              key={i}
+              className="overflow-hidden rounded-xl"
+              style={{
+                border: "1px solid #e5e7eb",
+                opacity: visible[i] ? 1 : 0,
+                transform: visible[i] ? "translateY(0)" : "translateY(12px)",
+                transition: "opacity 0.45s ease, transform 0.45s ease",
+              }}
+            >
+              <div className="px-4 py-2.5 flex items-center gap-3" style={{ background: step.color }}>
+                <span className="font-bold text-white/30 text-lg leading-none">{i + 1}</span>
+                <p className="text-white font-bold text-[0.88rem]">{step.title}</p>
+              </div>
+              <div className="px-4 py-3" style={{ background: "#f9fafb" }}>
+                <p className="text-[0.78rem] text-ink/65 leading-relaxed">{step.content}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
-          {/* Vertical center line */}
+        {/* Desktop: alternating timeline */}
+        <div className="hidden sm:block relative">
           <div
             className="absolute top-0 bottom-0"
             style={{
@@ -83,7 +106,6 @@ export function FailureCost() {
               backgroundImage: "repeating-linear-gradient(to bottom, #d1d5db 0px, #d1d5db 6px, transparent 6px, transparent 12px)",
             }}
           />
-
           <div className="flex flex-col" style={{ gap: 48 }}>
             {steps.map((step, i) => {
               const isLeft = i % 2 === 0;
@@ -97,10 +119,8 @@ export function FailureCost() {
                     transition: "opacity 0.45s ease, transform 0.45s ease",
                   }}
                 >
-                  {/* Left side */}
                   <div className="flex-1 flex justify-end pr-6">
                     {isLeft ? (
-                      /* Card on left */
                       <div className="w-full max-w-[260px] overflow-hidden rounded-xl" style={{ border: "1px solid #e5e7eb" }}>
                         <div className="px-4 py-2.5" style={{ background: step.color }}>
                           <p className="text-white font-bold text-[0.88rem]">{step.title}</p>
@@ -110,31 +130,12 @@ export function FailureCost() {
                         </div>
                       </div>
                     ) : (
-                      /* Faded number on left */
-                      <span
-                        className="font-bold select-none"
-                        style={{ fontSize: "5.5rem", color: step.color, opacity: 0.1, lineHeight: 1 }}
-                      >
-                        {i + 1}
-                      </span>
+                      <span className="font-bold select-none" style={{ fontSize: "5.5rem", color: step.color, opacity: 0.1, lineHeight: 1 }}>{i + 1}</span>
                     )}
                   </div>
-
-                  {/* Center dot */}
-                  <div
-                    className="relative z-10 shrink-0 rounded-full"
-                    style={{
-                      width: 14,
-                      height: 14,
-                      background: step.color,
-                      boxShadow: `0 0 0 3px white`,
-                    }}
-                  />
-
-                  {/* Right side */}
+                  <div className="relative z-10 shrink-0 rounded-full" style={{ width: 14, height: 14, background: step.color, boxShadow: "0 0 0 3px white" }} />
                   <div className="flex-1 flex justify-start pl-6">
                     {!isLeft ? (
-                      /* Card on right */
                       <div className="w-full max-w-[260px] overflow-hidden rounded-xl" style={{ border: "1px solid #e5e7eb" }}>
                         <div className="px-4 py-2.5" style={{ background: step.color }}>
                           <p className="text-white font-bold text-[0.88rem]">{step.title}</p>
@@ -144,20 +145,13 @@ export function FailureCost() {
                         </div>
                       </div>
                     ) : (
-                      /* Faded number on right */
-                      <span
-                        className="font-bold select-none"
-                        style={{ fontSize: "5.5rem", color: step.color, opacity: 0.1, lineHeight: 1 }}
-                      >
-                        {i + 1}
-                      </span>
+                      <span className="font-bold select-none" style={{ fontSize: "5.5rem", color: step.color, opacity: 0.1, lineHeight: 1 }}>{i + 1}</span>
                     )}
                   </div>
                 </div>
               );
             })}
           </div>
-
         </div>
 
         {/* Closing */}
