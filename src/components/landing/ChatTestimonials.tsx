@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 
 type Msg = { from: "them" | "me"; text: string; time?: string };
-type Convo = { name: string; role: string; date: string; messages: Msg[] };
+type Convo = { name: string; role: string; date: string; summary: string; messages: Msg[] };
 
 const conversations: Convo[] = [
   {
     name: "Sophia",
     role: "Haustechnik Betrieb",
     date: "Di. 13. Mai, 18:07",
+    summary: "Angebote in Minuten statt einer halben Stunde.",
     messages: [
       { from: "them", text: "Hey Patrick, wir haben jetzt die ersten 3 Wochen durch und ich bin begeistert. 2 Kollegen kommen etwas langsamer voran und selbst die beiden sind fasziniert.", time: "Fr. 9. Mai, 17:42" },
       { from: "me", text: "Hi Sophia, das freut mich riesig! Wie läuft es denn bei der Angebotserstellung?", time: "Fr. 9. Mai, 17:48" },
@@ -22,6 +23,7 @@ const conversations: Convo[] = [
     name: "Andreas",
     role: "Sanitär & Heizung",
     date: "Mo. 5. Mai, 09:42",
+    summary: "Kundenmails und Protokolle laufen jetzt mit KI.",
     messages: [
       { from: "them", text: "Moin Patrick, kurzes Update: wir nutzen das jetzt auch für die Kundenmails und Protokolle.", time: "Mi. 30. Apr., 07:48" },
       { from: "me", text: "Stark, Andreas! Hat sich das Team gut eingefunden?", time: "Mi. 30. Apr., 07:55" },
@@ -36,6 +38,7 @@ const conversations: Convo[] = [
     name: "Camila",
     role: "Pflegedienst",
     date: "Do. 24. Apr., 16:20",
+    summary: "Die Übergabe-Doku spart jeden Tag rund eine Stunde.",
     messages: [
       { from: "me", text: "Hi Camila, wie läuft es? Gibt es Neuigkeiten?", time: "Mi. 23. Apr., 14:05" },
       { from: "them", text: "Hallo Patrick! Ja, die Doku läuft mittlerweile fast von allein. Riesige Erleichterung im Alltag.", time: "Mi. 23. Apr., 14:12" },
@@ -111,12 +114,35 @@ export function ChatTestimonials() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 lg:items-center">
           <div className="text-center lg:text-left">
-            <h2 className="text-[1.9rem] md:text-[2.8rem] font-semibold leading-[1.1] tracking-[-0.02em] text-ink">
-              So klingt es, wenn es funktioniert.
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-ink-muted md:text-lg">
-              Echte Rückmeldungen aus laufenden Projekten: Haustechnik, Sanitär &amp; Heizung, Pflege.
+            <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-brand mb-4">
+              Kundenfeedback
             </p>
+            <h2 className="text-[1.9rem] md:text-[2.8rem] font-semibold leading-[1.1] tracking-[-0.02em] text-ink max-w-[16ch] mx-auto lg:mx-0">
+              So klingt es, wenn es <span className="text-brand">funktioniert.</span>
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-ink-muted max-w-[42ch] mx-auto lg:mx-0">
+              Echte Rückmeldungen aus laufenden Projekten.
+            </p>
+
+            {/* Gesprächs-Auswahl (Desktop) */}
+            <div className="mt-10 hidden lg:block border-t border-black/10">
+              {conversations.map((conv, i) => (
+                <button
+                  key={conv.name}
+                  onClick={() => setIdx(i)}
+                  className={`block w-full text-left py-4 pl-5 border-b border-black/10 border-l-2 transition-all duration-300 ${
+                    i === idx ? "border-l-brand opacity-100" : "border-l-transparent opacity-45 hover:opacity-75"
+                  }`}
+                >
+                  <span className="block text-[0.95rem] font-semibold text-ink leading-snug">
+                    {conv.name}, {conv.role}
+                  </span>
+                  <span className="block mt-0.5 text-[0.85rem] text-ink-muted leading-relaxed">
+                    {conv.summary}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
