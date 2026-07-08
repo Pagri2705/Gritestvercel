@@ -109,16 +109,17 @@ export function ChatTestimonials() {
   return (
     <section className="bg-white py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-12 text-center">
-          <h2 className="text-[1.9rem] md:text-[2.8rem] font-semibold leading-[1.1] tracking-[-0.02em] text-ink">
-            So sieht praktische KI Nutzung im Unternehmen aus
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-ink-muted md:text-lg">
-            Kundenfeedback
-          </p>
-        </div>
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 lg:items-center">
+          <div className="text-center lg:text-left">
+            <h2 className="text-[1.9rem] md:text-[2.8rem] font-semibold leading-[1.1] tracking-[-0.02em] text-ink">
+              So klingt es, wenn es funktioniert.
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-ink-muted md:text-lg">
+              Echte Rückmeldungen aus laufenden Projekten: Haustechnik, Sanitär &amp; Heizung, Pflege.
+            </p>
+          </div>
 
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
           {/* Name über dem Handy */}
           <div style={{ textAlign: "center" }}>
             <div className="text-lg font-semibold text-ink">{c.name}</div>
@@ -300,6 +301,7 @@ export function ChatTestimonials() {
                 }}
               />
             ))}
+          </div>
           </div>
         </div>
       </div>
