@@ -18,6 +18,12 @@ import { EigeneBildSektion } from "@/components/landing/EigeneBildSektion";
 import { WirArbeitenMit } from "@/components/landing/WirArbeitenMit";
 import { FinalCta } from "@/components/landing/FinalCta";
 import { SiteFooter } from "@/components/landing/SiteFooter";
+// ═══ NEUE PREMIUM-SEKTIONEN (isoliert unter components/landing/neu/) ═══
+import { NeuKonsequenz } from "@/components/landing/neu/NeuKonsequenz";
+import { NeuPraxisBento } from "@/components/landing/neu/NeuPraxisBento";
+import { NeuRoiRechner } from "@/components/landing/neu/NeuRoiRechner";
+import { NeuPreise } from "@/components/landing/neu/NeuPreise";
+import { NeuFinalCta } from "@/components/landing/neu/NeuFinalCta";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -86,6 +92,19 @@ function Index() {
         <Pricing />
         <Faq />
         <FinalCta />
+
+        {/* ═══════════════════════════════════════════════════════════
+            NEUE PREMIUM-SEKTIONEN — zum Sichten unten angehängt.
+            Verschieben: einfach die gewünschte Zeile an die Zielposition
+            weiter oben ziehen (z. B. <NeuKonsequenz /> anstelle von
+            <FailureCost />). Löschen alter Sektionen erst nach Ansage.
+            ═══════════════════════════════════════════════════════════ */}
+        <NeuKonsequenz />
+        <NeuPraxisBento />
+        <NeuRoiRechner />
+        <NeuPreise />
+        <NeuFinalCta />
+
         <SiteFooter />
       </div>
     </main>
