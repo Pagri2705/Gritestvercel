@@ -344,6 +344,16 @@
 .neu.final h2 em { color: #8fabff; }
 .neu.final p { max-width: 540px; margin: 24px auto 44px; color: rgba(248, 243, 234, 0.62); font-size: var(--step-1); }
 
+/* ═══ FINAL-CTA-Variante "final-orig": Schrift/Größen wie Originalseite ═══ */
+.neu.final-orig { font-family: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif; }
+.neu.final-orig h2 {
+  font-family: inherit; font-weight: 600; font-variation-settings: normal;
+  font-size: 1.9rem; letter-spacing: -0.02em; line-height: 1.1;
+}
+@media (min-width: 768px) { .neu.final-orig h2 { font-size: 2.8rem; } }
+.neu.final-orig h2 em { font-style: normal; font-weight: inherit; letter-spacing: inherit; }
+.neu.final-orig p { font-size: 1.125rem; }
+
 /* ═══════════ REDUCED MOTION ═══════════ */
 @media (prefers-reduced-motion: reduce) {
   .neu *, .neu *::before, .neu *::after { animation-duration: 0.001s !important; animation-delay: 0s !important; transition-duration: 0.001s !important; }

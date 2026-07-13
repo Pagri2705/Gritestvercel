@@ -5,7 +5,7 @@ export function NeuFinalCta() {
   const ref = useReveals<HTMLElement>();
 
   return (
-    <section ref={ref} className="neu sec final">
+    <section ref={ref} className="neu sec final final-orig">
       <div className="container">
         <h2 className="rv">
           KI verständlich.<br /><em>Praxisnah. Anwendbar.</em>
