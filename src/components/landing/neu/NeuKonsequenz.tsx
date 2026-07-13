@@ -13,10 +13,10 @@ export function NeuKonsequenz() {
   const ref = useReveals<HTMLElement>();
 
   return (
-    <section ref={ref} className="neu sec cost">
+    <section ref={ref} className="neu sec cost cost-orig">
       <div className="container">
         <div className="sec-head sec-head--center rv">
-          <span className="chapter">Kapitel 02 — <b>Die Konsequenz</b></span>
+          <p className="eyebrow-orig">Die Konsequenz</p>
           <h2>Ein Fehlversuch reicht, um das Potenzial <em>jahrelang</em> zu hemmen.</h2>
           <p>Verlorenes Geld können Sie wieder verdienen — der zweite Einführungsversuch wird jedoch schwer.</p>
         </div>

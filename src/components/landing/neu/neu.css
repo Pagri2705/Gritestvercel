@@ -237,6 +237,44 @@
 .neu .roi__basis strong { display: block; font-family: var(--serif); font-size: 1.35rem; font-weight: 540; }
 .neu .roi__basis span { font-size: 0.7rem; color: var(--ink-40); letter-spacing: 0.04em; }
 
+/* ═══ Original-Typografie-Bausteine (Schrift wie Bestandsseite) ═══ */
+.neu .eyebrow-orig {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: #1d4ed8; margin: 0 0 20px;
+  font-family: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ═══ KONSEQUENZ-Variante "cost-orig": Schrift/Größen wie Originalseite ═══ */
+.neu.cost-orig { font-family: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif; }
+.neu.cost-orig .sec-head h2 {
+  font-family: inherit; font-weight: 600; font-variation-settings: normal;
+  font-size: 1.9rem; letter-spacing: -0.03em; line-height: 1.1;
+}
+@media (min-width: 768px) { .neu.cost-orig .sec-head h2 { font-size: 2.8rem; } }
+.neu.cost-orig .sec-head h2 em { font-style: normal; font-weight: inherit; letter-spacing: inherit; }
+.neu.cost-orig .sec-head p { font-size: 0.95rem; }
+.neu.cost-orig .cost__no { font-family: inherit; font-weight: 700; font-variation-settings: normal; }
+.neu.cost-orig .cost__card h3 { font-family: inherit; font-weight: 700; font-variation-settings: normal; font-size: 0.95rem; }
+.neu.cost-orig .cost__card p { font-size: 0.9rem; }
+.neu.cost-orig .cost__closer { font-family: inherit; font-size: 1.1rem; font-weight: 600; line-height: 1.4; }
+@media (min-width: 768px) { .neu.cost-orig .cost__closer { font-size: 1.3rem; } }
+.neu.cost-orig .cost__closer em { font-style: normal; }
+
+/* ═══ PREISE-Variante "tiers-orig": Schrift/Größen wie Originalseite ═══ */
+.neu.tiers-orig { font-family: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif; }
+.neu.tiers-orig .sec-head h2 {
+  font-family: inherit; font-weight: 600; font-variation-settings: normal;
+  font-size: 1.9rem; letter-spacing: -0.02em; line-height: 1.1;
+}
+@media (min-width: 768px) { .neu.tiers-orig .sec-head h2 { font-size: 2.8rem; } }
+.neu.tiers-orig .sec-head h2 em { font-style: normal; font-weight: inherit; letter-spacing: inherit; }
+.neu.tiers-orig .tier__price {
+  font-family: inherit; font-weight: 800; font-variation-settings: normal;
+  font-size: 2.25rem; letter-spacing: -0.025em;
+}
+.neu.tiers-orig .tier__desc { font-size: 0.875rem; }
+.neu.tiers-orig .tier li { font-size: 0.875rem; }
+
 /* ═══ ROI-Variante "roi-orig": Schrift/Größen wie die Originalseite ═══
    (DM Sans statt Fraunces, Größen wie der alte Taschenrechner) */
 .neu.roi-orig { font-family: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif; }

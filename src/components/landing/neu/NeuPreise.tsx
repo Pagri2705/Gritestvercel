@@ -5,10 +5,10 @@ export function NeuPreise() {
   const ref = useReveals<HTMLElement>();
 
   return (
-    <section ref={ref} className="neu sec" id="angebote">
+    <section ref={ref} className="neu sec tiers-orig" id="pricing">
       <div className="container">
         <div className="sec-head sec-head--center rv">
-          <span className="chapter">Kapitel 07 — <b>Die Angebote</b></span>
+          <p className="eyebrow-orig">Die Angebote</p>
           <h2>Drei Wege. <em>Ein</em> Ziel: KI, die genutzt wird.</h2>
         </div>
         <div className="tiers">

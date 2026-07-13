@@ -7,7 +7,6 @@ import { StatsSection } from "@/components/landing/StatsSection";
 import { Problem } from "@/components/landing/Problem";
 import { UseCases } from "@/components/landing/UseCases";
 import { ChatTestimonials } from "@/components/landing/ChatTestimonials";
-import { Pricing } from "@/components/landing/Pricing";
 import { Faq } from "@/components/landing/Faq";
 import { WhyItFails } from "@/components/landing/WhyItFails";
 import { FailureCost } from "@/components/landing/FailureCost";
@@ -81,6 +80,8 @@ function Index() {
         <Problem />
         <WhyItFails />
         <FailureCost />
+        {/* VERGLEICH: neue Konsequenz-Sektion direkt unter der alten (FailureCost) — eine fliegt nach Entscheidung raus */}
+        <NeuKonsequenz />
         <Programm />
         <Lernkreislauf />
         <EigeneBildSektion />
@@ -88,7 +89,7 @@ function Index() {
         <UseCases />
         <ChatTestimonials />
         <NeuRoiRechner />
-        <Pricing />
+        <NeuPreise />
         <Faq />
         <FinalCta />
 
@@ -98,9 +99,7 @@ function Index() {
             weiter oben ziehen (z. B. <NeuKonsequenz /> anstelle von
             <FailureCost />). Löschen alter Sektionen erst nach Ansage.
             ═══════════════════════════════════════════════════════════ */}
-        <NeuKonsequenz />
         <NeuPraxisBento />
-        <NeuPreise />
         <NeuFinalCta />
 
         <SiteFooter />
