@@ -15,11 +15,11 @@ export function NeuRoiRechner() {
   const fill = `${((employees - 1) / 199) * 100}%`;
 
   return (
-    <section ref={ref} className="neu sec">
+    <section ref={ref} className="neu sec roi-orig">
       <div className="container">
         <div className="sec-head sec-head--center rv">
-          <span className="chapter">Kapitel 06 — <b>Die Rechnung</b></span>
-          <h2>Was kostet verschwendete Zeit <em>wirklich</em>?</h2>
+          <p className="roi-eyebrow">Die Rechnung</p>
+          <h2>Was kostet verschwendete Zeit wirklich?</h2>
           <p>Bewegen Sie den Regler — der Rest ist bereits einkalkuliert.</p>
         </div>
         <div className="roi__wrap shell rv">

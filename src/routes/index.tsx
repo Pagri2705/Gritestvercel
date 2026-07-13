@@ -7,7 +7,6 @@ import { StatsSection } from "@/components/landing/StatsSection";
 import { Problem } from "@/components/landing/Problem";
 import { UseCases } from "@/components/landing/UseCases";
 import { ChatTestimonials } from "@/components/landing/ChatTestimonials";
-import { RoiCalculator } from "@/components/landing/RoiCalculator";
 import { Pricing } from "@/components/landing/Pricing";
 import { Faq } from "@/components/landing/Faq";
 import { WhyItFails } from "@/components/landing/WhyItFails";
@@ -88,7 +87,7 @@ function Index() {
         <WirArbeitenMit />
         <UseCases />
         <ChatTestimonials />
-        <RoiCalculator />
+        <NeuRoiRechner />
         <Pricing />
         <Faq />
         <FinalCta />
@@ -101,7 +100,6 @@ function Index() {
             ═══════════════════════════════════════════════════════════ */}
         <NeuKonsequenz />
         <NeuPraxisBento />
-        <NeuRoiRechner />
         <NeuPreise />
         <NeuFinalCta />
 
