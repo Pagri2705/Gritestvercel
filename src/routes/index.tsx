@@ -14,7 +14,6 @@ import { Programm } from "@/components/landing/Programm";
 import { Lernkreislauf } from "@/components/landing/Lernkreislauf";
 import { EigeneBildSektion } from "@/components/landing/EigeneBildSektion";
 import { WirArbeitenMit } from "@/components/landing/WirArbeitenMit";
-import { FinalCta } from "@/components/landing/FinalCta";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 // ═══ NEUE PREMIUM-SEKTIONEN (isoliert unter components/landing/neu/) ═══
 import { NeuKonsequenz } from "@/components/landing/neu/NeuKonsequenz";
@@ -91,14 +90,7 @@ function Index() {
         <NeuRoiRechner />
         <NeuPreise />
         <Faq />
-        <FinalCta />
-
-        {/* ═══════════════════════════════════════════════════════════
-            NEUE PREMIUM-SEKTIONEN — zum Sichten unten angehängt.
-            Verschieben: einfach die gewünschte Zeile an die Zielposition
-            weiter oben ziehen (z. B. <NeuKonsequenz /> anstelle von
-            <FailureCost />). Löschen alter Sektionen erst nach Ansage.
-            ═══════════════════════════════════════════════════════════ */}
+        {/* Neue Sektionen: Praxis-Bento über dem finalen CTA */}
         <NeuPraxisBento />
         <NeuFinalCta />
 

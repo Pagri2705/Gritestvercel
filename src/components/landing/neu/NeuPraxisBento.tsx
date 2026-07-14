@@ -5,10 +5,10 @@ export function NeuPraxisBento() {
   const ref = useReveals<HTMLElement>();
 
   return (
-    <section ref={ref} className="neu sec" id="praxis">
+    <section ref={ref} className="neu sec bento-orig" id="praxis">
       <div className="container">
         <div className="sec-head rv">
-          <span className="chapter">Kapitel 04 — <b>Die Praxis</b></span>
+          <p className="eyebrow-orig">Die Praxis</p>
           <h2>So wird KI im Unternehmen <em>täglich</em> genutzt.</h2>
           <p>Keine theoretischen Konzepte — reale Anwendungen, die Zeit sparen.</p>
         </div>
