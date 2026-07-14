@@ -240,7 +240,7 @@
 /* ═══ Original-Typografie-Bausteine (Schrift wie Bestandsseite) ═══ */
 .neu .eyebrow-orig {
   font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.12em; color: #1d4ed8; margin: 0 0 20px;
+  letter-spacing: 0.12em; color: #0f2233; margin: 0 0 20px;
   font-family: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -280,7 +280,7 @@
 .neu.roi-orig { font-family: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif; }
 .neu.roi-orig .roi-eyebrow {
   font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.12em; color: #1d4ed8; margin: 0 0 20px;
+  letter-spacing: 0.12em; color: #0f2233; margin: 0 0 20px;
 }
 .neu.roi-orig .sec-head h2 {
   font-family: inherit; font-weight: 600; font-variation-settings: normal;
