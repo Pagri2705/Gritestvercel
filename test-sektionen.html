@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Neue Sektionen Vorschau</title>
+<!--
+  VORSCHAU: Nur die neuen/verbesserten Sektionen (kein Hero, kein Rest).
+  Reihenfolge = vorgeschlagene Position auf der echten Seite, direkt nach dem Kundenfeedback:
+  1. Wer dahinter steht (Gründer)   2. In drei Schritten (Ablauf bis Workshop)   3. Preise (verbessert)
+  Design-Sprache: identisch zur bestehenden Seite (DM Sans / Plus Jakarta, Ink-Navy, Brand-Blau, runde Karten).
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand: oklch(0.432 0.195 258);
+  --ink:#0F2942;
+  --ink-muted:#4E6E8E;
+  --border:#CBD5E1;
+  --surface:#f6f7f9;
+  --font-sans:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  --font-display:"Plus Jakarta Sans","DM Sans",sans-serif;
+  --shadow-card:0 1px 3px rgba(15,41,66,.08), 0 4px 12px rgba(15,41,66,.06);
+  --shadow-elevated:0 20px 50px -20px rgba(15,41,66,.18), 0 8px 20px -10px rgba(15,41,66,.1);
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ background:#fff; color:var(--ink); font-family:var(--font-sans); line-height:1.65; -webkit-font-smoothing:antialiased; }
+img{ max-width:100%; display:block; }
+button{ font-family:inherit; cursor:pointer; }
+.wrap{ max-width:80rem; margin:0 auto; padding:0 1.5rem; }
+.eyebrow{ font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:var(--brand); margin-bottom:1.25rem; }
+h2{ font-family:var(--font-display); font-size:1.9rem; font-weight:600; line-height:1.1; letter-spacing:-0.02em; }
+@media(min-width:768px){ h2{ font-size:2.8rem; } }
+.sub{ margin-top:1rem; font-size:1rem; color:var(--ink-muted); max-width:38rem; }
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5rem; height:2.9rem; padding:0 1.5rem;
+  background:var(--brand); color:#fff; border:1px solid var(--brand); border-radius:.5rem; font-size:.9rem; font-weight:600; transition:opacity .2s; }
+.btn:hover{ opacity:.9; }
+.btn svg{ width:16px; height:16px; }
+.divider-note{ text-align:center; font-size:.8rem; color:var(--ink-muted); padding:1rem 1.5rem; background:#fbfcfd; border-top:1px dashed var(--border); }
+
+/* ===================== 1. GRÜNDER ===================== */
+.founder{ background:#f6f7f9; padding:4rem 0; }
+@media(min-width:768px){ .founder{ padding:6rem 0; } }
+.founder-grid{ display:grid; gap:2.5rem; align-items:center; }
+@media(min-width:900px){ .founder-grid{ grid-template-columns:5fr 7fr; gap:5rem; } }
+.founder-photo{ position:relative; border-radius:1rem; overflow:hidden; aspect-ratio:4/5; max-width:420px; box-shadow:var(--shadow-elevated); }
+.founder-photo img{ width:100%; height:100%; object-fit:cover; }
+.founder-copy h2{ max-width:16ch; }
+.founder-copy .lead{ margin-top:1.25rem; font-size:1.05rem; color:var(--ink-muted); max-width:34rem; }
+.founder-points{ margin-top:2rem; display:flex; flex-direction:column; gap:1rem; }
+.founder-point{ display:flex; align-items:flex-start; gap:.9rem; }
+.founder-point .dot{ flex-shrink:0; margin-top:.45rem; width:8px; height:8px; border-radius:99px; background:var(--brand); }
+.founder-point p{ font-size:.95rem; color:var(--ink); }
+.founder-point p span{ color:var(--ink-muted); }
+.founder-sign{ margin-top:2.25rem; display:flex; align-items:center; gap:1rem; }
+.founder-sign .avatar{ width:46px; height:46px; border-radius:99px; background:var(--ink); color:#fff; display:grid; place-items:center; font-family:var(--font-display); font-weight:700; }
+.founder-sign b{ display:block; font-size:.95rem; font-weight:700; }
+.founder-sign span{ font-size:.82rem; color:var(--ink-muted); }
+@media(max-width:899px){ .founder-photo{ margin:0 auto; } .founder-copy{ text-align:center; }
+  .founder-copy h2, .founder-copy .lead{ margin-left:auto; margin-right:auto; }
+  .founder-points{ text-align:left; max-width:26rem; margin-left:auto; margin-right:auto; }
+  .founder-sign{ justify-content:center; } }
+
+/* ===================== 2. DREI SCHRITTE ===================== */
+.steps{ background:#fff; padding:4rem 0; }
+@media(min-width:768px){ .steps{ padding:6rem 0; } }
+.steps-head{ text-align:center; max-width:44rem; margin:0 auto 3.5rem; }
+.steps-head .sub{ margin-left:auto; margin-right:auto; }
+.steps-grid{ display:grid; gap:1rem; counter-reset:step; }
+@media(min-width:900px){ .steps-grid{ grid-template-columns:repeat(3,1fr); gap:1.25rem; } }
+.step{ position:relative; background:#fff; border:1px solid var(--border); border-radius:1rem; padding:2rem 1.75rem 1.9rem; box-shadow:var(--shadow-card); }
+.step::before{ counter-increment:step; content:counter(step);
+  display:grid; place-items:center; width:40px; height:40px; border-radius:99px;
+  background:oklch(0.432 0.195 258 / .09); color:var(--brand);
+  font-family:var(--font-display); font-weight:800; font-size:1.05rem; margin-bottom:1.25rem; }
+.step h3{ font-family:var(--font-display); font-size:1.15rem; font-weight:700; letter-spacing:-0.01em; line-height:1.25; }
+.step p{ margin-top:.6rem; font-size:.92rem; color:var(--ink-muted); }
+.step .meta{ margin-top:1.1rem; display:inline-flex; align-items:center; gap:.45rem; font-size:.78rem; font-weight:600; color:var(--brand); }
+.step .meta svg{ width:14px; height:14px; }
+.steps-cta{ margin-top:2.75rem; text-align:center; }
+.steps-cta .hint{ margin-top:.8rem; font-size:.82rem; color:var(--ink-muted); }
+
+/* ===================== 3. PREISE (VERBESSERT) ===================== */
+.pricing{ background:#f6f7f9; padding:4rem 0 0; }
+@media(min-width:768px){ .pricing{ padding:6rem 0 0; } }
+.pricing-head{ text-align:center; max-width:44rem; margin:0 auto 3.5rem; }
+.pricing-head .sub{ margin-left:auto; margin-right:auto; }
+.tiers{ display:grid; gap:1.5rem; padding-bottom:3.5rem; }
+@media(min-width:1024px){ .tiers{ grid-template-columns:repeat(3,1fr); align-items:stretch; } }
+.tier{ position:relative; display:flex; flex-direction:column; border-radius:1rem; border:1px solid var(--border); background:#fff; padding:2rem; box-shadow:var(--shadow-card); }
+.tier.featured{ border-color:var(--ink); background:var(--ink); color:#fff; box-shadow:var(--shadow-elevated); }
+@media(min-width:1024px){ .tier.featured{ margin:-1rem 0; padding-top:3rem; padding-bottom:3rem; } }
+.tier-badge{ position:absolute; left:50%; top:0; transform:translate(-50%,-50%); border-radius:999px; background:var(--brand); color:#fff; padding:.3rem 1rem; font-size:.72rem; font-weight:700; letter-spacing:.02em; }
+.tier-name{ font-family:var(--font-display); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; }
+.tier-for{ margin-top:.35rem; font-size:.8rem; color:var(--ink-muted); }
+.tier.featured .tier-for{ color:rgba(255,255,255,.65); }
+.tier-price{ margin-top:1.5rem; display:flex; align-items:baseline; gap:.35rem; }
+.tier-price b{ font-family:var(--font-display); font-size:2.4rem; font-weight:800; letter-spacing:-0.03em; }
+.tier-price span{ font-size:.85rem; color:var(--ink-muted); }
+.tier.featured .tier-price span{ color:rgba(255,255,255,.6); }
+.tier-note{ margin-top:.2rem; font-size:.78rem; color:var(--ink-muted); }
+.tier.featured .tier-note{ color:rgba(255,255,255,.55); }
+.tier ul{ list-style:none; margin-top:1.75rem; flex:1; display:flex; flex-direction:column; gap:.7rem; border-top:1px solid var(--border); padding-top:1.75rem; }
+.tier.featured ul{ border-top-color:rgba(255,255,255,.2); }
+.tier li{ display:flex; align-items:flex-start; gap:.6rem; font-size:.88rem; }
+.tier li svg{ margin-top:3px; width:15px; height:15px; flex-shrink:0; color:var(--brand); }
+.tier.featured li svg{ color:#8fb3ff; }
+.tier.featured li span{ color:rgba(255,255,255,.9); }
+.tier li.highlight{ font-weight:600; }
+.tier .btn{ margin-top:1.9rem; width:100%; }
+.tier.featured .btn{ background:#fff; color:var(--brand); border-color:#fff; }
+.pricing-foot{ background:#fff; border-top:1px solid var(--border); }
+.pricing-foot-inner{ max-width:80rem; margin:0 auto; padding:1.4rem 1.5rem; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:.6rem 2.5rem; font-size:.85rem; color:var(--ink-muted); text-align:center; }
+.pricing-foot-inner .item{ display:inline-flex; align-items:center; gap:.5rem; }
+.pricing-foot-inner svg{ width:15px; height:15px; color:var(--brand); flex-shrink:0; }
+
+/* ===== Reveal + Count-up ===== */
+.rv{ opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); transition-delay:var(--d,0ms); }
+.rv.in{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){ .rv{ opacity:1; transform:none; transition:none; } }
+
+/* ===================== 4. STATS (ÜBERARBEITET) ===================== */
+.stats2{ background:#fff; padding:4rem 0; }
+@media(min-width:768px){ .stats2{ padding:6rem 0; } }
+.stats2-head{ max-width:44rem; margin-bottom:3rem; }
+.stats2-grid{ display:grid; border-top:1px solid var(--border); }
+@media(min-width:768px){ .stats2-grid{ grid-template-columns:repeat(3,1fr); } }
+.stat2{ padding:2.2rem 0 2.4rem; border-bottom:1px solid var(--border); }
+@media(min-width:768px){ .stat2{ padding:2.8rem 2.5rem; border-bottom:none; }
+  .stat2:first-child{ padding-left:0; }
+  .stat2 + .stat2{ border-left:1px solid var(--border); } }
+.stat2 b{ display:block; font-family:var(--font-display); font-weight:800; letter-spacing:-0.04em; line-height:1;
+  font-size:clamp(2.8rem, 5vw, 4.2rem); font-variant-numeric:tabular-nums; }
+.stat2 b em{ font-style:normal; color:var(--brand); }
+.stat2 .l1{ display:block; margin-top:.75rem; font-size:.95rem; font-weight:600; color:var(--ink); }
+.stat2 .l2{ display:block; margin-top:.2rem; font-size:.85rem; color:var(--ink-muted); max-width:24rem; }
+
+/* ===================== 5. GRÜNDE (ÜBERARBEITET) ===================== */
+.wif2{ background:#f6f7f9; padding:4rem 0; }
+@media(min-width:768px){ .wif2{ padding:6rem 0; } }
+.wif2-grid{ display:grid; gap:2.5rem; }
+@media(min-width:900px){ .wif2-grid{ grid-template-columns:5fr 7fr; gap:5rem; align-items:start; }
+  .wif2-left{ position:sticky; top:3rem; } }
+.wif2-rows{ border-top:1px solid var(--border); }
+.wif2-row{ display:grid; grid-template-columns:3.2rem 1fr; gap:1rem; padding:1.5rem 0; border-bottom:1px solid var(--border); align-items:baseline; }
+.wif2-row .no{ font-family:var(--font-display); font-weight:800; font-size:.95rem; color:var(--brand); font-variant-numeric:tabular-nums; }
+.wif2-row h3{ font-family:var(--font-display); font-size:1.12rem; font-weight:700; letter-spacing:-0.01em; line-height:1.3; }
+.wif2-row p{ margin-top:.35rem; font-size:.9rem; color:var(--ink-muted); max-width:32rem; }
+.wif2-more{ margin:2.2rem 0 .9rem; font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-muted); }
+.wif2-row.small h3{ font-size:1rem; }
+.wif2-row.small p{ font-size:.85rem; }
+
+/* ===================== 6. VERÄNDERUNG / 5 PUNKTE (ÜBERARBEITET) ===================== */
+.eb2{ background:#fff; padding:4rem 0; }
+@media(min-width:768px){ .eb2{ padding:6rem 0; } }
+.eb2-grid{ display:grid; gap:2.5rem; }
+@media(min-width:900px){ .eb2-grid{ grid-template-columns:5fr 7fr; gap:5rem; align-items:start; }
+  .eb2-left{ position:sticky; top:3rem; } }
+.eb2-img{ margin-top:2rem; border-radius:1rem; overflow:hidden; aspect-ratio:4/3; box-shadow:var(--shadow-card); }
+.eb2-img img{ width:100%; height:100%; object-fit:cover; }
+.eb2-rows{ display:flex; flex-direction:column; gap:.9rem; }
+.eb2-row{ background:#fff; border:1px solid var(--border); border-radius:1rem; padding:1.5rem 1.6rem; box-shadow:var(--shadow-card); }
+.eb2-row .head{ display:flex; align-items:baseline; gap:.9rem; }
+.eb2-row .no{ font-family:var(--font-display); font-weight:800; font-size:.9rem; color:var(--brand); flex-shrink:0; font-variant-numeric:tabular-nums; }
+.eb2-row h3{ font-family:var(--font-display); font-size:1.08rem; font-weight:700; letter-spacing:-0.01em; }
+.eb2-compare{ margin-top:1rem; display:grid; gap:.5rem; }
+@media(min-width:640px){ .eb2-compare{ grid-template-columns:1fr 1fr; gap:1rem; } }
+.eb2-compare .cell{ display:flex; align-items:flex-start; gap:.55rem; font-size:.87rem; line-height:1.55; }
+.eb2-compare .cell svg{ width:14px; height:14px; flex-shrink:0; margin-top:4px; }
+.eb2-compare .was{ color:var(--ink-muted); }
+.eb2-compare .was svg{ color:#c2410c; }
+.eb2-compare .now{ color:var(--ink); font-weight:500; }
+.eb2-compare .now svg{ color:var(--brand); }
+
+/* ===================== 7. PROBLEM 78% (ÜBERARBEITET) ===================== */
+.prob2{ background:#f6f7f9; padding:4rem 0; }
+@media(min-width:768px){ .prob2{ padding:6rem 0; } }
+.prob2-top{ display:grid; gap:1.5rem; align-items:end; margin-bottom:3rem; }
+@media(min-width:900px){ .prob2-top{ grid-template-columns:auto 1fr; gap:4rem; } }
+.prob2-num{ font-family:var(--font-display); font-weight:800; letter-spacing:-0.05em; line-height:.85;
+  font-size:clamp(5.5rem, 14vw, 11rem); color:#e53e3e; }
+.prob2-num small{ font-size:.38em; }
+.prob2-copy h2{ max-width:20ch; }
+.prob2-copy p{ margin-top:.9rem; font-size:1.02rem; color:var(--ink-muted); max-width:30rem; }
+.prob2-visual{ position:relative; border-radius:1rem; overflow:hidden; min-height:380px; box-shadow:var(--shadow-elevated); }
+@media(min-width:768px){ .prob2-visual{ min-height:460px; } }
+.prob2-visual img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.prob2-visual .scrim{ position:absolute; inset:0; background:linear-gradient(to top, rgba(8,12,20,.8) 0%, rgba(8,12,20,.25) 55%, rgba(8,12,20,.1) 100%); }
+.prob2-visual figure{ position:absolute; left:0; right:0; bottom:0; padding:1.8rem 1.5rem; }
+@media(min-width:768px){ .prob2-visual figure{ padding:2.5rem 2.75rem; max-width:40rem; } }
+.prob2-visual .q1{ font-family:var(--font-display); font-size:clamp(1.35rem, 2.6vw, 1.9rem); font-weight:800; letter-spacing:-0.02em; line-height:1.15; color:#fff; }
+.prob2-visual .q1 em{ font-style:normal; color:#ff9d99; }
+.prob2-visual .q2{ margin-top:.8rem; font-size:.93rem; line-height:1.6; color:rgba(255,255,255,.82); max-width:30rem; }
+
+/* ===================== 8. USE CASES (ÜBERARBEITET: Bento) ===================== */
+.uc2{ background:#fff; padding:4rem 0; }
+@media(min-width:768px){ .uc2{ padding:6rem 0; } }
+.uc2-head{ text-align:center; max-width:44rem; margin:0 auto 3rem; }
+.uc2-head .sub{ margin-left:auto; margin-right:auto; }
+.uc2-grid{ display:grid; gap:1rem; }
+@media(min-width:900px){ .uc2-grid{ grid-template-columns:repeat(6,1fr); }
+  .uc2-card:nth-child(1){ grid-column:span 4; }
+  .uc2-card:nth-child(2){ grid-column:span 2; }
+  .uc2-card:nth-child(3){ grid-column:span 2; }
+  .uc2-card:nth-child(4){ grid-column:span 4; }
+  .uc2-card:nth-child(5){ grid-column:span 3; }
+  .uc2-card:nth-child(6){ grid-column:span 3; }
+  .uc2-card:nth-child(1) ul, .uc2-card:nth-child(4) ul{ display:grid; grid-template-columns:1fr 1fr; gap:.55rem 1.4rem; } }
+.uc2-card{ display:flex; flex-direction:column; border-radius:1rem; border:1px solid var(--border); background:#fff; padding:1.6rem; box-shadow:var(--shadow-card);
+  transition:transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s; }
+.uc2-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-elevated); }
+.uc2-card .head{ display:flex; align-items:center; gap:.8rem; margin-bottom:1.2rem; }
+.uc2-card .head img{ width:42px; height:42px; flex-shrink:0; }
+.uc2-card .head span{ font-family:var(--font-display); font-size:1rem; font-weight:700; letter-spacing:-0.01em; line-height:1.25; }
+.uc2-card ul{ list-style:none; margin-top:auto; border-top:1px solid var(--border); padding-top:1.1rem; display:flex; flex-direction:column; gap:.55rem; }
+.uc2-card li{ display:flex; align-items:center; gap:.6rem; font-size:.87rem; color:var(--ink-muted); }
+.uc2-card li .ticons{ display:flex; gap:3px; flex-shrink:0; }
+.uc2-card li .ticons img{ width:15px; height:15px; }
+.uc2-card li svg.chk{ color:var(--brand); flex-shrink:0; width:13px; height:13px; }
+
+/* ===================== 9. FÜR WEN (NEU) ===================== */
+.fit{ background:#f6f7f9; padding:4rem 0; }
+@media(min-width:768px){ .fit{ padding:6rem 0; } }
+.fit-head{ text-align:center; max-width:44rem; margin:0 auto 3rem; }
+.fit-head .sub{ margin-left:auto; margin-right:auto; }
+.fit-grid{ display:grid; gap:1.25rem; max-width:60rem; margin:0 auto; }
+@media(min-width:800px){ .fit-grid{ grid-template-columns:1fr 1fr; } }
+.fit-col{ border-radius:1rem; padding:2rem 1.9rem; }
+.fit-col.yes{ background:var(--ink); color:#fff; box-shadow:var(--shadow-elevated); }
+.fit-col.no{ background:#fff; border:1px solid var(--border); box-shadow:var(--shadow-card); }
+.fit-col h3{ font-family:var(--font-display); font-size:1.15rem; font-weight:700; letter-spacing:-0.01em; margin-bottom:1.4rem; }
+.fit-col.yes h3{ color:#fff; }
+.fit-col ul{ list-style:none; display:flex; flex-direction:column; gap:.9rem; }
+.fit-col li{ display:flex; align-items:flex-start; gap:.7rem; font-size:.92rem; line-height:1.55; }
+.fit-col li svg{ width:15px; height:15px; flex-shrink:0; margin-top:4px; }
+.fit-col.yes li{ color:rgba(255,255,255,.9); }
+.fit-col.yes li svg{ color:#8fb3ff; }
+.fit-col.no li{ color:var(--ink-muted); }
+.fit-col.no li svg{ color:#c2410c; }
+.fit-foot{ margin-top:2.25rem; text-align:center; font-size:.9rem; color:var(--ink-muted); }
+</style>
+</head>
+<body>
+
+<div class="divider-note">Vorschau: Diese Sektionen kämen auf der echten Seite direkt nach dem Kundenfeedback (Handy-Sektion).</div>
+
+<!-- ========== 1. WER DAHINTER STEHT ========== -->
+<section class="founder">
+  <div class="wrap">
+    <div class="founder-grid">
+      <div class="founder-photo">
+        <!-- TODO: Echtes Foto von Patrick einsetzen (Hochformat, ca. 800x1000). Platzhalter: Workshop-Bild -->
+        <img src="public/ewa/ewa1.jpg" alt="Patrick Griffiths im Workshop" />
+      </div>
+      <div class="founder-copy">
+        <p class="eyebrow">Wer dahinter steht</p>
+        <h2>Sie arbeiten direkt mit dem Gründer.</h2>
+        <p class="lead">
+          KI-Einführung ist Vertrauenssache. Deshalb gibt es bei uns keine wechselnden
+          Junior-Berater: Analyse, Workshop und Begleitung macht die Person, die Sie
+          im Erstgespräch kennenlernen.
+        </p>
+        <div class="founder-points">
+          <div class="founder-point"><span class="dot"></span>
+            <p><b>12+ Unternehmen begleitet</b> <span>– vom Haustechnik-Betrieb bis zum Pflegedienst.</span></p>
+          </div>
+          <div class="founder-point"><span class="dot"></span>
+            <p><b>91+ Mitarbeiter geschult</b> <span>– vom KI-Einsteiger bis zum erfahrenen Anwender.</span></p>
+          </div>
+          <div class="founder-point"><span class="dot"></span>
+            <p><b>Spezialisiert auf den Mittelstand</b> <span>– für Teams ohne eigene KI- oder IT-Abteilung.</span></p>
+          </div>
+        </div>
+        <div class="founder-sign">
+          <div class="avatar">PG</div>
+          <div>
+            <b>Patrick Griffiths</b>
+            <span>Gründer, Ventar Digital</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 2. IN DREI SCHRITTEN ========== -->
+<section class="steps">
+  <div class="wrap">
+    <div class="steps-head">
+      <p class="eyebrow">Der Einstieg</p>
+      <h2>In drei Schritten zum Workshop</h2>
+      <p class="sub">Kein Projektplan, kein Pflichtenheft. Der Einstieg kostet Sie ein Gespräch.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <h3>Kostenloses Erstgespräch</h3>
+        <p>Wir sprechen über Ihr Unternehmen, Ihre Abläufe und wo KI realistisch Zeit spart. Sie bekommen eine ehrliche Einschätzung, auch wenn die lautet: noch nicht.</p>
+        <span class="meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          ca. 30 Minuten, unverbindlich
+        </span>
+      </div>
+      <div class="step">
+        <h3>Analyse Ihrer Abläufe</h3>
+        <p>Vor dem Workshop schauen wir uns Ihre typischen Aufgaben, Dokumente und Kommunikationswege an und bereiten Use Cases vor, die zu Ihrem Alltag passen.</p>
+        <span class="meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          auf Ihr Unternehmen zugeschnitten
+        </span>
+      </div>
+      <div class="step">
+        <h3>Workshop &amp; Umsetzung</h3>
+        <p>Ihr Team lernt an den eigenen Aufgaben und geht mit fertigen Anwendungen raus. Danach begleiten wir die Umsetzung, bis KI im Alltag angekommen ist.</p>
+        <span class="meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>
+          inkl. Nachbetreuung
+        </span>
+      </div>
+    </div>
+    <div class="steps-cta">
+      <button class="btn">Kostenloses Erstgespräch
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="hint">Im Schnitt melden wir uns innerhalb eines Werktags zurück.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 3. PREISE (VERBESSERT) ========== -->
+<section class="pricing">
+  <div class="wrap">
+    <div class="pricing-head">
+      <p class="eyebrow">Preise</p>
+      <h2>Workshops, die sich für Unternehmen auszahlen</h2>
+      <p class="sub">Ein einmaliger Workshop als Fundament. Die laufenden Pakete nur, wenn Sie sie brauchen.</p>
+    </div>
+    <div class="tiers">
+
+      <div class="tier">
+        <div class="tier-name">KI Einführung &amp; Umsetzung</div>
+        <div class="tier-for">Für Teams, die den Einstieg einmal richtig machen wollen</div>
+        <div class="tier-price"><b>3.199&nbsp;€</b><span>einmalig</span></div>
+        <div class="tier-note">Förderfähig für viele KMU (s.&nbsp;u.)</div>
+        <ul>
+          <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Individuelle Unternehmensanalyse vorab</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Praxisnaher Live-Workshop mit Ihrem Team</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Reale Anwendungen direkt im Workshop gebaut</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Nachbetreuung &amp; Fragen-Session</span></li>
+        </ul>
+        <button class="btn">Jetzt anfragen</button>
+      </div>
+
+      <div class="tier featured">
+        <div class="tier-badge">Meistgewählt</div>
+        <div class="tier-name">Laufende KI Begleitung</div>
+        <div class="tier-for">Für Teams, die dauerhaft am Ball bleiben wollen</div>
+        <div class="tier-price"><b>499&nbsp;€</b><span>/ Monat</span></div>
+        <div class="tier-note">Monatlich kündbar</div>
+        <ul>
+          <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Monatliche Live-Sessions mit Ihrem Team</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Neue Tools &amp; Updates verständlich erklärt</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Direkter Draht für Fragen zwischen den Terminen</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Individuelle Use Cases weiterentwickeln</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Interne Wissensdokumentation</span></li>
+        </ul>
+        <button class="btn">Jetzt anfragen</button>
+      </div>
+
+      <div class="tier">
+        <div class="tier-name">KI Content &amp; Sichtbarkeit</div>
+        <div class="tier-for">Für Unternehmen, die sichtbar werden wollen</div>
+        <div class="tier-price"><b>699&nbsp;€</b><span>/ Monat</span></div>
+        <div class="tier-note">Monatlich kündbar</div>
+        <ul>
+          <li class="highlight"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>LinkedIn &amp; Social-Media-Content</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Newsletter &amp; Texte</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Kampagnenideen &amp; Vorlagen</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Monatliche Content-Strategie</span></li>
+        </ul>
+        <button class="btn">Jetzt anfragen</button>
+      </div>
+
+    </div>
+  </div>
+  <div class="pricing-foot">
+    <div class="pricing-foot-inner">
+      <span class="item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/></svg>
+        Viele KMU können den Workshop über das Qualifizierungschancengesetz fördern lassen. Wir helfen bei der Antragstellung.
+      </span>
+      <span class="item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        Amortisiert sich typischerweise in 4 bis 8 Wochen.
+      </span>
+    </div>
+  </div>
+</section>
+
+<div class="divider-note">Ab hier: 3 bestehende Sektionen deiner Seite, überarbeitet zum Vergleich.</div>
+
+<!-- ========== 4. STATS (ÜBERARBEITET: "Der Beweis liegt in den Zahlen") ========== -->
+<section class="stats2">
+  <div class="wrap">
+    <div class="stats2-head rv">
+      <p class="eyebrow">Der Beweis</p>
+      <h2>Die Zahlen sprechen für sich.</h2>
+    </div>
+    <div class="stats2-grid">
+      <div class="stat2 rv"><b><span class="count" data-to="12">0</span><em>+</em></b>
+        <span class="l1">Unternehmen begleitet</span>
+        <span class="l2">Vom Haustechnik-Betrieb bis zum Pflegedienst.</span>
+      </div>
+      <div class="stat2 rv" style="--d:120ms"><b><span class="count" data-to="91">0</span><em>+</em></b>
+        <span class="l1">Mitarbeiter geschult</span>
+        <span class="l2">Vom KI-Einsteiger bis zum erfahrenen Anwender.</span>
+      </div>
+      <div class="stat2 rv" style="--d:240ms"><b><span class="count" data-to="3850" data-fmt="de">0</span><em>&nbsp;€</em></b>
+        <span class="l1">Ersparnis pro Mitarbeiter und Jahr</span>
+        <span class="l2">Bei 40 Minuten Zeitgewinn pro Tag und 30 € Stundensatz.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 5. GRÜNDE (ÜBERARBEITET: "Das sind die häufigsten Gründe") ========== -->
+<section class="wif2">
+  <div class="wrap">
+    <div class="wif2-grid">
+      <div class="wif2-left rv">
+        <p class="eyebrow">Woran es liegt</p>
+        <h2>Die häufigsten Gründe.</h2>
+        <p class="sub">Immer wieder dieselben Fehler. Und genau die lassen sich vermeiden.</p>
+      </div>
+      <div>
+        <div class="wif2-rows">
+          <div class="wif2-row rv"><span class="no">01</span>
+            <div><h3>KI einführen ohne klaren Plan</h3>
+            <p>Ohne Strategie verpufft das Thema schnell wieder, schlichtweg weil keine konkreten Anwendungsfälle gefunden werden.</p></div>
+          </div>
+          <div class="wif2-row rv"><span class="no">02</span>
+            <div><h3>Mitarbeiter nicht einbinden</h3>
+            <p>Widerstand und Desinteresse bremsen jede Initiative.</p></div>
+          </div>
+          <div class="wif2-row rv"><span class="no">03</span>
+            <div><h3>Nur technikaffine Kollegen schulen</h3>
+            <p>Mitarbeiter, die etwas länger brauchen, werden liegen gelassen. Das Wissen kommt nicht bei allen an.</p></div>
+          </div>
+          <div class="wif2-row rv"><span class="no">04</span>
+            <div><h3>Einmalige Demo statt Begleitung</h3>
+            <p>Nach dem Workshop fehlt die Umsetzung im Alltag und bei kleinen Problemen wird schnell aufgegeben.</p></div>
+          </div>
+        </div>
+        <p class="wif2-more rv">Außerdem häufig</p>
+        <div class="wif2-rows">
+          <div class="wif2-row small rv"><span class="no">05</span>
+            <div><h3>Falsche Tool-Auswahl</h3>
+            <p>Man kauft das erstbeste KI-Tool, ohne zu prüfen, ob es zum Team passt.</p></div>
+          </div>
+          <div class="wif2-row small rv"><span class="no">06</span>
+            <div><h3>Datenschutz ignoriert</h3>
+            <p>Mitarbeiter nutzen KI unkontrolliert mit sensiblen Firmendaten.</p></div>
+          </div>
+          <div class="wif2-row small rv"><span class="no">07</span>
+            <div><h3>Kein Pilotprojekt</h3>
+            <p>Direkt unternehmensweiter Rollout statt kleinem Test zuerst.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 6. DIE 5 PUNKTE (ÜBERARBEITET: "Was sich verändert hat") ========== -->
+<section class="eb2">
+  <div class="wrap">
+    <div class="eb2-grid">
+      <div class="eb2-left rv">
+        <p class="eyebrow">Ergebnisse</p>
+        <h2>Was sich bei unseren Kunden verändert hat</h2>
+        <p class="sub">Das hier sind die am stärksten spürbaren Veränderungen, jeweils vorher und heute.</p>
+        <div class="eb2-img"><img src="public/46fd.png" alt="" /></div>
+      </div>
+      <div class="eb2-rows" id="eb2Rows"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 7. PROBLEM (ÜBERARBEITET: "78% scheitern") ========== -->
+<section class="prob2">
+  <div class="wrap">
+    <div class="prob2-top">
+      <div class="prob2-num rv">78<small>%</small></div>
+      <div class="prob2-copy rv" style="--d:120ms">
+        <h2>der KI-Einführungen scheitern.</h2>
+        <p>Es liegt weder an der Technologie noch an mangelndem Wissen.</p>
+      </div>
+    </div>
+    <div class="prob2-visual rv">
+      <img src="public/ba95.png" alt="" />
+      <div class="scrim"></div>
+      <figure>
+        <p class="q1">Viel Aufwand. <em>Kein Fortschritt.</em></p>
+        <p class="q2">Ohne klare Struktur drehen sich Teams im Kreis: Tools werden ausprobiert, wieder verworfen und am Ende bleibt alles beim Alten.</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 8. USE CASES (ÜBERARBEITET: Bento statt 6 gleicher Karten) ========== -->
+<section class="uc2">
+  <div class="wrap">
+    <div class="uc2-head rv">
+      <p class="eyebrow">Anwendungen</p>
+      <h2>So wird KI im Unternehmen praktisch genutzt</h2>
+      <p class="sub">Keine theoretischen Konzepte. Reale Anwendungen, die in Ihrem Unternehmen täglich Zeit sparen.</p>
+    </div>
+    <div class="uc2-grid" id="uc2Grid"></div>
+  </div>
+</section>
+
+<!-- ========== 9. FÜR WEN (NEU) ========== -->
+<section class="fit">
+  <div class="wrap">
+    <div class="fit-head rv">
+      <p class="eyebrow">Ehrliche Einordnung</p>
+      <h2>Für wen das passt und für wen nicht</h2>
+      <p class="sub">Wir arbeiten lieber mit den richtigen Unternehmen als mit möglichst vielen.</p>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-col yes rv">
+        <h3>Das Programm passt, wenn Sie …</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>ein Team zwischen 5 und 100 Mitarbeitern haben, das täglich mit E-Mails, Dokumenten oder Angeboten arbeitet</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>wollen, dass alle Mitarbeiter KI nutzen können, nicht nur die Technikaffinen</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Wert auf Datenschutz legen und wissen wollen, was ins Tool darf und was nicht</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>nach dem Workshop eigenständig weiterarbeiten wollen, ohne Dauer-Beratervertrag</span></li>
+        </ul>
+      </div>
+      <div class="fit-col no rv" style="--d:120ms">
+        <h3>Es passt nicht, wenn Sie …</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>eine fertige Software kaufen wollen, statt Ihr Team zu befähigen</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>erwarten, dass KI ohne jede Einarbeitung sofort alles automatisiert</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>niemanden im Team haben, der sich um die Umsetzung kümmern darf</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>eine individuelle Softwareentwicklung suchen, das machen wir nicht</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fit-foot rv">Unsicher, wo Sie stehen? Genau dafür ist das kostenlose Erstgespräch da.</p>
+  </div>
+</section>
+
+<script>
+/* Reveal on scroll */
+const rvObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rvObs.unobserve(e.target); } });
+}, { threshold: 0.18, rootMargin: '0px 0px -30px 0px' });
+
+/* Count-up */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fmtDe = new Intl.NumberFormat('de-DE');
+const countObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    countObs.unobserve(e.target);
+    const to = Number(e.target.dataset.to);
+    const useFmt = e.target.dataset.fmt === 'de';
+    if (reduceMotion) { e.target.textContent = useFmt ? fmtDe.format(to) : to; return; }
+    const t0 = performance.now(), dur = 1400;
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / dur);
+      const v = Math.round(to * (1 - Math.pow(1 - p, 4)));
+      e.target.textContent = useFmt ? fmtDe.format(v) : v;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+}, { threshold: 0.6 });
+document.querySelectorAll('.count').forEach(n => countObs.observe(n));
+
+/* Die 5 Punkte: Vorher/Heute */
+(function () {
+  const X = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>`;
+  const CHECK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+  const points = [
+    { title: 'Weniger Zögern, mehr Machen',
+      was: 'Erst lange überlegen, dann den Chef fragen.',
+      now: 'Aufgaben werden direkt mit KI angegangen, ohne Hemmschwelle.' },
+    { title: 'Zeit für das Wesentliche',
+      was: 'Texte, Zusammenfassungen und Vorlagen kosten Stunden.',
+      now: 'Routinearbeit läuft in Minuten. Die Zeit fließt zurück ins Kerngeschäft.' },
+    { title: 'Wissen bleibt im Team',
+      was: 'Einer ist „der KI-Typ“, alle anderen fragen ihn.',
+      now: 'Alle arbeiten mit. Das Wissen bleibt, auch wenn jemand geht.' },
+    { title: 'Sicherheit im Umgang mit Daten',
+      was: 'KI wird unkontrolliert mit sensiblen Daten genutzt.',
+      now: 'Jeder weiß, welche Informationen ins Tool dürfen und welche nicht.' },
+    { title: 'Eigenständig statt abhängig',
+      was: 'Für jedes neue Tool wird externe Beratung gebucht.',
+      now: 'Neue Tools werden selbst getestet und eingeführt.' },
+  ];
+  const box = document.getElementById('eb2Rows');
+  points.forEach((p, i) => {
+    const d = document.createElement('div');
+    d.className = 'eb2-row rv';
+    d.style.setProperty('--d', `${i * 90}ms`);
+    d.innerHTML = `
+      <div class="head"><span class="no">0${i + 1}</span><h3>${p.title}</h3></div>
+      <div class="eb2-compare">
+        <div class="cell was">${X}<span>${p.was}</span></div>
+        <div class="cell now">${CHECK}<span>${p.now}</span></div>
+      </div>`;
+    box.appendChild(d);
+  });
+})();
+
+/* Use Cases Bento */
+(function () {
+  const I8 = (slug, alt) => `<img src="https://img.icons8.com/color/16/${slug}.png" alt="${alt}" style="width:15px;height:15px" />`;
+  const T = {
+    word: I8('microsoft-word-2019','Word'), excel: I8('microsoft-excel-2019','Excel'),
+    linkedin: I8('linkedin','LinkedIn'), facebook: I8('facebook-new','Facebook'),
+    tiktok: I8('tiktok','TikTok'), instagram: I8('instagram-new','Instagram'),
+    teams: I8('microsoft-teams','Teams'), zoom: I8('zoom','Zoom'),
+    outlook: I8('microsoft-outlook-2019','Outlook'), gmail: I8('gmail','Gmail'),
+    pdf: I8('pdf','PDF'), googleads: I8('google-ads','Google Ads'),
+  };
+  const CHECK = `<svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+  const cases = [
+    { img:'public/ewa/icon-verwaltung.png', title:'Verwaltung &amp; Organisation', bullets:[
+      { text:'Word-Dokumente strukturieren', icons:[T.word] },
+      { text:'Excel-Inhalte schneller auswerten', icons:[T.excel] },
+      { text:'Meetings zusammenfassen', icons:[T.teams, T.zoom] },
+      { text:'Informationen schneller aufbereiten' } ] },
+    { img:'public/ewa/icon-vertrieb.png', title:'Vertrieb &amp; Angebote', bullets:[
+      { text:'Kundenantworten formulieren', icons:[T.outlook, T.gmail] },
+      { text:'Follow-Ups schreiben' },
+      { text:'Angebote vorbereiten' } ] },
+    { img:'public/ewa/icon-recruiting.png', title:'Recruiting', bullets:[
+      { text:'Social Recruiting', icons:[T.tiktok, T.instagram, T.linkedin] },
+      { text:'Stellenanzeigen schneller erstellen' },
+      { text:'Bewerberkommunikation vereinfachen' } ] },
+    { img:'public/ewa/icon-meetings.png', title:'Meetings, Recherche &amp; Wissenssuche', bullets:[
+      { text:'Meetings automatisch zusammenfassen', icons:[T.teams, T.zoom] },
+      { text:'PDFs und Dokumente verstehen', icons:[T.pdf] },
+      { text:'Informationen schneller finden' },
+      { text:'Recherche deutlich beschleunigen' } ] },
+    { img:'public/ewa/icon-einarbeitung.png', title:'Einarbeitung &amp; internes Wissen', bullets:[
+      { text:'Neue Mitarbeiter schneller einarbeiten' },
+      { text:'Wiederkehrende Fragen dokumentieren' },
+      { text:'Wissen langfristig sichern' } ] },
+    { img:'public/ewa/icon-marketing.png', title:'Marketing &amp; Sichtbarkeit', bullets:[
+      { text:'Social-Media-Inhalte erstellen', icons:[T.linkedin, T.facebook, T.instagram] },
+      { text:'Newsletter schneller schreiben' },
+      { text:'Kampagnenideen entwickeln', icons:[T.googleads] } ] },
+  ];
+  const grid = document.getElementById('uc2Grid');
+  cases.forEach((c, i) => {
+    const lis = c.bullets.map(b =>
+      `<li>${b.icons ? `<span class="ticons">${b.icons.join('')}</span>` : CHECK}${b.text}</li>`).join('');
+    const card = document.createElement('div');
+    card.className = 'uc2-card rv';
+    card.style.setProperty('--d', `${(i % 3) * 90}ms`);
+    card.innerHTML = `<div class="head"><img src="${c.img}" alt="" /><span>${c.title}</span></div><ul>${lis}</ul>`;
+    grid.appendChild(card);
+  });
+})();
+
+document.querySelectorAll('.rv').forEach(n => rvObs.observe(n));
+</script>
+
+</body>
+</html>

@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { Check } from "lucide-react";
 import { useReveals } from "./NeuShared";
 
 /* Tool-Icons — identisch zur Original-UseCases-Sektion (icons8) */
@@ -27,8 +28,12 @@ const Mailchimp = () => (
 
 function Li({ icons, children }: { icons?: React.ReactNode; children: React.ReactNode }) {
   return (
-    <li className={icons ? "has-icons" : undefined}>
-      {icons ? <span className="tool-ico">{icons}</span> : null}
+    <li className="has-icons">
+      {icons ? (
+        <span className="tool-ico">{icons}</span>
+      ) : (
+        <Check size={13} strokeWidth={2.5} className="bli-check" aria-hidden="true" />
+      )}
       {children}
     </li>
   );
@@ -40,11 +45,7 @@ export function NeuPraxisBento() {
   return (
     <section ref={ref} className="neu sec bento-orig" id="praxis">
       <div className="container">
-        <div className="sec-head rv">
-          <p className="eyebrow-orig">Die Praxis</p>
-          <h2>So wird KI im Unternehmen <em>täglich</em> genutzt.</h2>
-          <p>Keine theoretischen Konzepte — reale Anwendungen, die Zeit sparen.</p>
-        </div>
+        {/* Überschrift entfernt: beim Vergleich/Ersatz wird die Überschrift der Original-Sektion genutzt */}
         <div className="bento">
           <div className="bcard bcard--navy b-7 rv">
             <h3>Verwaltung &amp; Organisation</h3>
@@ -62,6 +63,7 @@ export function NeuPraxisBento() {
               <Li icons={<><Outlook /><Gmail /></>}>Kundenantworten formulieren</Li>
               <Li icons={<><Outlook /><Gmail /></>}>Follow-ups schreiben</Li>
               <Li>Angebote vorbereiten</Li>
+              <Li>Wiederkehrende Kommunikation vereinfachen</Li>
             </ul>
             <div className="bcard__foot">Angebote in Minuten statt einer halben Stunde.</div>
           </div>
@@ -71,6 +73,7 @@ export function NeuPraxisBento() {
               <Li icons={<><TikTok /><Instagram /><Facebook /><LinkedIn /></>}>Social Recruiting</Li>
               <Li>Stellenanzeigen schneller erstellen</Li>
               <Li>Bewerberkommunikation vereinfachen</Li>
+              <Li>Sichtbarkeit für offene Stellen aufbauen</Li>
             </ul>
           </div>
           <div className="bcard b-4 rv" style={{ "--d": ".08s" } as CSSProperties}>
@@ -78,6 +81,7 @@ export function NeuPraxisBento() {
             <ul>
               <Li icons={<><Teams /><Zoom /></>}>Meetings automatisch zusammenfassen</Li>
               <Li icons={<Pdf />}>PDFs und Dokumente einfacher verstehen</Li>
+              <Li>Informationen schneller finden</Li>
               <Li>Recherche deutlich beschleunigen</Li>
             </ul>
           </div>
@@ -86,19 +90,20 @@ export function NeuPraxisBento() {
             <ul>
               <Li>Neue Mitarbeiter schneller einarbeiten</Li>
               <Li>Wiederkehrende Fragen dokumentieren</Li>
+              <Li>Prozesse verständlicher festhalten</Li>
               <Li>Wissen langfristig sichern</Li>
             </ul>
           </div>
           <div className="bcard rv" style={{ gridColumn: "1 / -1" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "center", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-start", justifyContent: "space-between" }}>
               <div>
                 <h3>Marketing &amp; Sichtbarkeit</h3>
-                <p style={{ margin: "8px 0 0", color: "var(--ink-60)", fontSize: ".92rem", maxWidth: "52ch" }}>
-                  Social-Media-Inhalte, Newsletter, Kampagnenideen und Anzeigentexte — KI-gestützt, aber in Ihrer Sprache.
-                </p>
-                <span className="tool-ico" style={{ marginTop: 12, gap: 6 }}>
-                  <LinkedIn /><Facebook /><TikTok /><Instagram /><Mailchimp /><GoogleAds />
-                </span>
+                <ul style={{ marginTop: 12 }}>
+                  <Li icons={<><LinkedIn /><Facebook /><TikTok /><Instagram /></>}>Social Media Inhalte erstellen</Li>
+                  <Li icons={<Mailchimp />}>Newsletter schneller schreiben</Li>
+                  <Li icons={<GoogleAds />}>Kampagnenideen entwickeln</Li>
+                  <Li>Texte für Anzeigen formulieren</Li>
+                </ul>
               </div>
               <a className="link-quiet" href="#kontakt">Use Case für Ihr Team finden →</a>
             </div>

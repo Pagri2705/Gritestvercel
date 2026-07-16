@@ -15,12 +15,23 @@ export function Problem() {
             </p>
           </div>
 
-          {/* Right: Bild mit Zitat-Overlay */}
+          {/* Right: Bild mit Zitat-Overlay, im Doppelrand-Rahmen (Design aus Variante A·2/3) */}
+          <div
+            className="w-full"
+            style={{
+              maxWidth: 550,
+              background: "rgba(15,41,66,0.05)",
+              border: "1px solid rgba(15,41,66,0.08)",
+              borderRadius: "1.6rem",
+              padding: "0.55rem",
+            }}
+          >
           <div
             className="relative overflow-hidden w-full"
             style={{
-              maxWidth: 550,
               minHeight: 400,
+              borderRadius: "calc(1.6rem - 0.55rem)",
+              boxShadow: "inset 0 1px 1px rgba(255,255,255,0.4)",
               backgroundImage: "url('/ba95.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -37,6 +48,7 @@ export function Problem() {
                 Ohne klare Struktur drehen sich Teams im Kreis: Tools werden ausprobiert, wieder verworfen und am Ende bleibt alles beim Alten.
               </p>
             </figure>
+          </div>
           </div>
 
         </div>

@@ -5,10 +5,12 @@ import { SiteNav } from "@/components/landing/SiteNav";
 import { Hero } from "@/components/landing/Hero";
 import { StatsSection } from "@/components/landing/StatsSection";
 import { Problem } from "@/components/landing/Problem";
+import { ProblemCinematic } from "@/components/landing/ProblemCinematic";
 import { UseCases } from "@/components/landing/UseCases";
 import { ChatTestimonials } from "@/components/landing/ChatTestimonials";
 import { Faq } from "@/components/landing/Faq";
 import { WhyItFails } from "@/components/landing/WhyItFails";
+import { WhyItFailsBento } from "@/components/landing/WhyItFailsBento";
 import { FailureCost } from "@/components/landing/FailureCost";
 import { Programm } from "@/components/landing/Programm";
 import { Lernkreislauf } from "@/components/landing/Lernkreislauf";
@@ -77,7 +79,9 @@ function Index() {
         <StatsSection />
         <div className="bg-white h-[90px]" />
         <Problem />
+        <ProblemCinematic />
         <WhyItFails />
+        <WhyItFailsBento />
         <FailureCost />
         {/* VERGLEICH: neue Konsequenz-Sektion direkt unter der alten (FailureCost) — eine fliegt nach Entscheidung raus */}
         <NeuKonsequenz />
@@ -86,12 +90,12 @@ function Index() {
         <EigeneBildSektion />
         <WirArbeitenMit />
         <UseCases />
+        {/* VERGLEICH: Praxis-Bento (ohne eigene Überschrift) direkt unter der Original-UseCases-Sektion */}
+        <NeuPraxisBento />
         <ChatTestimonials />
         <NeuRoiRechner />
         <NeuPreise />
         <Faq />
-        {/* Neue Sektionen: Praxis-Bento über dem finalen CTA */}
-        <NeuPraxisBento />
         <NeuFinalCta />
 
         <SiteFooter />

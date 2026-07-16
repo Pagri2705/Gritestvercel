@@ -188,12 +188,12 @@
 .neu .bcard ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .neu .bcard li { display: flex; gap: 12px; align-items: baseline; font-size: 0.92rem; color: var(--ink-60); }
 .neu .bcard--navy li { color: rgba(248, 243, 234, 0.7); position: relative; }
-.neu .bcard li::before { content: "—"; color: var(--blue); font-weight: 600; flex-shrink: 0; }
+.neu .bcard li::before { content: none; }
 .neu .bcard li.has-icons { align-items: center; }
-.neu .bcard li.has-icons::before { content: none; }
+.neu .bcard .bli-check { color: var(--blue); flex-shrink: 0; }
 .neu .tool-ico { display: inline-flex; gap: 3px; flex-shrink: 0; align-items: center; }
 .neu .tool-ico img, .neu .tool-ico svg { display: block; }
-.neu .bcard--navy li::before { color: #7fa1ff; }
+.neu .bcard--navy .bli-check { color: #7fa1ff; }
 .neu .bcard__foot { margin-top: auto; padding-top: 14px; font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: var(--ink-40); }
 .neu .bcard--navy .bcard__foot { color: rgba(248, 243, 234, 0.5); position: relative; }
 

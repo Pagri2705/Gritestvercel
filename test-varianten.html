@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sektions-Varianten Vorschau</title>
+<!--
+  VORSCHAU (Quick-Modus nach /webseite): 3 Sektionen x 3 komplett verschiedene Premium-Varianten.
+  Inhalte: ausschliesslich echte Aussagen der Bestandsseite (78%, 7 Gruende, MIT 95%).
+  Schrift/Farbwelt der Bestandsseite. Fonts via CDN NUR fuer diese Vorschau, Produktion: lokal hosten.
+
+  A) 78%-Problem:    A1 Data-Moment (dunkel, Zaehler + 100er-Raster)
+                     A2 Editorial (Riesenziffer als Umriss + Bild im Doppelrand)
+                     A3 Cinematic (Vollbild-Foto, Statement unten links)
+  B) Gruende:        B1 Index (aufklappbare Zeilen, grosse Ziffern)
+                     B2 Dark-Bento (4 Haupt-Kacheln + 3 Neben-Kacheln, Doppelrand)
+                     B3 Rail (horizontale Scroll-Snap-Karten mit Pfeiltasten)
+  C) MIT-95%-Quote:  C1 Monolith (dunkel, riesige Ziffer, ein Satz)
+                     C2 Dossier (Beleg-Karte mit Punkt-Matrix 19/20)
+                     C3 Pull-Quote (Magazin-Zitat mit Fussnote)
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand: oklch(0.432 0.195 258);
+  --ink:#0F2942;
+  --ink-muted:#4E6E8E;
+  --paper:#fdf8f2;
+  --paper-2:#f4f0e8;
+  --dark:#0A1420;
+  --dark-2:#0E1927;
+  --red:#e53e3e;
+  --line:rgba(15,41,66,.14);
+  --font-sans:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  --font-display:"Plus Jakarta Sans","DM Sans",sans-serif;
+  --ease:cubic-bezier(0.32,0.72,0,1);
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ -webkit-font-smoothing:antialiased; }
+body{ background:var(--paper); color:var(--ink); font-family:var(--font-sans); font-size:1rem; line-height:1.65; overflow-x:clip; }
+img{ max-width:100%; display:block; }
+button{ font-family:inherit; cursor:pointer; }
+a{ color:inherit; }
+.wrap{ max-width:76rem; margin:0 auto; padding:0 1.25rem; }
+@media(min-width:768px){ .wrap{ padding:0 2.5rem; } }
+
+/* Korn-Textur nur auf fixiertem Pseudo-Element */
+body::after{ content:""; position:fixed; inset:0; z-index:60; pointer-events:none; opacity:.45;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); }
+
+/* Varianten-Trenner */
+.marker{ position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:.8rem;
+  background:var(--ink); color:#fff; padding:.65rem 1.25rem; font-size:.78rem; font-weight:600; letter-spacing:.04em; }
+.marker b{ font-family:var(--font-display); font-weight:800; color:#8fb3ff; }
+.marker span{ color:rgba(255,255,255,.6); font-weight:400; }
+
+/* Reveal */
+.rv{ opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease); transition-delay:var(--d,0ms); }
+.rv.in{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){
+  .rv{ opacity:1; transform:none; transition:none; }
+  *{ animation:none !important; transition-duration:.01ms !important; }
+}
+
+/* ============================================================
+   A1 — DATA-MOMENT (dunkel, Zaehler + 100er-Raster)
+   Signatur: 100 Zellen, 78 fuellen sich rot. Die Zahl ist beweisbar erlebbar.
+============================================================ */
+.a1{ background:var(--dark); color:#fff; padding:6.5rem 0; }
+@media(min-width:768px){ .a1{ padding:8.5rem 0; } }
+.a1-grid{ display:grid; gap:3rem; align-items:center; }
+@media(min-width:960px){ .a1-grid{ grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:5rem; } }
+.a1 .num{ font-family:var(--font-display); font-weight:800; letter-spacing:-0.05em; line-height:.9;
+  font-size:clamp(5.5rem, 15vw, 11.5rem); font-variant-numeric:tabular-nums; color:#fff; }
+.a1 .num small{ font-size:.4em; color:var(--red); letter-spacing:-0.02em; }
+.a1 h2{ margin-top:1.2rem; color:#fff; font-size:clamp(1.5rem, 2.8vw, 2.1rem); font-weight:700; letter-spacing:-0.02em; line-height:1.15; max-width:20ch; }
+.a1 p{ margin-top:1rem; color:rgba(255,255,255,.65); font-size:1.02rem; max-width:30rem; }
+.a1-cells{ display:grid; grid-template-columns:repeat(10,1fr); gap:6px; }
+@media(min-width:640px){ .a1-cells{ gap:8px; } }
+.a1-cell{ aspect-ratio:1; border-radius:2px; background:rgba(255,255,255,.07);
+  transition:background .5s var(--ease), transform .5s var(--ease); }
+.a1-cell.on{ background:var(--red); }
+.a1-legend{ margin-top:1.1rem; display:flex; gap:1.6rem; font-size:.8rem; color:rgba(255,255,255,.55); }
+.a1-legend i{ display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:.45rem; vertical-align:-1px; font-style:normal; }
+
+/* ============================================================
+   A2 — EDITORIAL (Riesenziffer als Umriss + Bild im Doppelrand)
+   Signatur: beschnittene Konturziffer hinter dem Text, Bild in Schalen-Optik.
+============================================================ */
+.a2{ position:relative; background:var(--paper); padding:7rem 0; overflow:hidden; }
+@media(min-width:768px){ .a2{ padding:9rem 0; } }
+.a2-ghost{ position:absolute; right:-2rem; top:50%; transform:translateY(-50%); z-index:0;
+  font-family:var(--font-display); font-weight:800; letter-spacing:-0.05em; line-height:.8;
+  font-size:clamp(16rem, 42vw, 34rem); color:transparent;
+  -webkit-text-stroke:1.5px rgba(15,41,66,.14); user-select:none; pointer-events:none; }
+.a2-grid{ position:relative; z-index:1; display:grid; gap:2.8rem; align-items:center; }
+@media(min-width:960px){ .a2-grid{ grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:5rem; } }
+.a2 .kicker{ display:inline-flex; align-items:center; gap:.6rem; font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:1.4rem; }
+.a2 .kicker::before{ content:""; width:2rem; height:1px; background:var(--red); }
+.a2 h2{ font-size:clamp(2.1rem, 4.6vw, 3.6rem); font-weight:800; letter-spacing:-0.03em; line-height:1.05; max-width:16ch; }
+.a2 h2 em{ font-style:normal; color:var(--red); }
+.a2 p{ margin-top:1.2rem; font-size:1.05rem; color:var(--ink-muted); max-width:30rem; }
+.a2-shell{ background:rgba(15,41,66,.05); border:1px solid rgba(15,41,66,.08); border-radius:1.6rem; padding:.55rem; }
+.a2-core{ border-radius:calc(1.6rem - .55rem); overflow:hidden; aspect-ratio:4/5; position:relative;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.4); }
+.a2-core img{ width:100%; height:100%; object-fit:cover; }
+.a2-core figcaption{ position:absolute; left:0; right:0; bottom:0; padding:1.4rem 1.4rem 1.2rem;
+  background:linear-gradient(to top, rgba(8,12,20,.78), transparent); color:#fff; }
+.a2-core figcaption b{ display:block; font-family:var(--font-display); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; }
+.a2-core figcaption b em{ font-style:normal; color:#ff9d99; }
+.a2-core figcaption span{ display:block; margin-top:.3rem; font-size:.82rem; color:rgba(255,255,255,.75); line-height:1.5; }
+
+/* ============================================================
+   A3 — CINEMATIC (Vollbild-Foto, Statement unten links)
+   Signatur: das Foto traegt die Sektion, die Zahl steht als Stempel im Bild.
+============================================================ */
+.a3{ position:relative; min-height:88dvh; display:flex; align-items:center; overflow:hidden; }
+.a3 img.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.a3 .scrim{ position:absolute; inset:0;
+  background:radial-gradient(70% 70% at 50% 52%, rgba(8,14,23,.72) 0%, rgba(8,14,23,.45) 100%); }
+.a3-inner{ position:relative; z-index:2; width:100%; max-width:76rem; margin:0 auto; padding:5rem 1.25rem; text-align:center; }
+@media(min-width:768px){ .a3-inner{ padding:6rem 2.5rem; } }
+.a3 .stamp{ display:inline-flex; align-items:baseline; gap:.6rem; border:1px solid rgba(255,255,255,.35);
+  padding:.5rem 1rem; margin-bottom:1.6rem; }
+.a3 .stamp b{ font-family:var(--font-display); font-weight:800; font-size:1.6rem; letter-spacing:-0.02em; color:#ff9d99; line-height:1; }
+.a3 .stamp span{ font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.75); }
+.a3 h2{ color:#fff; font-family:var(--font-display); font-size:1.9rem; font-weight:600; letter-spacing:-0.02em; line-height:1.1; max-width:18ch; margin:0 auto; }
+@media(min-width:768px){ .a3 h2{ font-size:2.8rem; } }
+.a3 h2 .l{ display:block; overflow:hidden; }
+.a3 h2 .l span{ display:block; transform:translateY(110%); transition:transform 1s var(--ease); transition-delay:var(--d,0ms); }
+.a3.in h2 .l span{ transform:none; }
+.a3 p{ margin:1.3rem auto 0; color:rgba(255,255,255,.78); font-size:1.05rem; max-width:28rem; }
+@media (prefers-reduced-motion: reduce){ .a3 h2 .l span{ transform:none; transition:none; } }
+
+/* ============================================================
+   B1 — INDEX (aufklappbare Zeilen, grosse Ziffern)
+   Signatur: Ziffer als Leitsystem, Zeile oeffnet sich mit Grid-Rows-Animation.
+============================================================ */
+.b1{ background:var(--paper); padding:6.5rem 0; }
+@media(min-width:768px){ .b1{ padding:8.5rem 0; } }
+.b1-head{ max-width:44rem; margin-bottom:3rem; }
+.b1 h2{ font-size:clamp(2rem, 4.4vw, 3.2rem); font-weight:800; letter-spacing:-0.03em; line-height:1.06; }
+.b1 .sub{ margin-top:1rem; font-size:1.02rem; color:var(--ink-muted); }
+.b1-rows{ border-top:1px solid rgba(15,41,66,.28); }
+.b1-row{ border-bottom:1px solid var(--line); }
+.b1-row button{ width:100%; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:1.2rem;
+  background:none; border:none; text-align:left; padding:1.5rem .25rem; min-height:44px; color:var(--ink); }
+@media(min-width:768px){ .b1-row button{ padding:1.9rem .5rem; gap:2rem; } }
+.b1-row .no{ font-family:var(--font-display); font-weight:800; font-size:clamp(1.6rem, 3vw, 2.4rem); letter-spacing:-0.03em;
+  color:rgba(15,41,66,.18); font-variant-numeric:tabular-nums; transition:color .4s var(--ease); }
+.b1-row.open .no{ color:var(--brand); }
+.b1-row h3{ font-family:var(--font-display); font-size:clamp(1.05rem, 2vw, 1.45rem); font-weight:700; letter-spacing:-0.015em; line-height:1.25; }
+.b1-row .ind{ width:36px; height:36px; border:1px solid rgba(15,41,66,.25); border-radius:999px; display:grid; place-items:center;
+  transition:transform .5s var(--ease), background .3s, border-color .3s; flex-shrink:0; }
+.b1-row .ind svg{ width:14px; height:14px; }
+.b1-row.open .ind{ transform:rotate(45deg); background:var(--ink); border-color:var(--ink); color:#fff; }
+.b1-row .body{ display:grid; grid-template-rows:0fr; transition:grid-template-rows .55s var(--ease); }
+.b1-row.open .body{ grid-template-rows:1fr; }
+.b1-row .body > div{ overflow:hidden; }
+.b1-row .body p{ padding:0 .25rem 1.7rem calc(1.2rem + clamp(1.6rem,3vw,2.4rem) * 1.35); font-size:.98rem; color:var(--ink-muted); max-width:44rem; }
+@media(max-width:640px){ .b1-row .body p{ padding-left:.25rem; } }
+.b1-tag{ margin:2.4rem 0 .9rem; font-size:.7rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:rgba(15,41,66,.45); }
+
+/* ============================================================
+   B2 — DARK-BENTO (4 Haupt-Kacheln + 3 Neben-Kacheln im Doppelrand)
+   Signatur: Schalen-Kacheln auf dunklem Grund, duenne Linien-Icons.
+============================================================ */
+.b2{ background:var(--dark); padding:6.5rem 0; }
+@media(min-width:768px){ .b2{ padding:8.5rem 0; } }
+.b2-head{ max-width:44rem; margin-bottom:3rem; }
+.b2 h2{ color:#fff; font-size:clamp(2rem, 4.4vw, 3.2rem); font-weight:800; letter-spacing:-0.03em; line-height:1.06; }
+.b2 .sub{ margin-top:1rem; font-size:1.02rem; color:rgba(255,255,255,.6); }
+.b2-grid{ display:grid; gap:1rem; }
+@media(min-width:800px){ .b2-grid{ grid-template-columns:repeat(12,1fr); } }
+.b2-shell{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09); border-radius:1.5rem; padding:.5rem; }
+@media(min-width:800px){
+  .b2-shell.main{ grid-column:span 6; }
+  .b2-shell.side{ grid-column:span 4; } }
+.b2-core{ height:100%; border-radius:calc(1.5rem - .5rem); background:var(--dark-2); padding:1.8rem 1.7rem;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07); transition:transform .5s var(--ease); }
+.b2-shell:hover .b2-core{ transform:translateY(-3px); }
+.b2-core .icon{ width:44px; height:44px; border-radius:999px; border:1px solid rgba(255,255,255,.14); display:grid; place-items:center; color:#8fb3ff; margin-bottom:1.3rem; }
+.b2-core .icon svg{ width:19px; height:19px; }
+.b2-core h3{ color:#fff; font-family:var(--font-display); font-size:1.18rem; font-weight:700; letter-spacing:-0.015em; line-height:1.25; }
+.b2-core p{ margin-top:.55rem; font-size:.92rem; color:rgba(255,255,255,.6); line-height:1.6; }
+.b2-shell.side .b2-core{ padding:1.4rem 1.5rem; }
+.b2-shell.side h3{ font-size:1.02rem; }
+.b2-shell.side p{ font-size:.86rem; }
+.b2-more{ grid-column:1 / -1; margin:1.2rem 0 .2rem; font-size:.7rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.4); }
+
+/* ============================================================
+   B3 — RAIL (horizontale Scroll-Snap-Karten)
+   Signatur: die Gruende als begehbare Reihe, Karten im Papier-Ton.
+============================================================ */
+.b3{ background:var(--paper-2); padding:6.5rem 0; overflow:hidden; }
+@media(min-width:768px){ .b3{ padding:8.5rem 0; } }
+.b3-head{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:1.5rem; margin-bottom:2.6rem; }
+.b3 h2{ font-size:clamp(2rem, 4.4vw, 3.2rem); font-weight:800; letter-spacing:-0.03em; line-height:1.06; max-width:18ch; }
+.b3 .sub{ margin-top:1rem; font-size:1.02rem; color:var(--ink-muted); max-width:32rem; }
+.b3-nav{ display:flex; gap:.6rem; }
+.b3-nav button{ width:46px; height:46px; border-radius:999px; border:1px solid rgba(15,41,66,.3); background:#fff; color:var(--ink);
+  display:grid; place-items:center; transition:background .25s, transform .25s var(--ease); }
+.b3-nav button:hover{ background:var(--ink); color:#fff; }
+.b3-nav button:active{ transform:scale(.94); }
+.b3-nav svg{ width:17px; height:17px; }
+.b3-rail{ display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; padding:0 1.25rem 1.2rem;
+  scrollbar-width:none; }
+.b3-rail::-webkit-scrollbar{ display:none; }
+@media(min-width:768px){ .b3-rail{ padding:0 2.5rem 1.2rem; } }
+.b3-card{ scroll-snap-align:start; flex-shrink:0; width:min(78vw, 380px); background:#fff; border:1px solid var(--line);
+  border-radius:1.25rem; padding:1.9rem 1.8rem; display:flex; flex-direction:column; min-height:250px; }
+.b3-card .no{ font-family:var(--font-display); font-weight:800; font-size:.85rem; letter-spacing:.06em; color:var(--brand); }
+.b3-card h3{ margin-top:2.4rem; font-family:var(--font-display); font-size:1.25rem; font-weight:700; letter-spacing:-0.015em; line-height:1.25; }
+.b3-card p{ margin-top:.6rem; font-size:.92rem; color:var(--ink-muted); }
+.b3-card.side{ background:var(--paper); }
+.b3-card.side .tag{ display:inline-block; margin-top:2.4rem; font-size:.66rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(15,41,66,.45); }
+.b3-card.side h3{ margin-top:.5rem; font-size:1.1rem; }
+
+/* ============================================================
+   C1 — MONOLITH (dunkel, riesige Ziffer, ein Satz)
+   Signatur: eine Zahl, ein Satz, nichts sonst. Radialer Lichtkern.
+============================================================ */
+.c1{ position:relative; background:var(--dark); padding:8rem 0; overflow:hidden; text-align:center; }
+@media(min-width:768px){ .c1{ padding:11rem 0; } }
+.c1::before{ content:""; position:absolute; inset:0;
+  background:radial-gradient(60% 55% at 50% 42%, rgba(229,62,62,.16) 0%, transparent 70%); }
+.c1-inner{ position:relative; max-width:56rem; margin:0 auto; padding:0 1.25rem; }
+.c1 .num{ font-family:var(--font-display); font-weight:800; letter-spacing:-0.05em; line-height:.85;
+  font-size:clamp(7rem, 22vw, 17rem); color:#fff; font-variant-numeric:tabular-nums; }
+.c1 .num small{ font-size:.38em; color:var(--red); }
+.c1 p.txt{ margin:2rem auto 0; color:rgba(255,255,255,.85); font-family:var(--font-display);
+  font-size:clamp(1.15rem, 2.4vw, 1.7rem); font-weight:600; letter-spacing:-0.015em; line-height:1.35; max-width:26ch; }
+.c1 .src{ margin-top:2.2rem; font-size:.8rem; color:rgba(255,255,255,.45); }
+.c1 .src a{ color:#9db9ff; text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(157,185,255,.4); }
+.c1 .rule{ width:1px; height:3.5rem; background:rgba(255,255,255,.25); margin:0 auto 2rem; }
+
+/* ============================================================
+   C2 — DOSSIER (Beleg-Karte mit Punkt-Matrix 19/20)
+   Signatur: die Studie als Akte. 20 Punkte, 19 gefuellt = 95%.
+============================================================ */
+.c2{ background:var(--paper); padding:6.5rem 0; }
+@media(min-width:768px){ .c2{ padding:8.5rem 0; } }
+.c2-shell{ max-width:52rem; margin:0 auto; background:rgba(15,41,66,.05); border:1px solid rgba(15,41,66,.08);
+  border-radius:1.6rem; padding:.55rem; }
+.c2-core{ border-radius:calc(1.6rem - .55rem); background:#fff; border:1px solid var(--line);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.6), 0 24px 60px -30px rgba(15,41,66,.25); padding:2.4rem 1.8rem; }
+@media(min-width:768px){ .c2-core{ padding:3.2rem 3.4rem; } }
+.c2 .meta{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:.6rem 1.5rem; font-size:.72rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase; color:rgba(15,41,66,.45); border-bottom:1px solid var(--line); padding-bottom:1.2rem; }
+.c2 .meta b{ color:var(--brand); }
+.c2-dots{ display:grid; grid-template-columns:repeat(10,1fr); gap:10px; max-width:340px; margin:2.4rem 0 0; }
+.c2-dot{ aspect-ratio:1; border-radius:999px; background:rgba(15,41,66,.1); transition:background .5s var(--ease); }
+.c2-dot.on{ background:var(--red); }
+.c2-caption{ margin-top:.9rem; font-size:.78rem; color:var(--ink-muted); }
+.c2 h2{ margin-top:1.8rem; font-size:clamp(1.5rem, 3vw, 2.2rem); font-weight:800; letter-spacing:-0.025em; line-height:1.15; max-width:24ch; }
+.c2 h2 em{ font-style:normal; color:var(--red); }
+.c2 .src{ margin-top:1.8rem; display:flex; flex-wrap:wrap; align-items:center; gap:.5rem 1rem; border-top:1px solid var(--line); padding-top:1.4rem; font-size:.85rem; color:var(--ink-muted); }
+.c2 .src a{ display:inline-flex; align-items:center; gap:.35rem; font-weight:600; color:var(--brand); text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(29,78,216,.3); }
+.c2 .src svg{ width:13px; height:13px; }
+
+/* ============================================================
+   C3 — PULL-QUOTE (Magazin-Zitat mit Fussnote)
+   Signatur: typografisches Zitat, 95% rot unterstrichen, Quelle als Fussnote.
+============================================================ */
+.c3{ background:var(--paper-2); padding:7rem 0; }
+@media(min-width:768px){ .c3{ padding:9.5rem 0; } }
+.c3-inner{ max-width:56rem; margin:0 auto; padding:0 1.25rem; }
+@media(min-width:768px){ .c3-inner{ padding:0 2.5rem; } }
+.c3 .qmark{ font-family:var(--font-display); font-weight:800; font-size:5rem; line-height:.5; color:rgba(15,41,66,.16); display:block; margin-bottom:1.6rem; }
+.c3 blockquote{ font-family:var(--font-display); font-size:clamp(1.6rem, 3.8vw, 2.9rem); font-weight:700;
+  letter-spacing:-0.025em; line-height:1.22; max-width:24ch; }
+.c3 blockquote em{ font-style:normal; color:var(--ink); position:relative; white-space:nowrap; }
+.c3 blockquote em::after{ content:""; position:absolute; left:0; right:0; bottom:.05em; height:.14em;
+  background:var(--red); opacity:.8; transform:scaleX(0); transform-origin:left; transition:transform .9s var(--ease) .3s; }
+.c3.in blockquote em::after{ transform:scaleX(1); }
+.c3 blockquote sup{ font-size:.4em; color:var(--red); font-weight:800; margin-left:.2rem; }
+.c3 .foot{ margin-top:2.6rem; border-top:1px solid rgba(15,41,66,.28); padding-top:1.1rem; max-width:34rem;
+  font-size:.85rem; color:var(--ink-muted); display:flex; gap:.7rem; }
+.c3 .foot b{ color:var(--red); font-weight:800; flex-shrink:0; }
+.c3 .foot a{ font-weight:600; color:var(--brand); text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(29,78,216,.3); }
+@media (prefers-reduced-motion: reduce){ .c3 blockquote em::after{ transform:scaleX(1); transition:none; } }
+
+/* ============================================================
+   C1-FAMILIE — 3 weitere Monolith-Varianten
+============================================================ */
+/* C1 V2: Split. Zahl links, Aussage rechts, Hairline dazwischen */
+.c1b{ background:var(--dark); padding:7rem 0; }
+@media(min-width:768px){ .c1b{ padding:9rem 0; } }
+.c1b-grid{ display:grid; gap:2.5rem; align-items:center; }
+@media(min-width:860px){ .c1b-grid{ grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:0; } }
+.c1b .num{ font-family:var(--font-display); font-weight:800; letter-spacing:-0.05em; line-height:.85;
+  font-size:clamp(6rem, 17vw, 13rem); color:#fff; font-variant-numeric:tabular-nums; }
+.c1b .num small{ font-size:.38em; color:var(--red); }
+.c1b-right{ max-width:30rem; }
+@media(min-width:860px){ .c1b-right{ border-left:1px solid rgba(255,255,255,.2); padding-left:3.5rem; margin-left:1rem; } }
+.c1b-right p.txt{ color:rgba(255,255,255,.88); font-family:var(--font-display); font-size:clamp(1.15rem, 2.2vw, 1.55rem); font-weight:600; letter-spacing:-0.015em; line-height:1.35; }
+.c1b-right .src{ margin-top:1.6rem; font-size:.8rem; color:rgba(255,255,255,.45); }
+.c1b-right .src a{ color:#9db9ff; text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(157,185,255,.4); }
+
+/* C1 V3: Balken. Zahl + Messbalken, der sich auf 95% fuellt */
+.c1c{ background:var(--dark); padding:7.5rem 0; text-align:center; }
+@media(min-width:768px){ .c1c{ padding:10rem 0; } }
+.c1c-inner{ max-width:50rem; margin:0 auto; padding:0 1.25rem; }
+.c1c .num{ font-family:var(--font-display); font-weight:800; letter-spacing:-0.05em; line-height:.85;
+  font-size:clamp(6rem, 18vw, 14rem); color:#fff; font-variant-numeric:tabular-nums; }
+.c1c .num small{ font-size:.38em; color:var(--red); }
+.c1c-bar{ margin:2.6rem auto 0; height:10px; border-radius:999px; background:rgba(255,255,255,.1); overflow:hidden; }
+.c1c-bar span{ display:block; height:100%; width:100%; border-radius:inherit; background:var(--red);
+  transform:scaleX(0); transform-origin:left; transition:transform 1.6s var(--ease) .3s; }
+.c1c.in .c1c-bar span{ transform:scaleX(.95); }
+.c1c-labels{ display:flex; justify-content:space-between; gap:1rem; margin-top:.9rem; font-size:.78rem; color:rgba(255,255,255,.55); }
+.c1c-labels b{ color:#ff9d99; font-weight:700; }
+.c1c p.txt{ margin:2.4rem auto 0; color:rgba(255,255,255,.85); font-family:var(--font-display); font-size:clamp(1.1rem, 2.2vw, 1.5rem); font-weight:600; line-height:1.4; max-width:30ch; }
+.c1c .src{ margin-top:1.6rem; font-size:.8rem; color:rgba(255,255,255,.45); }
+.c1c .src a{ color:#9db9ff; text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(157,185,255,.4); }
+@media (prefers-reduced-motion: reduce){ .c1c .c1c-bar span{ transform:scaleX(.95); transition:none; } }
+
+/* C1 V4: Plakette. Alles in einem duennen Rahmen, Meta oben, Quelle unten */
+.c1d{ background:var(--dark); padding:6.5rem 0; }
+@media(min-width:768px){ .c1d{ padding:8.5rem 0; } }
+.c1d-frame{ position:relative; max-width:56rem; margin:0 auto; border:1px solid rgba(255,255,255,.22);
+  padding:2.6rem 1.5rem; text-align:center; }
+@media(min-width:768px){ .c1d-frame{ padding:3.5rem 4rem; } }
+.c1d-frame::before, .c1d-frame::after{ content:""; position:absolute; width:14px; height:14px; }
+.c1d-frame::before{ left:-1px; top:-1px; border-left:2px solid #ff9d99; border-top:2px solid #ff9d99; }
+.c1d-frame::after{ right:-1px; bottom:-1px; border-right:2px solid #ff9d99; border-bottom:2px solid #ff9d99; }
+.c1d .meta{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:.5rem 1.5rem; font-size:.68rem; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.45); border-bottom:1px solid rgba(255,255,255,.14); padding-bottom:1.2rem; text-align:left; }
+.c1d .num{ margin-top:2.2rem; font-family:var(--font-display); font-weight:800; letter-spacing:-0.05em; line-height:.9;
+  font-size:clamp(5rem, 14vw, 10rem); color:#fff; font-variant-numeric:tabular-nums; }
+.c1d .num small{ font-size:.4em; color:var(--red); }
+.c1d p.txt{ margin:1.4rem auto 0; color:rgba(255,255,255,.85); font-family:var(--font-display); font-size:clamp(1.05rem, 2vw, 1.4rem); font-weight:600; line-height:1.4; max-width:28ch; }
+.c1d .src{ margin-top:2.2rem; border-top:1px solid rgba(255,255,255,.14); padding-top:1.2rem; font-size:.78rem; color:rgba(255,255,255,.45); }
+.c1d .src a{ color:#9db9ff; text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(157,185,255,.4); }
+
+/* ============================================================
+   B2-FAMILIE — 3 weitere Bento-Varianten
+============================================================ */
+/* B2 V2: Ziffern statt Icons, Akzentlinie oben */
+.b2v2{ background:var(--dark); padding:6.5rem 0; }
+@media(min-width:768px){ .b2v2{ padding:8.5rem 0; } }
+.b2v2 .b2-core{ position:relative; padding-top:2.2rem; }
+.b2v2 .b2-core::before{ content:""; position:absolute; top:0; left:1.7rem; width:2.5rem; height:2px; background:#8fb3ff; }
+.b2v2 .ghost{ position:absolute; top:.9rem; right:1.3rem; font-family:var(--font-display); font-weight:800;
+  font-size:3.2rem; line-height:1; letter-spacing:-0.04em; color:rgba(255,255,255,.08); font-variant-numeric:tabular-nums; user-select:none; }
+.b2v2 .b2-shell.side .ghost{ font-size:2.4rem; }
+
+/* B2 V3: Duotone-Symbole (gefuellte Icons) */
+.b2v3{ background:var(--dark); padding:6.5rem 0; }
+@media(min-width:768px){ .b2v3{ padding:8.5rem 0; } }
+.b2v3 .icon2{ width:48px; height:48px; border-radius:14px; background:rgba(143,179,255,.1); display:grid; place-items:center; margin-bottom:1.3rem; }
+.b2v3 .icon2 svg{ width:22px; height:22px; }
+
+/* B2 V4: Helle Papier-Variante mit Index */
+.b2v4{ background:var(--paper-2); padding:6.5rem 0; }
+@media(min-width:768px){ .b2v4{ padding:8.5rem 0; } }
+.b2v4 h2{ color:var(--ink); }
+.b2v4 .sub{ color:var(--ink-muted); }
+.b2v4 .b2-shell{ background:rgba(15,41,66,.05); border-color:rgba(15,41,66,.08); }
+.b2v4 .b2-core{ background:#fff; box-shadow:inset 0 1px 1px rgba(255,255,255,.7), 0 14px 34px -22px rgba(15,41,66,.3); }
+.b2v4 .idx{ display:inline-block; font-family:var(--font-display); font-weight:800; font-size:.78rem; letter-spacing:.08em; color:var(--brand); margin-bottom:1rem; }
+.b2v4 .b2-core .iconl{ width:44px; height:44px; border-radius:999px; border:1px solid rgba(15,41,66,.18); display:grid; place-items:center; color:var(--brand); margin-bottom:1.2rem; }
+.b2v4 .b2-core .iconl svg{ width:19px; height:19px; }
+.b2v4 .b2-core h3{ color:var(--ink); }
+.b2v4 .b2-core p{ color:var(--ink-muted); }
+.b2v4 .b2-more{ color:rgba(15,41,66,.45); }
+</style>
+</head>
+<body>
+
+<!-- ================================================================ A1 -->
+<div class="marker"><b>SEKTION A · 1/3</b> 78 % scheitern <span>· Data-Moment: die Zahl wird erlebbar</span></div>
+<section class="a1" id="a1">
+  <div class="wrap">
+    <div class="a1-grid">
+      <div class="rv">
+        <div class="num"><span id="a1Count">0</span><small>&nbsp;%</small></div>
+        <h2>der KI-Einführungen scheitern.</h2>
+        <p>Es liegt weder an der Technologie noch an mangelndem Wissen.</p>
+      </div>
+      <div class="rv" style="--d:150ms">
+        <div class="a1-cells" id="a1Cells" role="img" aria-label="78 von 100 Feldern rot markiert: 78 Prozent der KI-Einführungen scheitern"></div>
+        <div class="a1-legend">
+          <span><i style="background:var(--red)"></i>gescheitert</span>
+          <span><i style="background:rgba(255,255,255,.14)"></i>erfolgreich</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ A2 -->
+<div class="marker"><b>SEKTION A · 2/3</b> 78 % scheitern <span>· Editorial: Konturziffer + Bild im Doppelrand</span></div>
+<section class="a2">
+  <div class="a2-ghost" aria-hidden="true">78</div>
+  <div class="wrap">
+    <div class="a2-grid">
+      <div class="rv">
+        <p class="kicker">Das Problem</p>
+        <h2><em>78&nbsp;%</em> der KI-Einführungen scheitern.</h2>
+        <p>Es liegt weder an der Technologie noch an mangelndem Wissen.</p>
+      </div>
+      <figure class="a2-shell rv" style="--d:150ms">
+        <div class="a2-core">
+          <img src="public/ba95.png" alt="Team im Arbeitsalltag" />
+          <figcaption>
+            <b>Viel Aufwand. <em>Kein Fortschritt.</em></b>
+            <span>Ohne klare Struktur drehen sich Teams im Kreis: Tools werden ausprobiert, wieder verworfen und am Ende bleibt alles beim Alten.</span>
+          </figcaption>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ A3 -->
+<div class="marker"><b>SEKTION A · 3/3</b> 78 % scheitern <span>· Cinematic: das Foto trägt, Statement unten links</span></div>
+<section class="a3" id="a3">
+  <img class="bg" src="public/ba95.png" alt="" />
+  <div class="scrim"></div>
+  <div class="a3-inner">
+    <div class="stamp rv"><b>78&nbsp;%</b><span>der KI-Einführungen scheitern</span></div>
+    <h2>
+      <span class="l"><span style="--d:100ms">Viel Aufwand.</span></span>
+      <span class="l"><span style="--d:250ms">Kein Fortschritt.</span></span>
+    </h2>
+    <p class="rv" style="--d:400ms">Es liegt weder an der Technologie noch an mangelndem Wissen. Ohne klare Struktur drehen sich Teams im Kreis, und am Ende bleibt alles beim Alten.</p>
+  </div>
+</section>
+
+<!-- ================================================================ B1 -->
+<div class="marker"><b>SEKTION B · 1/3</b> Die häufigsten Gründe <span>· Index: aufklappbare Zeilen</span></div>
+<section class="b1">
+  <div class="wrap">
+    <div class="b1-head rv">
+      <h2>Das sind die häufigsten Gründe.</h2>
+      <p class="sub">Immer wieder dieselben Fehler. Und genau die lassen sich vermeiden.</p>
+    </div>
+    <div class="b1-rows" id="b1Main"></div>
+    <p class="b1-tag rv">Außerdem häufig</p>
+    <div class="b1-rows" id="b1Side"></div>
+  </div>
+</section>
+
+<!-- ================================================================ B2 -->
+<div class="marker"><b>SEKTION B · 2/3</b> Die häufigsten Gründe <span>· Dark-Bento: Kacheln im Doppelrand</span></div>
+<section class="b2">
+  <div class="wrap">
+    <div class="b2-head rv">
+      <h2>Das sind die häufigsten Gründe.</h2>
+      <p class="sub">Immer wieder dieselben Fehler. Und genau die lassen sich vermeiden.</p>
+    </div>
+    <div class="b2-grid" id="b2Grid"></div>
+  </div>
+</section>
+
+<!-- ================================================================ B3 -->
+<div class="marker"><b>SEKTION B · 3/3</b> Die häufigsten Gründe <span>· Rail: horizontale Karten-Reihe</span></div>
+<section class="b3">
+  <div class="wrap">
+    <div class="b3-head rv">
+      <div>
+        <h2>Das sind die häufigsten Gründe.</h2>
+        <p class="sub">Immer wieder dieselben Fehler. Und genau die lassen sich vermeiden.</p>
+      </div>
+      <div class="b3-nav">
+        <button id="b3Prev" aria-label="Vorherige Karten">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        </button>
+        <button id="b3Next" aria-label="Nächste Karten">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="b3-rail rv" id="b3Rail"></div>
+</section>
+
+<!-- ================================================================ C1 -->
+<div class="marker"><b>SEKTION C · 1/3</b> MIT-Studie 95 % <span>· Monolith: eine Zahl, ein Satz</span></div>
+<section class="c1">
+  <div class="c1-inner rv">
+    <div class="rule"></div>
+    <div class="num"><span id="c1Count">0</span><small>&nbsp;%</small></div>
+    <p class="txt">der KI-Pilotprojekte in Unternehmen liefern keinen messbaren Mehrwert.</p>
+    <p class="src">Quelle:
+      <a href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/" target="_blank" rel="noopener noreferrer">Massachusetts Institute of Technology</a>,
+      State of AI in Business 2025
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================ C2 -->
+<div class="marker"><b>SEKTION C · 2/3</b> MIT-Studie 95 % <span>· Dossier: Beleg-Karte mit Punkt-Matrix</span></div>
+<section class="c2">
+  <div class="wrap">
+    <div class="c2-shell rv">
+      <div class="c2-core">
+        <div class="meta">
+          <span><b>Studie</b> · State of AI in Business 2025</span>
+          <span>Massachusetts Institute of Technology</span>
+        </div>
+        <div class="c2-dots" id="c2Dots" role="img" aria-label="19 von 20 Punkten rot markiert: 95 Prozent der KI-Pilotprojekte ohne messbaren Mehrwert"></div>
+        <p class="c2-caption">19 von 20 Pilotprojekten: kein messbarer Mehrwert.</p>
+        <h2><em>95&nbsp;%</em> der KI-Pilotprojekte in Unternehmen liefern keinen messbaren Mehrwert.</h2>
+        <div class="src">
+          <span>Quelle:</span>
+          <a href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/" target="_blank" rel="noopener noreferrer">
+            MIT, State of AI in Business 2025
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ C3 -->
+<div class="marker"><b>SEKTION C · 3/3</b> MIT-Studie 95 % <span>· Pull-Quote: Magazin-Zitat mit Fußnote</span></div>
+<section class="c3" id="c3">
+  <div class="c3-inner rv">
+    <span class="qmark" aria-hidden="true">„</span>
+    <blockquote>
+      <em>95&nbsp;%</em> der KI-Pilotprojekte in Unternehmen liefern keinen messbaren Mehrwert.<sup>1</sup>
+    </blockquote>
+    <p class="foot">
+      <b>1</b>
+      <span>Massachusetts Institute of Technology,
+      <a href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/" target="_blank" rel="noopener noreferrer">State of AI in Business 2025</a>.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================ C1 V2 -->
+<div class="marker"><b>C1-FAMILIE · V2</b> MIT-Studie 95 % <span>· Split: Zahl links, Aussage rechts</span></div>
+<section class="c1b">
+  <div class="wrap">
+    <div class="c1b-grid">
+      <div class="num rv"><span class="c95">0</span><small>&nbsp;%</small></div>
+      <div class="c1b-right rv" style="--d:150ms">
+        <p class="txt">der KI-Pilotprojekte in Unternehmen liefern keinen messbaren Mehrwert.</p>
+        <p class="src">Quelle:
+          <a href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/" target="_blank" rel="noopener noreferrer">Massachusetts Institute of Technology</a>,
+          State of AI in Business 2025
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ C1 V3 -->
+<div class="marker"><b>C1-FAMILIE · V3</b> MIT-Studie 95 % <span>· Messbalken: die Zahl füllt sich sichtbar</span></div>
+<section class="c1c" id="c1c">
+  <div class="c1c-inner rv">
+    <div class="num"><span class="c95">0</span><small>&nbsp;%</small></div>
+    <div class="c1c-bar" role="img" aria-label="Balken zu 95 Prozent gefüllt"><span></span></div>
+    <div class="c1c-labels"><b>95&nbsp;% ohne messbaren Mehrwert</b><span>5&nbsp;% mit Mehrwert</span></div>
+    <p class="txt">der KI-Pilotprojekte in Unternehmen liefern keinen messbaren Mehrwert.</p>
+    <p class="src">Quelle:
+      <a href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/" target="_blank" rel="noopener noreferrer">Massachusetts Institute of Technology</a>,
+      State of AI in Business 2025
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================ C1 V4 -->
+<div class="marker"><b>C1-FAMILIE · V4</b> MIT-Studie 95 % <span>· Plakette: alles in einem Rahmen</span></div>
+<section class="c1d">
+  <div class="wrap">
+    <div class="c1d-frame rv">
+      <div class="meta">
+        <span>Studie · State of AI in Business 2025</span>
+        <span>Massachusetts Institute of Technology</span>
+      </div>
+      <div class="num"><span class="c95">0</span><small>&nbsp;%</small></div>
+      <p class="txt">der KI-Pilotprojekte in Unternehmen liefern keinen messbaren Mehrwert.</p>
+      <p class="src">Quelle:
+        <a href="https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/" target="_blank" rel="noopener noreferrer">MIT, State of AI in Business 2025</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ B2 V2 -->
+<div class="marker"><b>B2-FAMILIE · V2</b> Die häufigsten Gründe <span>· Ziffern statt Icons, Akzentlinie</span></div>
+<section class="b2 b2v2">
+  <div class="wrap">
+    <div class="b2-head rv">
+      <h2>Das sind die häufigsten Gründe.</h2>
+      <p class="sub">Immer wieder dieselben Fehler. Und genau die lassen sich vermeiden.</p>
+    </div>
+    <div class="b2-grid" id="b2v2Grid"></div>
+  </div>
+</section>
+
+<!-- ================================================================ B2 V3 -->
+<div class="marker"><b>B2-FAMILIE · V3</b> Die häufigsten Gründe <span>· Duotone-Symbole (gefüllte Icons)</span></div>
+<section class="b2 b2v3">
+  <div class="wrap">
+    <div class="b2-head rv">
+      <h2>Das sind die häufigsten Gründe.</h2>
+      <p class="sub">Immer wieder dieselben Fehler. Und genau die lassen sich vermeiden.</p>
+    </div>
+    <div class="b2-grid" id="b2v3Grid"></div>
+  </div>
+</section>
+
+<!-- ================================================================ B2 V4 -->
+<div class="marker"><b>B2-FAMILIE · V4</b> Die häufigsten Gründe <span>· Helle Papier-Variante mit Index</span></div>
+<section class="b2 b2v4">
+  <div class="wrap">
+    <div class="b2-head rv">
+      <h2>Das sind die häufigsten Gründe.</h2>
+      <p class="sub">Immer wieder dieselben Fehler. Und genau die lassen sich vermeiden.</p>
+    </div>
+    <div class="b2-grid" id="b2v4Grid"></div>
+  </div>
+</section>
+
+<script>
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (s) => document.querySelector(s);
+
+/* ===== Daten (identisch mit der Live-Seite) ===== */
+const main = [
+  { title: 'KI einführen ohne klaren Plan', desc: 'Ohne Strategie verpufft das Thema schnell wieder, schlichtweg weil keine konkreten Anwendungsfälle gefunden werden.' },
+  { title: 'Mitarbeiter nicht einbinden', desc: 'Widerstand und Desinteresse bremsen jede Initiative.' },
+  { title: 'Nur technikaffine Kollegen schulen', desc: 'Mitarbeiter, die etwas länger brauchen, werden liegen gelassen. Das Wissen kommt nicht bei allen an.' },
+  { title: 'Einmalige Demo statt Begleitung', desc: 'Nach dem Workshop fehlt die Umsetzung im Alltag und bei kleinen Problemen wird schnell aufgegeben.' },
+];
+const side = [
+  { title: 'Falsche Tool-Auswahl', desc: 'Man kauft das erstbeste KI-Tool, ohne zu prüfen, ob es zum Team passt.' },
+  { title: 'Datenschutz ignoriert', desc: 'Mitarbeiter nutzen KI unkontrolliert mit sensiblen Firmendaten.' },
+  { title: 'Kein Pilotprojekt', desc: 'Direkt unternehmensweiter Rollout statt kleinem Test zuerst.' },
+];
+
+/* ===== Reveal ===== */
+const rvObs = new IntersectionObserver((es) => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rvObs.unobserve(e.target); } });
+}, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+
+/* ===== Zaehler ===== */
+function countUp(el, to, dur = 1500) {
+  if (reduce) { el.textContent = to; return; }
+  const t0 = performance.now();
+  const tick = (t) => {
+    const p = Math.min(1, (t - t0) / dur);
+    el.textContent = Math.round(to * (1 - Math.pow(1 - p, 4)));
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+/* ===== A1: Raster 100 Zellen, 78 an ===== */
+(function () {
+  const box = $('#a1Cells');
+  const order = [...Array(100).keys()];
+  for (let i = order.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
+  const cells = [];
+  for (let i = 0; i < 100; i++) { const c = document.createElement('div'); c.className = 'a1-cell'; box.appendChild(c); cells.push(c); }
+  const obs = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    obs.disconnect();
+    countUp($('#a1Count'), 78, 1800);
+    order.slice(0, 78).forEach((idx, k) => {
+      if (reduce) { cells[idx].classList.add('on'); }
+      else setTimeout(() => cells[idx].classList.add('on'), 120 + k * 20);
+    });
+  }, { threshold: 0.4 });
+  obs.observe(box);
+})();
+
+/* ===== A3: Zeilen-Reveal ===== */
+(function () {
+  const sec = $('#a3');
+  const obs = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { sec.classList.add('in'); obs.disconnect(); }
+  }, { threshold: 0.35 });
+  obs.observe(sec);
+})();
+
+/* ===== B1: Aufklapp-Zeilen ===== */
+(function () {
+  const PLUS = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>`;
+  const build = (items, boxId, offset) => {
+    const box = $(boxId);
+    items.forEach((it, i) => {
+      const row = document.createElement('div');
+      row.className = 'b1-row rv';
+      row.style.setProperty('--d', `${i * 80}ms`);
+      row.innerHTML = `
+        <button aria-expanded="false">
+          <span class="no">0${offset + i}</span>
+          <h3>${it.title}</h3>
+          <span class="ind">${PLUS}</span>
+        </button>
+        <div class="body"><div><p>${it.desc}</p></div></div>`;
+      const btn = row.querySelector('button');
+      btn.addEventListener('click', () => {
+        const open = row.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+      box.appendChild(row);
+    });
+  };
+  build(main, '#b1Main', 1);
+  build(side, '#b1Side', 5);
+  document.querySelector('#b1Main .b1-row').classList.add('open');
+  document.querySelector('#b1Main .b1-row button').setAttribute('aria-expanded', 'true');
+})();
+
+/* ===== B2: Dark-Bento ===== */
+(function () {
+  const icons = [
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h7a1 1 0 011 1V14M14 17.5H7a1 1 0 01-1-1V10"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M15.5 18.7c.5-2 1.9-3.2 3.7-3.2 1 0 1.9.3 2.6 1"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/><path d="M6 10v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.7l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.7l7 4a2 2 0 002 0l7-4a2 2 0 001-1.7z"/><path d="M3.3 7l8.7 5 8.7-5M12 22V12"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.5-8 9-4.8-1.5-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4M10 3v4.5L5.5 15a4 4 0 003.5 6h6a4 4 0 003.5-6L14 7.5V3"/><path d="M7.5 13h9"/></svg>`,
+  ];
+  const grid = $('#b2Grid');
+  main.forEach((it, i) => {
+    const shell = document.createElement('div');
+    shell.className = 'b2-shell main rv';
+    shell.style.setProperty('--d', `${i * 90}ms`);
+    shell.innerHTML = `<div class="b2-core"><div class="icon">${icons[i]}</div><h3>${it.title}</h3><p>${it.desc}</p></div>`;
+    grid.appendChild(shell);
+  });
+  const more = document.createElement('p');
+  more.className = 'b2-more rv'; more.textContent = 'Außerdem häufig';
+  grid.appendChild(more);
+  side.forEach((it, i) => {
+    const shell = document.createElement('div');
+    shell.className = 'b2-shell side rv';
+    shell.style.setProperty('--d', `${i * 90}ms`);
+    shell.innerHTML = `<div class="b2-core"><div class="icon">${icons[4 + i]}</div><h3>${it.title}</h3><p>${it.desc}</p></div>`;
+    grid.appendChild(shell);
+  });
+})();
+
+/* ===== B3: Rail ===== */
+(function () {
+  const rail = $('#b3Rail');
+  main.forEach((it, i) => {
+    const c = document.createElement('article');
+    c.className = 'b3-card';
+    c.innerHTML = `<span class="no">GRUND 0${i + 1}</span><h3>${it.title}</h3><p>${it.desc}</p>`;
+    rail.appendChild(c);
+  });
+  side.forEach((it, i) => {
+    const c = document.createElement('article');
+    c.className = 'b3-card side';
+    c.innerHTML = `<span class="tag">Außerdem häufig</span><h3>${it.title}</h3><p>${it.desc}</p>`;
+    rail.appendChild(c);
+  });
+  const step = () => Math.min(rail.clientWidth * 0.8, 420);
+  $('#b3Prev').addEventListener('click', () => rail.scrollBy({ left: -step(), behavior: reduce ? 'auto' : 'smooth' }));
+  $('#b3Next').addEventListener('click', () => rail.scrollBy({ left: step(), behavior: reduce ? 'auto' : 'smooth' }));
+})();
+
+/* ===== C1: Zaehler ===== */
+(function () {
+  const el = $('#c1Count');
+  const obs = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    obs.disconnect();
+    countUp(el, 95, 1600);
+  }, { threshold: 0.5 });
+  obs.observe(el);
+})();
+
+/* ===== C2: Punkt-Matrix 19/20 ===== */
+(function () {
+  const box = $('#c2Dots');
+  const dots = [];
+  for (let i = 0; i < 20; i++) { const d = document.createElement('div'); d.className = 'c2-dot'; box.appendChild(d); dots.push(d); }
+  const obs = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    obs.disconnect();
+    dots.slice(0, 19).forEach((d, k) => {
+      if (reduce) d.classList.add('on');
+      else setTimeout(() => d.classList.add('on'), 150 + k * 60);
+    });
+  }, { threshold: 0.5 });
+  obs.observe(box);
+})();
+
+/* ===== C3: Unterstreichung ===== */
+(function () {
+  const sec = $('#c3');
+  const obs = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { sec.classList.add('in'); obs.disconnect(); }
+  }, { threshold: 0.4 });
+  obs.observe(sec);
+})();
+
+/* ===== C1-Familie: alle 95%-Zaehler ===== */
+document.querySelectorAll('.c95').forEach(el => {
+  const obs = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    obs.disconnect();
+    countUp(el, 95, 1600);
+  }, { threshold: 0.5 });
+  obs.observe(el);
+});
+
+/* ===== C1 V3: Balken fuellen ===== */
+(function () {
+  const sec = document.getElementById('c1c');
+  const obs = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { sec.classList.add('in'); obs.disconnect(); }
+  }, { threshold: 0.4 });
+  obs.observe(sec);
+})();
+
+/* ===== B2 V2: Ziffern statt Icons ===== */
+(function () {
+  const grid = $('#b2v2Grid');
+  const tile = (it, i, cls) => {
+    const shell = document.createElement('div');
+    shell.className = `b2-shell ${cls} rv`;
+    shell.style.setProperty('--d', `${i * 90}ms`);
+    shell.innerHTML = `<div class="b2-core"><span class="ghost">0${i + 1 + (cls === 'side' ? 4 : 0)}</span><h3>${it.title}</h3><p>${it.desc}</p></div>`;
+    return shell;
+  };
+  main.forEach((it, i) => grid.appendChild(tile(it, i, 'main')));
+  const more = document.createElement('p');
+  more.className = 'b2-more rv'; more.textContent = 'Außerdem häufig';
+  grid.appendChild(more);
+  side.forEach((it, i) => grid.appendChild(tile(it, i, 'side')));
+})();
+
+/* ===== B2 V3: Duotone-Symbole ===== */
+(function () {
+  const duo = [
+    `<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" fill="#8fb3ff" opacity=".3"/><rect x="13" y="13" width="8" height="8" rx="2" fill="#8fb3ff"/><path d="M11 7h6a2 2 0 012 2v2M13 17H7a2 2 0 01-2-2v-2" stroke="#8fb3ff" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.5" fill="#8fb3ff"/><path d="M3 19c1-3.3 3.3-5 6-5s5 1.7 6 5" fill="#8fb3ff" opacity=".3"/><circle cx="17" cy="9" r="2.5" fill="#8fb3ff" opacity=".45"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none"><path d="M12 4l9 4-9 4-9-4 9-4z" fill="#8fb3ff"/><path d="M6.5 11v4c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-4" fill="#8fb3ff" opacity=".35"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" fill="#8fb3ff" opacity=".22"/><circle cx="12" cy="12" r="9" stroke="#8fb3ff" stroke-width="1.4"/><path d="M12 7v5l3.5 2" stroke="#8fb3ff" stroke-width="2" stroke-linecap="round"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" fill="#8fb3ff" opacity=".25"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9" stroke="#8fb3ff" stroke-width="1.6" stroke-linejoin="round"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v6c0 4.5-3.2 7.5-8 9-4.8-1.5-8-4.5-8-9V6l8-3z" fill="#8fb3ff" opacity=".25"/><path d="M9 12l2 2 4-4" stroke="#8fb3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none"><path d="M10 3v5L5.5 15.5A4 4 0 009 21h6a4 4 0 003.5-5.5L14 8V3" fill="#8fb3ff" opacity=".25"/><path d="M8 14h8M9.5 3h5" stroke="#8fb3ff" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+  ];
+  const grid = $('#b2v3Grid');
+  const tile = (it, i, cls, iconIdx) => {
+    const shell = document.createElement('div');
+    shell.className = `b2-shell ${cls} rv`;
+    shell.style.setProperty('--d', `${i * 90}ms`);
+    shell.innerHTML = `<div class="b2-core"><div class="icon2">${duo[iconIdx]}</div><h3>${it.title}</h3><p>${it.desc}</p></div>`;
+    return shell;
+  };
+  main.forEach((it, i) => grid.appendChild(tile(it, i, 'main', i)));
+  const more = document.createElement('p');
+  more.className = 'b2-more rv'; more.textContent = 'Außerdem häufig';
+  grid.appendChild(more);
+  side.forEach((it, i) => grid.appendChild(tile(it, i, 'side', 4 + i)));
+})();
+
+/* ===== B2 V4: Helle Papier-Variante ===== */
+(function () {
+  const thin = [
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h7a1 1 0 011 1V14M14 17.5H7a1 1 0 01-1-1V10"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M15.5 18.7c.5-2 1.9-3.2 3.7-3.2 1 0 1.9.3 2.6 1"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/><path d="M6 10v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.7l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.7l7 4a2 2 0 002 0l7-4a2 2 0 001-1.7z"/><path d="M3.3 7l8.7 5 8.7-5M12 22V12"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.5-8 9-4.8-1.5-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4M10 3v4.5L5.5 15a4 4 0 003.5 6h6a4 4 0 003.5-6L14 7.5V3"/><path d="M7.5 13h9"/></svg>`,
+  ];
+  const grid = $('#b2v4Grid');
+  const tile = (it, i, cls, n) => {
+    const shell = document.createElement('div');
+    shell.className = `b2-shell ${cls} rv`;
+    shell.style.setProperty('--d', `${i * 90}ms`);
+    shell.innerHTML = `<div class="b2-core"><span class="idx">0${n}</span><div class="iconl">${thin[n - 1]}</div><h3>${it.title}</h3><p>${it.desc}</p></div>`;
+    return shell;
+  };
+  main.forEach((it, i) => grid.appendChild(tile(it, i, 'main', i + 1)));
+  const more = document.createElement('p');
+  more.className = 'b2-more rv'; more.textContent = 'Außerdem häufig';
+  grid.appendChild(more);
+  side.forEach((it, i) => grid.appendChild(tile(it, i, 'side', i + 5)));
+})();
+
+document.querySelectorAll('.rv').forEach(n => rvObs.observe(n));
+</script>
+</body>
+</html>
