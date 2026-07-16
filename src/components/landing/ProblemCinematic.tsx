@@ -81,17 +81,16 @@ export function ProblemCinematic() {
         </h2>
 
         <p
-          className="mx-auto mt-5 max-w-[28rem] text-base leading-relaxed text-white/80"
+          className="mx-auto mt-5 max-w-[38rem] text-base leading-relaxed text-white/80"
           style={{
+            textWrap: "balance",
             opacity: inView ? 1 : 0,
             transform: inView ? "translateY(0)" : "translateY(18px)",
             transition:
               "opacity 0.8s cubic-bezier(0.32,0.72,0,1) 400ms, transform 0.8s cubic-bezier(0.32,0.72,0,1) 400ms",
           }}
         >
-          Es liegt weder an der Technologie noch an mangelndem Wissen. Ohne
-          klare Struktur drehen sich Teams im Kreis, und am Ende bleibt alles
-          beim Alten.
+          Es liegt weder an der Technologie noch an mangelndem Wissen.
         </p>
       </div>
     </section>
