@@ -62,11 +62,19 @@ function BentoTile({
   tile,
   visible,
   small,
+  accent = "left",
 }: {
   tile: Tile;
   visible: boolean;
   small?: boolean;
+  accent?: "left" | "center" | "right";
 }) {
+  const accentPos: React.CSSProperties =
+    accent === "center"
+      ? { left: "50%", transform: "translateX(-50%)" }
+      : accent === "right"
+        ? { right: "1.75rem" }
+        : { left: "1.75rem" };
   const Icon = tile.icon;
   return (
     <div
@@ -83,10 +91,10 @@ function BentoTile({
           "opacity 0.6s cubic-bezier(0.32,0.72,0,1), transform 0.6s cubic-bezier(0.32,0.72,0,1)",
       }}
     >
-      {/* Blaue Akzentlinie (aus Variante V2) */}
+      {/* Blaue Akzentlinie (aus Variante V2), Position folgt der Kachel-Spalte */}
       <span
-        className="absolute left-[1.75rem] top-0 block"
-        style={{ width: "2.5rem", height: 2, background: "#8fb3ff" }}
+        className="absolute top-0 block"
+        style={{ width: "2.5rem", height: 2, background: "#8fb3ff", ...accentPos }}
       />
       <div
         className="mb-5 grid place-items-center rounded-full border"
@@ -150,7 +158,7 @@ export function WhyItFailsBento() {
         <div ref={gridRef} className="grid gap-4 lg:grid-cols-12">
           {primary.map((tile, i) => (
             <div key={tile.title} className="lg:col-span-6">
-              <BentoTile tile={tile} visible={count > i} />
+              <BentoTile tile={tile} visible={count > i} accent={i % 2 === 0 ? "left" : "right"} />
             </div>
           ))}
 
@@ -164,7 +172,12 @@ export function WhyItFailsBento() {
 
           {secondary.map((tile, i) => (
             <div key={tile.title} className="lg:col-span-4">
-              <BentoTile tile={tile} visible={count > primary.length + i} small />
+              <BentoTile
+                tile={tile}
+                visible={count > primary.length + i}
+                small
+                accent={i === 0 ? "left" : i === 1 ? "center" : "right"}
+              />
             </div>
           ))}
         </div>

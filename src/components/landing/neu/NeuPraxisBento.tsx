@@ -46,7 +46,10 @@ export function NeuPraxisBento() {
     <section ref={ref} className="neu sec bento-orig" id="praxis">
       <div className="container">
         {/* Überschrift der ehemaligen Original-Sektion (Original-Schrift via .bento-orig) */}
-        <div className="sec-head rv" style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
+        <div
+          className="sec-head rv"
+          style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto", maxWidth: "none" }}
+        >
           <h2>So wird KI im Unternehmen praktisch genutzt</h2>
           <p>Keine theoretischen KI Konzepte. Reale Anwendungen die in Ihrem Unternehmen täglich Zeit sparen können.</p>
         </div>
@@ -98,9 +101,12 @@ export function NeuPraxisBento() {
               <Li>Wissen langfristig sichern</Li>
             </ul>
           </div>
-          <div className="bcard b-7 rv">
+          <div
+            className="bcard b-7 rv"
+            style={{ alignItems: "center", textAlign: "center" } as CSSProperties}
+          >
             <h3>Marketing &amp; Sichtbarkeit</h3>
-            <ul>
+            <ul style={{ justifyItems: "center" }}>
               <Li icons={<><LinkedIn /><Facebook /><TikTok /><Instagram /></>}>Social Media Inhalte erstellen</Li>
               <Li icons={<Mailchimp />}>Newsletter schneller schreiben</Li>
               <Li icons={<GoogleAds />}>Kampagnenideen entwickeln</Li>
