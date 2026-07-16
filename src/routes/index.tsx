@@ -6,7 +6,6 @@ import { Hero } from "@/components/landing/Hero";
 import { StatsSection } from "@/components/landing/StatsSection";
 import { Problem } from "@/components/landing/Problem";
 import { ProblemCinematic } from "@/components/landing/ProblemCinematic";
-import { UseCases } from "@/components/landing/UseCases";
 import { ChatTestimonials } from "@/components/landing/ChatTestimonials";
 import { Faq } from "@/components/landing/Faq";
 import { WhyItFails } from "@/components/landing/WhyItFails";
@@ -89,8 +88,7 @@ function Index() {
         <Lernkreislauf />
         <EigeneBildSektion />
         <WirArbeitenMit />
-        <UseCases />
-        {/* VERGLEICH: Praxis-Bento (ohne eigene Überschrift) direkt unter der Original-UseCases-Sektion */}
+        {/* Praxis-Bento ersetzt die alte UseCases-Sektion (Überschrift vom Original übernommen) */}
         <NeuPraxisBento />
         <ChatTestimonials />
         <NeuRoiRechner />

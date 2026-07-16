@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { Check } from "lucide-react";
-import { useReveals } from "./NeuShared";
+import { ArrowOrb, useReveals } from "./NeuShared";
 
 /* Tool-Icons — identisch zur Original-UseCases-Sektion (icons8) */
 const I = ({ src, alt }: { src: string; alt: string }) => (
@@ -45,7 +45,11 @@ export function NeuPraxisBento() {
   return (
     <section ref={ref} className="neu sec bento-orig" id="praxis">
       <div className="container">
-        {/* Überschrift entfernt: beim Vergleich/Ersatz wird die Überschrift der Original-Sektion genutzt */}
+        {/* Überschrift der ehemaligen Original-Sektion (Original-Schrift via .bento-orig) */}
+        <div className="sec-head rv" style={{ textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
+          <h2>So wird KI im Unternehmen praktisch genutzt</h2>
+          <p>Keine theoretischen KI Konzepte. Reale Anwendungen die in Ihrem Unternehmen täglich Zeit sparen können.</p>
+        </div>
         <div className="bento">
           <div className="bcard bcard--navy b-7 rv">
             <h3>Verwaltung &amp; Organisation</h3>
@@ -94,19 +98,33 @@ export function NeuPraxisBento() {
               <Li>Wissen langfristig sichern</Li>
             </ul>
           </div>
-          <div className="bcard rv" style={{ gridColumn: "1 / -1" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-start", justifyContent: "space-between" }}>
-              <div>
-                <h3>Marketing &amp; Sichtbarkeit</h3>
-                <ul style={{ marginTop: 12 }}>
-                  <Li icons={<><LinkedIn /><Facebook /><TikTok /><Instagram /></>}>Social Media Inhalte erstellen</Li>
-                  <Li icons={<Mailchimp />}>Newsletter schneller schreiben</Li>
-                  <Li icons={<GoogleAds />}>Kampagnenideen entwickeln</Li>
-                  <Li>Texte für Anzeigen formulieren</Li>
-                </ul>
-              </div>
-              <a className="link-quiet" href="#kontakt">Use Case für Ihr Team finden →</a>
-            </div>
+          <div className="bcard b-7 rv">
+            <h3>Marketing &amp; Sichtbarkeit</h3>
+            <ul>
+              <Li icons={<><LinkedIn /><Facebook /><TikTok /><Instagram /></>}>Social Media Inhalte erstellen</Li>
+              <Li icons={<Mailchimp />}>Newsletter schneller schreiben</Li>
+              <Li icons={<GoogleAds />}>Kampagnenideen entwickeln</Li>
+              <Li>Texte für Anzeigen formulieren</Li>
+            </ul>
+          </div>
+          <div
+            className="bcard b-5 rv"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+              gap: 18,
+            } as CSSProperties}
+          >
+            <p style={{ margin: 0, color: "var(--ink-60)", fontSize: ".92rem", maxWidth: "30ch" }}>
+              Ihr Bereich ist nicht dabei? Im Erstgespräch finden wir die Anwendungsfälle für Ihr Team.
+            </p>
+            <a className="btn" href="#kontakt">
+              Use Case für Ihr Team finden
+              <ArrowOrb />
+            </a>
           </div>
         </div>
       </div>
