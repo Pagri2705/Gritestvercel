@@ -32,7 +32,7 @@ export function Problem() {
               minHeight: 400,
               borderRadius: "calc(1.6rem - 0.55rem)",
               boxShadow: "inset 0 1px 1px rgba(255,255,255,0.4)",
-              backgroundImage: "url('/ba95.png')",
+              backgroundImage: "url('/ba95.webp')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

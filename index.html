@@ -3,22 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KI Akademie</title>
-    <meta name="description" content="KI Workshops für Unternehmen" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&display=swap"
+
+    <!-- ANNAHME (25.07.2026): "Ventar Digital" ist die Marke, "KI Akademie" das Produkt.
+         Falls umgekehrt: nur die folgenden vier Zeilen tauschen. -->
+    <title>KI-Schulungen für den Mittelstand | Ventar Digital</title>
+    <meta
+      name="description"
+      content="KI-Workshops für Unternehmen ohne eigene KI-Abteilung: Analyse Ihrer Abläufe, Live-Workshop, Begleitung danach. Kostenloses Erstgespräch."
     />
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-    <!-- Fraunces als Variable Font (volle Gewichts-Range) für die neuen Premium-Sektionen -->
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380..680;1,9..144,380..680&display=swap" rel="stylesheet" />
-    <link rel="preconnect" href="https://api.fontshare.com" />
-    <link
-      rel="stylesheet"
-      href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700,800,900&display=swap"
+    <link rel="canonical" href="https://gritestvercel.vercel.app/" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Vorschau beim Teilen (WhatsApp, LinkedIn, Slack) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Ventar Digital" />
+    <meta property="og:title" content="KI-Schulungen für den Mittelstand | Ventar Digital" />
+    <meta
+      property="og:description"
+      content="KI-Workshops für Unternehmen ohne eigene KI-Abteilung: Analyse Ihrer Abläufe, Live-Workshop, Begleitung danach."
     />
+    <meta property="og:url" content="https://gritestvercel.vercel.app/" />
+    <meta property="og:image" content="https://gritestvercel.vercel.app/hero3.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="KI-Schulungen für den Mittelstand | Ventar Digital" />
+    <meta
+      name="twitter:description"
+      content="KI-Workshops für Unternehmen ohne eigene KI-Abteilung: Analyse Ihrer Abläufe, Live-Workshop, Begleitung danach."
+    />
+    <meta name="twitter:image" content="https://gritestvercel.vercel.app/hero3.webp" />
+
+    <!-- Schriften: lokal aus /public/fonts, eingebunden über src/fonts.css.
+         Kein Google-Fonts-CDN mehr (DSGVO, LG München 2022). -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/rP2Hp2ywxg089UriCZOIHQ.woff2" crossorigin />
+
+    <!-- Hero-Bild vorladen: es ist das größte Element im ersten Viewport -->
+    <link rel="preload" as="image" href="/hero3.webp" fetchpriority="high" />
   </head>
   <body>
     <div id="root"></div>

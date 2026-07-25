@@ -43,7 +43,7 @@ export function ProblemCinematic() {
       style={{ minHeight: "88dvh" }}
     >
       <img
-        src="/ba95.png"
+        src="/ba95.webp"
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
       />

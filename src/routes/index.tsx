@@ -32,7 +32,8 @@ function Index() {
 
   return (
     <div style={{ background: mobile ? "#e5e7eb" : undefined, minHeight: "100dvh" }}>
-      {/* Toggle button */}
+      {/* Toggle button — nur im lokalen Dev-Server, nicht im Produktions-Build */}
+      {import.meta.env.DEV && (
       <button
         onClick={() => setMobile((v) => !v)}
         style={{
@@ -57,6 +58,7 @@ function Index() {
         {mobile ? <Monitor size={16} /> : <Smartphone size={16} />}
         {mobile ? "Desktop" : "Mobile"}
       </button>
+      )}
 
     <main
       className="min-h-screen text-ink relative"

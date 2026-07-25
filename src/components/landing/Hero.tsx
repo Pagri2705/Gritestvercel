@@ -38,7 +38,7 @@ export function Hero() {
       {/* Photo background */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/hero3.png"
+          src="/hero3.webp"
           alt=""
           className="h-full w-full object-cover"
           style={{ objectPosition: isMobile ? "72% 54%" : "center 54%" }}

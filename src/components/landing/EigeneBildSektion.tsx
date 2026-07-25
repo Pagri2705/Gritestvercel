@@ -79,7 +79,7 @@ export function EigeneBildSektion() {
               letterSpacing: ".04em",
             }}
           >
-            <img src="/46fd.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src="/46fd.webp" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
         </div>
 

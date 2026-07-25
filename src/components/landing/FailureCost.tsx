@@ -200,7 +200,7 @@ export function FailureCost() {
         <div
           className="relative mt-16 mx-auto max-w-2xl overflow-hidden border border-border bg-surface-elevated px-8 py-7 text-center shadow-card"
           style={{
-            backgroundImage: "url('/pilot-failure-bg.png')",
+            backgroundImage: "url('/pilot-failure-bg.webp')",
             backgroundPosition: "center",
             backgroundSize: "cover",
           }}
