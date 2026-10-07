@@ -18,7 +18,7 @@ const faqs = [
     a: "Typischerweise innerhalb von 4 bis 8 Wochen. Beispiel: Bei 10 Mitarbeitern, die täglich 40 Minuten durch KI einsparen, entstehen pro Woche über 65 Stunden Zeitgewinn — das entspricht fast zwei vollen Arbeitstagen. Bei einem Stundensatz von 30 € ergibt das rund 2.000 € Wert pro Woche. Die einmalige Workshop-Investition von 3.199 € amortisiert sich damit in weniger als zwei Wochen intensiver Nutzung. Hinweis: Viele KMU können Schulungskosten über das Qualifizierungschancengesetz fördern lassen — wir helfen gerne bei der Antragstellung.",
   },
   {
-    q: "Was unterscheidet die KI Akademie von einem normalen Online-Kurs?",
+    q: "Was unterscheidet Ventar von einem normalen Online-Kurs?",
     a: "Online-Kurse vermitteln Wissen. Wir sorgen dafür, dass KI in Ihrem Unternehmen tatsächlich genutzt wird. Das bedeutet: Vor dem Workshop analysieren wir Ihre konkreten Arbeitsabläufe. Im Workshop entwickeln Ihre Mitarbeiter eigene Anwendungen für ihren Job. Nach dem Workshop begleiten wir das Team aktiv mit wöchentlichen Fragen-Sessions, individuellen Prompt-Entwicklungen und Change-Management-Unterstützung. Genau dieser Teil macht den Unterschied.",
   },
   {
