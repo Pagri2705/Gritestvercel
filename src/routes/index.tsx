@@ -5,7 +5,6 @@ import { SiteNav } from "@/components/landing/SiteNav";
 import { Hero } from "@/components/landing/Hero";
 import { StatsSection } from "@/components/landing/StatsSection";
 import { Problem } from "@/components/landing/Problem";
-import { ProblemCinematic } from "@/components/landing/ProblemCinematic";
 import { ChatTestimonials } from "@/components/landing/ChatTestimonials";
 import { Faq } from "@/components/landing/Faq";
 import { WhyItFails } from "@/components/landing/WhyItFails";
@@ -80,7 +79,6 @@ function Index() {
         <StatsSection />
         <div className="bg-white h-[90px]" />
         <Problem />
-        <ProblemCinematic />
         <WhyItFails />
         <WhyItFailsBento />
         <FailureCost />
