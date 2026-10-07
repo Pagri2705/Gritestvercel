@@ -17,9 +17,8 @@ export function SiteNav() {
       <header className="fixed top-0 z-40 w-full border-b border-black/40" style={{ backgroundColor: "#fdf8f2" }}>
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
 
-          <Link to="/" className="flex items-center gap-2.5 font-semibold tracking-tight text-ink">
-            <img src="/ventar-logo.webp" alt="Ventar" className="h-28 w-28 object-contain" />
-            <span className="hidden md:inline">Ventar</span>
+          <Link to="/" className="flex items-center">
+            <img src="/ventar-logo-voll.webp" alt="Ventar" className="h-8 w-auto md:h-9" />
           </Link>
 
           {/* Desktop nav */}
