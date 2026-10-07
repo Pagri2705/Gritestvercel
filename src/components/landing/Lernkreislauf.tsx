@@ -163,22 +163,11 @@ export function Lernkreislauf() {
                   padding: 10,
                 }}
               >
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: 14,
-                    background: "#f0efe9",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 11,
-                    fontWeight: 600,
-                    color: "#9a968c",
-                  }}
-                >
-                  LOGO
-                </div>
+                <img
+                  src="/apple-touch-icon.png"
+                  alt="Ventar"
+                  style={{ width: "100%", height: "100%", borderRadius: 14, objectFit: "cover", display: "block" }}
+                />
               </div>
 
               <Card style={{ left: "50%", top: 64, transform: "translateX(-50%)" }} title="Verstehen" step="1.">
