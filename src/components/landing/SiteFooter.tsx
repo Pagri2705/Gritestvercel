@@ -15,10 +15,7 @@ export function SiteFooter() {
 
       <div className="grid grid-cols-2 gap-8 py-12 md:grid-cols-[1.5fr_1fr_1fr]">
         <div className="col-span-2 md:col-span-1">
-          <div className="flex items-center gap-2.5 text-[1.05rem] font-bold tracking-tight">
-            <span className="grid h-7 w-7 place-items-center rounded-[7px] bg-brand text-[0.85rem] text-white">V</span>
-            Ventar
-          </div>
+          <img src="/ventar-logo-voll.webp" alt="Ventar" className="h-9 w-auto" />
           <p className="mt-3.5 max-w-[240px] text-sm leading-[1.55] text-on-dark-muted">
             KI-Einführung für den Mittelstand. Verständlich, praxisnah, begleitet.
           </p>
